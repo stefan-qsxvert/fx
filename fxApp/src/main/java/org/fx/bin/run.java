@@ -6,6 +6,8 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -26,8 +28,14 @@ public class run extends Application{
 		Group group = new Group(button);
 		group.getChildren().add(texf);
 		Scene scene = new Scene(group);
-
 		
+		TableView table = new TableView();
+		
+		TableColumn coll0 = new TableColumn("Kolumna 1");
+		table.getColumns().add(coll0);
+		
+		table.setEditable(true);
+		group.getChildren().add(table);
 		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(480);
