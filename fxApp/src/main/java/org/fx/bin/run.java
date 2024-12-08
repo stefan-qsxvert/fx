@@ -1,9 +1,14 @@
 package org.fx.bin;
-
 // --module-path /home/tee/git/lib/ --add-modules javafx.controls,javafx.fxml
 
+import java.util.ArrayList;
+
+import javax.swing.plaf.basic.BasicBorders;
+
+import org.fx.app.Person;
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableListValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
@@ -47,20 +52,20 @@ public class run extends Application{
 		
 		group.getChildren().add(texf);
 		
-		TableView<String> table = new TableView<>();
+		TableView<Person> table = new TableView<>();
 		table.setMinWidth(360);
 		table.setMaxWidth(360);
 		table.setEditable(true);
 		table.setLayoutX(10);
 		table.setLayoutY(36);
 		
-		TableColumn<String, String> coll0 = new TableColumn<>("firstName");
-		TableColumn<String, String> coll1 = new TableColumn<>("lastName");
-		TableColumn<String, String> coll2 = new TableColumn<>("email");
+		TableColumn<Person, String> coll0 = new TableColumn<>("firstName");
+		TableColumn<Person, String> coll1 = new TableColumn<>("lastName");
+		TableColumn<Person, String> coll2 = new TableColumn<>("email");
 		
-		coll0.setPrefWidth(120);
-		coll1.setPrefWidth(120);
-		coll2.setPrefWidth(120);
+		coll0.setPrefWidth(80);
+		coll1.setPrefWidth(80);
+		coll2.setPrefWidth(200);
 		
 		table.getColumns().add(coll0);
 		table.getColumns().add(coll1);
@@ -70,24 +75,40 @@ public class run extends Application{
 		coll1.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 		coll2.setCellValueFactory(new PropertyValueFactory<>("email"));
 		
+		System.out.println(1);
+		
 //		coll0.setCellFactory(null); //setText("123");
 		
 //		table.getColumns().addAll(coll0, coll1, coll2);
 //		table.getColumns().
 		
-		ObservableList<String[]> data = FXCollections.observableArrayList( 
-				 new String[]{ "Wartość 1", "Wartość 2", "Wartość 3"}, 
-				 new String[]{"Wartość 4", "Wartość 5", "Wartość 6"}, 
-				 new String[]{"Wartość 7", "Wartość 8", "Wartość 9"} 
-				 );
+//		ObservableList<Person> data = FXCollections.observableArrayList(
+//				 new Person ("Wartość 1", "Wartość 2", "Wartość 3"), 
+//				 new Person("Wartość 4", "Wartość 5", "Wartość 6"), 
+//				 new Person("Wartość 7", "Wartość 8", "Wartość 9") 
+////				 );
+		final ObservableList<Person> data =
+		        FXCollections.observableArrayList(
+		            new Person("Jacob", "Smith", "jacob.smith@example.com"),
+		            new Person("Isabella", "Johnson", "isabella.johnson@example.com"),
+		            new Person("Ethan", "Williams", "ethan.williams@example.com"),
+		            new Person("Emma", "Jones", "emma.jones@example.com"),
+		            new Person("Michael", "Brown", "michael.brown@example.com")
+		        );
 		
-		table.setItems(data);
+		table.setItems(data); //setItems(data);
+		
+		table.setTableMenuButtonVisible(true);
+		
+		table.setBorder(Border.stroke(null));
+		
+		
 		
 		group.getChildren().addAll(table, label);
 		
 		 
 		
-//		table.setItems(data);
+//		
 		
 		Scene scene = new Scene(group);
 		
@@ -96,41 +117,4 @@ public class run extends Application{
 		primaryStage.setWidth(640);
 		primaryStage.show();
 	}
-	
-	public static class Person {
-		 
-        private final SimpleStringProperty firstName;
-        private final SimpleStringProperty lastName;
-        private final SimpleStringProperty email;
- 
-        private Person(String fName, String lName, String email) {
-            this.firstName = new SimpleStringProperty(fName);
-            this.lastName = new SimpleStringProperty(lName);
-            this.email = new SimpleStringProperty(email);
-        }
- 
-        public String getFirstName() {
-            return firstName.get();
-        }
- 
-        public void setFirstName(String fName) {
-            firstName.set(fName);
-        }
- 
-        public String getLastName() {
-            return lastName.get();
-        }
- 
-        public void setLastName(String fName) {
-            lastName.set(fName);
-        }
- 
-        public String getEmail() {
-            return email.get();
-        }
- 
-        public void setEmail(String fName) {
-            email.set(fName);
-        }
-    }
 }
