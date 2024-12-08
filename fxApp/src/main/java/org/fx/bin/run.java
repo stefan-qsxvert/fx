@@ -1,5 +1,7 @@
 package org.fx.bin;
 
+// --module-path /home/tee/git/lib/ --add-modules javafx.controls,javafx.fxml
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
