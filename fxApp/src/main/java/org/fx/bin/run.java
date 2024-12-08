@@ -1,11 +1,8 @@
 package org.fx.bin;
 
-import javax.swing.GroupLayout.Alignment;
-
 // --module-path /home/tee/git/lib/ --add-modules javafx.controls,javafx.fxml
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,8 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
