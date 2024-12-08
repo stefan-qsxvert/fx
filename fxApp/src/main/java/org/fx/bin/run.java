@@ -19,9 +19,10 @@ public class run extends Application{
 		
 		Button button = new Button("klik!");
 		TextField texf = new TextField();
-		
+		texf.setLayoutX(140);
+		texf.setLayoutY(24);
 		Group group = new Group(button);
-//		gr(texf);
+		group.getChildren().add(texf);
 		Scene scene = new Scene(group);
 
 		
