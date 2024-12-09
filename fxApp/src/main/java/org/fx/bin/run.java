@@ -42,7 +42,6 @@ public class run extends Application{
 		label.setLayoutY(10);
 		label.setTextAlignment(TextAlignment.RIGHT);
 
-		
 		Button button = new Button("klik!");
 		TextField texf = new TextField();
 		texf.setLayoutX(380);
@@ -102,15 +101,9 @@ public class run extends Application{
 		
 		table.setBorder(Border.stroke(null));
 		
-		
-		
 		group.getChildren().addAll(table, label);
 		
-		 
-		
-//		
-		
-		Scene scene = new Scene(group);
+    	Scene scene = new Scene(group);
 		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(480);
