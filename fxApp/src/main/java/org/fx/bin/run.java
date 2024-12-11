@@ -5,12 +5,16 @@ import java.util.ArrayList;
 
 import javax.swing.plaf.basic.BasicBorders;
 
+import org.app.ButtonAcction;
 import org.fx.app.Person;
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableListValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventDispatchChain;
+import javafx.event.EventDispatcher;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -43,9 +48,34 @@ public class run extends Application{
 		label.setTextAlignment(TextAlignment.RIGHT);
 
 		Button button = new Button("klik!");
+		button.setLayoutX(380);
+		button.setLayoutY(412);
+//		button.setMinWidth(164);
+		button.setPrefWidth(256);
+//		button.setEventDispatcher(new EventDispatcher() {
+//			
+//			@Override
+//			public Event dispatchEvent(Event arg0, EventDispatchChain arg1) {
+//				// TODO Auto-generated method stub
+//				
+//				System.out.println(arg0.getEventType());
+//				return null;
+//			}
+//		});
+		
+		ButtonAcction buttonAcction = new ButtonAcction();
+		
+		button.setEventDispatcher(buttonAcction);
+		
+		
+		
+		
+		
+		
 		TextField texf = new TextField();
 		texf.setLayoutX(380);
 		texf.setLayoutY(36);
+		texf.setPrefWidth(256);
 		
 		Group group = new Group();
 		
@@ -74,18 +104,6 @@ public class run extends Application{
 		coll1.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 		coll2.setCellValueFactory(new PropertyValueFactory<>("email"));
 		
-		System.out.println(1);
-		
-//		coll0.setCellFactory(null); //setText("123");
-		
-//		table.getColumns().addAll(coll0, coll1, coll2);
-//		table.getColumns().
-		
-//		ObservableList<Person> data = FXCollections.observableArrayList(
-//				 new Person ("Wartość 1", "Wartość 2", "Wartość 3"), 
-//				 new Person("Wartość 4", "Wartość 5", "Wartość 6"), 
-//				 new Person("Wartość 7", "Wartość 8", "Wartość 9") 
-////				 );
 		final ObservableList<Person> data =
 		        FXCollections.observableArrayList(
 		            new Person("Jacob", "Smith", "jacob.smith@example.com"),
@@ -101,7 +119,7 @@ public class run extends Application{
 		
 		table.setBorder(Border.stroke(null));
 		
-		group.getChildren().addAll(table, label);
+		group.getChildren().addAll(table, label, button);
 		
     	Scene scene = new Scene(group);
 		
