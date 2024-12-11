@@ -81,6 +81,7 @@ public class run extends Application{
 		TableColumn<Person, String> coll1 = new TableColumn<>("lastName");
 		TableColumn<Person, String> coll2 = new TableColumn<>("email");
 		
+//		coll0.setText(STYLESHEET_CASPIAN);
 		coll0.setPrefWidth(80);
 		coll1.setPrefWidth(80);
 		coll2.setPrefWidth(200);
