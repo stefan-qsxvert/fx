@@ -1,20 +1,12 @@
 package org.fx.bin;
 // --module-path /home/tee/git/lib/ --add-modules javafx.controls,javafx.fxml
 
-import java.util.ArrayList;
-
-import javax.swing.plaf.basic.BasicBorders;
-
-import org.app.ButtonAcction;
+import org.app.EventAction;
 import org.fx.app.Person;
+
 import javafx.application.Application;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableListValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
-import javafx.event.EventDispatchChain;
-import javafx.event.EventDispatcher;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,7 +16,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -51,16 +42,12 @@ public class run extends Application{
 		button.setLayoutX(380);
 		button.setLayoutY(412);
 		button.setPrefWidth(256);
-
-		ButtonAcction buttonAcction = new ButtonAcction();
+		
+		ObservableList<Person> data = FXCollections.observableArrayList();
+		EventAction buttonAcction = new EventAction(data, button);
 		
 		button.setEventDispatcher(buttonAcction);
-		
-		
-		
-		
-		
-		
+
 		TextField texf = new TextField();
 		texf.setLayoutX(380);
 		texf.setLayoutY(36);
@@ -73,15 +60,13 @@ public class run extends Application{
 		TableView<Person> table = new TableView<>();
 		table.setMinWidth(360);
 		table.setMaxWidth(360);
-		table.setEditable(true);
 		table.setLayoutX(10);
 		table.setLayoutY(36);
 		
-		TableColumn<Person, String> coll0 = new TableColumn<>("firstName");
-		TableColumn<Person, String> coll1 = new TableColumn<>("lastName");
-		TableColumn<Person, String> coll2 = new TableColumn<>("email");
+		TableColumn<Person, String> coll0 = new TableColumn("firstName");
+		TableColumn<Person, String> coll1 = new TableColumn("lastName");
+		TableColumn<Person, String> coll2 = new TableColumn("email");
 		
-//		coll0.setText(STYLESHEET_CASPIAN);
 		coll0.setPrefWidth(80);
 		coll1.setPrefWidth(80);
 		coll2.setPrefWidth(200);
@@ -90,24 +75,27 @@ public class run extends Application{
 		table.getColumns().add(coll1);
 		table.getColumns().add(coll2);
 		
-		coll0.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-		coll1.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-		coll2.setCellValueFactory(new PropertyValueFactory<>("email"));
+		coll0.setCellValueFactory(new PropertyValueFactory("firstName"));
+		coll1.setCellValueFactory(new PropertyValueFactory("lastName"));
+		coll2.setCellValueFactory(new PropertyValueFactory("email"));
 		
-		final ObservableList<Person> data =
-		        FXCollections.observableArrayList(
-		            new Person("Jacob", "Smith", "jacob.smith@example.com"),
-		            new Person("Isabella", "Johnson", "isabella.johnson@example.com"),
-		            new Person("Ethan", "Williams", "ethan.williams@example.com"),
-		            new Person("Emma", "Jones", "emma.jones@example.com"),
-		            new Person("Michael", "Brown", "michael.brown@example.com")
-		        );
+		data.add(new Person("Jacob", "Smith", "jacob.smith@example.com"));
+		data.add(new Person("Isabella", "Johnson", "isabella.johnson@example.com"));
+		data.add(new Person("Ethan", "Williams", "ethan.williams@example.com"));
+		data.add(new Person("Emma", "Jones", "emma.jones@example.com"));
+		data.add(new Person("Michael", "Brown", "michael.brown@example.com"));
+				
+		data.add(new Person("Alan","testowy", "alan.testowy@mail.net"));
 		
 		table.setItems(data); //setItems(data);
 		
-		table.setTableMenuButtonVisible(true);
+		data.getLast().setEmail("zmieniony.mail");
 		
+		table.setTableMenuButtonVisible(true);
 		table.setBorder(Border.stroke(null));
+		
+		EventAction tableAction = new EventAction();
+		table.setEventDispatcher(tableAction);
 		
 		group.getChildren().addAll(table, label, button);
 		

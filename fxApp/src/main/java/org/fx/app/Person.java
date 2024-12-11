@@ -1,7 +1,5 @@
 package org.fx.app;
 
-import javafx.beans.property.SimpleStringProperty;
-
 public class Person {
 	 
     private String firstName;
@@ -37,30 +35,4 @@ public class Person {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-    
-    
-
-//    public String getFirstName() {
-//        return firstName;
-//    }
-//
-//    public void setFirstName(String fName) {
-//        firstName = (fName);
-//    }
-//
-//    public String getLastName() {
-//        return lastName.get();
-//    }
-//
-//    public void setLastName(String fName) {
-//        lastName.set(fName);
-//    }
-//
-//    public String getEmail() {
-//        return email.get();
-//    }
-//
-//    public void setEmail(String fName) {
-//        email.set(fName);
-//    }
 }
