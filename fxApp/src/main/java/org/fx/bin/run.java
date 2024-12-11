@@ -50,19 +50,8 @@ public class run extends Application{
 		Button button = new Button("klik!");
 		button.setLayoutX(380);
 		button.setLayoutY(412);
-//		button.setMinWidth(164);
 		button.setPrefWidth(256);
-//		button.setEventDispatcher(new EventDispatcher() {
-//			
-//			@Override
-//			public Event dispatchEvent(Event arg0, EventDispatchChain arg1) {
-//				// TODO Auto-generated method stub
-//				
-//				System.out.println(arg0.getEventType());
-//				return null;
-//			}
-//		});
-		
+
 		ButtonAcction buttonAcction = new ButtonAcction();
 		
 		button.setEventDispatcher(buttonAcction);
