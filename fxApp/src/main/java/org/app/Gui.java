@@ -45,7 +45,7 @@ public class Gui extends Application{
 		EventAction buttonAcction = new EventAction(data, button);
 		
 		button.setEventDispatcher(buttonAcction);
-
+		
 		TextField texf = new TextField();
 		texf.setLayoutX(380);
 		texf.setLayoutY(36);
@@ -82,7 +82,6 @@ public class Gui extends Application{
 		data.add(new Person("Ethan", "Williams", "ethan.williams@example.com"));
 		data.add(new Person("Emma", "Jones", "emma.jones@example.com"));
 		data.add(new Person("Michael", "Brown", "michael.brown@example.com"));
-				
 		data.add(new Person("Alan","testowy", "alan.testowy@mail.net"));
 		
 		table.setItems(data); //setItems(data);
