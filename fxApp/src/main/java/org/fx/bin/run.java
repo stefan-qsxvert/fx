@@ -13,8 +13,8 @@ public class run{
 		EdekTest edekTest = new EdekTest();
 		edekTest.run();
 		
-		String str = new String("cjdshcbsdh \'text=mail@mail.com\' skmsdkcnjds");
-		StringPrep stringPrep = new StringPrep();
-		System.out.println(stringPrep.prep(str, "text=", "\'"));
+//		String str = new String("cjdshcbsdh \'text=mail@mail.com\' skmsdkcnjds");
+//		StringPrep stringPrep = new StringPrep();
+//		System.out.println(stringPrep.prep(str, "text=", "\'"));
 	}
 }

@@ -1,17 +1,15 @@
 package org.epit.test.app;
 
 import java.io.File;
-
-import javax.swing.table.TableColumn;
-
 import org.fx.app.Person;
-
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class EdekTest extends Application {
@@ -27,14 +25,25 @@ public class EdekTest extends Application {
 		Stage stage = new Stage();
 		Group group = new Group();
 		Scene scene = new Scene(group);
+		
 		TableView<File> tableView = new TableView();
+		tableView.setPrefWidth(320);
+		
+
+		TableColumn<File, String> coll10 = new TableColumn("refId");
+		coll10.setPrefWidth(320);
+		
+		tableView.getColumns().add(coll10);
+		
+		coll10.setCellValueFactory(new PropertyValueFactory("name"));
+		
+		File refIds = new File("/home/tee/refIds/");
+		
 		ObservableList<File> files = FXCollections.observableArrayList();
-		files.add(new File("/home/tee/refIds/"));
+		
+		files.addAll(refIds.listFiles());
 		
 		tableView.setItems(files);
-		
-		TableColumn<File, String> coll0 = new TableColumn();
-		TableColumn<File, String> col0 = new TableColumn();
 		
 		group.getChildren().addAll(tableView);
 		
