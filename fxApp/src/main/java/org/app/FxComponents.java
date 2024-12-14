@@ -8,9 +8,9 @@ import javafx.scene.control.TableView;
 
 public class FxComponents {
 	
-	public FxComponents(int indexOfTableColumn, int indexOfButtons) {
-	
-	}
+//	public FxComponents(int indexOfTableColumn, int indexOfButtons) {
+//	
+//	}
 	
 	public TableView<File> getTableView(int x, int y) {
 		TableView<File> tableView = new TableView();

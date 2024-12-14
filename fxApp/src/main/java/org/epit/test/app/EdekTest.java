@@ -28,7 +28,7 @@ public class EdekTest extends Application {
 		Group group = new Group();
 		Scene scene = new Scene(group);
 		
-		FxComponents fxComponents = new FxComponents(3,3);
+		FxComponents fxComponents = new FxComponents();
 		
 		TableView<File> tableView0 = fxComponents.getTableView(10, 10);
 		TableView<File> tableView1 = fxComponents.getTableView(290, 10);
