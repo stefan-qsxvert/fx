@@ -8,13 +8,8 @@ import javafx.scene.control.TableView;
 
 public class FxComponents {
 	
-	EventAction eventAction;
-	
-	public FxComponents() {
-		eventAction = new EventAction();
-	}
-	
 	public TableView<File> getTableView(int x, int y) {
+		EventAction eventAction = new EventAction();
 		TableView<File> tableView = new TableView();
 		tableView.setLayoutX(x);
 		tableView.setLayoutY(y);
@@ -29,6 +24,7 @@ public class FxComponents {
 		return tableColumn;
 	}
 	public Button getButton(int x, int y, String text) {
+		EventAction eventAction = new EventAction();
 		Button button = new Button();
 		button.setText(text);
 		button.setLayoutX(x);
