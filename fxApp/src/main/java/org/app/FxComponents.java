@@ -24,7 +24,7 @@ public class FxComponents {
 		return tableColumn;
 	}
 	public Button getButton(int x, int y, String text) {
-		EventAction eventAction = new EventAction();
+		EventAction eventAction = new EventAction(text);
 		Button button = new Button();
 		button.setText(text);
 		button.setLayoutX(x);

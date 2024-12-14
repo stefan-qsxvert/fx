@@ -6,6 +6,14 @@ import javafx.event.EventDispatcher;
 
 public class EventAction implements EventDispatcher{
 	
+	String arcTyp;
+	
+	public EventAction(String arcTyp) {
+		this.arcTyp = arcTyp;
+	}
+	public EventAction() {
+	}
+	
 	@Override
 	public Event dispatchEvent(Event arg0, EventDispatchChain arg1) {
 		// TODO Auto-generated method stub
@@ -16,9 +24,10 @@ public class EventAction implements EventDispatcher{
 
 		if (typ == "MOUSE_PRESSED")
 		{ 
-			System.out.println("typ: " + typ);
-			System.out.println("source: " + source);
-			System.out.println("target: " + target);
+			System.out.println(arcTyp);
+//			System.out.println("typ: " + typ);
+//			System.out.println("source: " + source);
+//			System.out.println("target: " + target);
 		}
 		
 		return null;
