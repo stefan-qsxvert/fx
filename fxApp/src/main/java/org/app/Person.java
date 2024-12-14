@@ -1,4 +1,4 @@
-package org.fx.app;
+package org.app;
 
 public class Person {
 	 

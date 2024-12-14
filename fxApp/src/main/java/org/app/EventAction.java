@@ -1,15 +1,19 @@
 package org.app;
 
+import java.io.File;
+
 import javafx.event.Event;
 import javafx.event.EventDispatchChain;
 import javafx.event.EventDispatcher;
 
 public class EventAction implements EventDispatcher{
 	
-	String arcTyp;
+	String arcType;
+	Edeklaracje edeklaracje;
 	
-	public EventAction(String arcTyp) {
-		this.arcTyp = arcTyp;
+	public EventAction(String arcType) {
+		this.arcType = arcType;
+		edeklaracje = new Edeklaracje();
 	}
 	public EventAction() {
 	}
@@ -19,15 +23,33 @@ public class EventAction implements EventDispatcher{
 		// TODO Auto-generated method stub
 		
 		String typ = arg0.getEventType().getName(); // toString();
-		String source = arg0.getSource().toString();
-		String target = arg0.getTarget().toString();
+//		String source = arg0.getSource().toString();
+//		String target = arg0.getTarget().toString();
 
 		if (typ == "MOUSE_PRESSED")
 		{ 
-			System.out.println(arcTyp);
-//			System.out.println("typ: " + typ);
-//			System.out.println("source: " + source);
-//			System.out.println("target: " + target);
+			switch(arcType) {
+			case "prd":
+				System.out.println("case produkcja");
+				break;
+			case "pobierz UPO":
+				File file = new File("/home/tee/refIds/");
+				String[] fileList = file.list();
+				for (int i = 0; i < fileList.length; i++) {
+				edeklaracje.getUPO(fileList[i]);
+				}
+				System.out.println("case test");
+				break;
+			case "generuj wsdl":
+				System.out.println("generuj wsdl");
+				String wsdl = "https://test-bramka.edeklaracje.gov.pl/uslugi/dokumenty?wsdl";
+				WsdlToJavaGenerator wsdlToJavaGenerator = new WsdlToJavaGenerator();
+				wsdlToJavaGenerator.generateTestWsdlSource("test", wsdl);
+				break;
+			default:
+				System.out.println("brak zdefiniiowanego działania");
+				break;
+			}
 		}
 		
 		return null;

@@ -1,8 +1,6 @@
-package org.epit.test.app;
+package org.app;
 
 import java.io.File;
-
-import org.app.FxComponents;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,8 +52,10 @@ public class EdekTest extends Application {
 		
 		Button bt0 =fxComponents.getButton(580, 380, "test");
 		Button bt1 =fxComponents.getButton(750, 380, "prd");
+		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl");
+		Button bt3 =fxComponents.getButton(580, 340, "pobierz UPO");
 		
-		group.getChildren().addAll(tableView0, tableView1, bt0, bt1);
+		group.getChildren().addAll(tableView0, tableView1, bt0, bt1, bt2, bt3);
 		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(460);
