@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -35,8 +36,8 @@ public class EdekTest extends Application {
 		TableView<File> tableView1 = fxComponents.getTableView(290, 10);
 //		tableView.setPrefWidth(320);
 		
-		TableColumn<File, String> coll10 = fxComponents.getTableColumn(1, 265, "refId");
-		TableColumn<File, String> coll11 = fxComponents.getTableColumn(1, 265, "refId");
+		TableColumn<File, String> coll10 = fxComponents.getTableColumn(265, "refId");
+		TableColumn<File, String> coll11 = fxComponents.getTableColumn(265, "refId");
 //		coll10.setPrefWidth(270);
 		
 		tableView0.getColumns().addAll(coll10);
@@ -53,7 +54,10 @@ public class EdekTest extends Application {
 		tableView0.setItems(files);
 		tableView1.setItems(files);
 		
-		group.getChildren().addAll(tableView0, tableView1);
+		Button bt0 =fxComponents.getButton(580, 380, "test");
+		Button bt1 =fxComponents.getButton(750, 380, "prd");
+		
+		group.getChildren().addAll(tableView0, tableView1, bt0, bt1);
 		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(460);

@@ -40,7 +40,7 @@ public class EventAction implements EventDispatcher{
 		{ 
 			System.out.println("typ: " + typ);
 			System.out.println("source: " + source);
-			System.out.println("target: " + stringPrep.prep(typ, "text=", "\'"));
+			System.out.println("target: " + target);
 		}
 		
 //		if (arg0.getTarget() == table || arg0.getSource() == table) {
