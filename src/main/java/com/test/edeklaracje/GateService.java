@@ -1,4 +1,4 @@
-package src.com.test.edeklaracje;
+package com.test.edeklaracje;
 
 import java.net.MalformedURLException;
 import java.net.URL;

@@ -13,8 +13,8 @@ import javax.net.ssl.SSLContext;
 
 import com.test.edeklaracje.RequestUPO;
 import jakarta.xml.ws.Holder;
-import src.com.test.edeklaracje.GateService;
-import src.com.test.edeklaracje.GateServicePortType; 
+import com.test.edeklaracje.GateService;
+import com.test.edeklaracje.GateServicePortType; 
 
 public class Edeklaracje {
 	
