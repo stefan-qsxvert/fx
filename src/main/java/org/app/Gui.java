@@ -7,9 +7,11 @@ import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class Gui extends Application {
@@ -22,14 +24,14 @@ public class Gui extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		
-		Stage stage = new Stage();
+//		Stage stage = new Stage();
 		Group group = new Group();
 		Scene scene = new Scene(group);
 		
 		FxComponents fxComponents = new FxComponents();
 		
-		TableView<File> tableView0 = fxComponents.getTableView(10, 10);
-		TableView<File> tableView1 = fxComponents.getTableView(290, 10);
+		TableView<File> tableView0 = fxComponents.getTableView(10, 10, "tab1");
+		TableView<File> tableView1 = fxComponents.getTableView(290, 10,"tab2");
 //		tableView.setPrefWidth(320);
 		
 		TableColumn<File, String> coll10 = fxComponents.getTableColumn(265, "refId");
@@ -55,7 +57,10 @@ public class Gui extends Application {
 		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl");
 		Button bt3 =fxComponents.getButton(580, 340, "pobierz UPO");
 		
-		group.getChildren().addAll(tableView0, bt0, bt1, bt2, bt3, fxComponents.getImageView(580,14));
+		ImageView imageView = fxComponents.getImageView(580,14, 320, 320);
+		ProgressBar progressBar = fxComponents.getProgressBar(360, 14);
+		
+		group.getChildren().addAll(tableView0, bt0, bt1, bt2, bt3, imageView);
 		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(460);
