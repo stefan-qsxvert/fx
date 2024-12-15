@@ -55,7 +55,7 @@ public class Gui extends Application {
 		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl");
 		Button bt3 =fxComponents.getButton(580, 340, "pobierz UPO");
 		
-		group.getChildren().addAll(tableView0, bt0, bt1, bt2, bt3);
+		group.getChildren().addAll(tableView0, bt0, bt1, bt2, bt3, fxComponents.getImageView(580,14));
 		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(460);

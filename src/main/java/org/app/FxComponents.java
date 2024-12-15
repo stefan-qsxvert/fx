@@ -1,10 +1,14 @@
 package org.app;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class FxComponents {
 	
@@ -32,5 +36,15 @@ public class FxComponents {
 		button.setPrefWidth(156);
 		button.setEventDispatcher(eventAction);
 		return button;
-	}	
+	}
+	public ImageView getImageView(int x, int y) throws FileNotFoundException {
+		FileInputStream fileInputStream = new FileInputStream(new File("/home/tee/Obrazy/java.png"));
+		Image image = new Image(fileInputStream);
+		ImageView imageView = new ImageView(image);
+		imageView.setLayoutX(x);
+		imageView.setLayoutY(y);
+		imageView.setFitHeight(320);
+		imageView.setFitWidth(320);
+		return imageView;
+	}
 }
