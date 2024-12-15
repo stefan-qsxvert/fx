@@ -9,11 +9,11 @@ import javafx.event.EventDispatcher;
 public class EventAction implements EventDispatcher{
 	
 	String arcType;
-	Gui gui;
+	Edeklaracje edeklaracje;
 	
 	public EventAction(String arcType) {
 		this.arcType = arcType;
-		gui = new Gui();
+		edeklaracje = new Edeklaracje();
 	}
 	public EventAction() {
 	}
@@ -36,7 +36,7 @@ public class EventAction implements EventDispatcher{
 				File file = new File("/home/tee/refIds/");
 				String[] fileList = file.list();
 				for (int i = 0; i < fileList.length; i++) {
-				gui.getUPO(fileList[i]);
+				edeklaracje.getUPO(fileList[i]);
 				}
 				System.out.println("case test");
 				break;

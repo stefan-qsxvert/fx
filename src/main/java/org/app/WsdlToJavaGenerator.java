@@ -11,7 +11,7 @@ public class WsdlToJavaGenerator {
         
         // Opcje generowania kodu
         String[] wsdltojavaArgs = new String[] {
-            "-d", "src/main/java", // Katalog docelowy dla wygenerowanego kodu
+            "-d", "src/", // Katalog docelowy dla wygenerowanego kodu
             "-p", "com." + mode + ".edeklaracje", // Pakiet dla wygenerowanego kodu
             wsdl // Plik WSDL
         };

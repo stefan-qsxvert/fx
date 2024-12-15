@@ -10,12 +10,13 @@ import java.io.IOException;
 import java.security.KeyStore;
 import java.time.ZonedDateTime;
 import javax.net.ssl.SSLContext;
-import com.test.edeklaracje.GateService;
-import com.test.edeklaracje.GateServicePortType;
-import com.test.edeklaracje.RequestUPO;
-import jakarta.xml.ws.Holder; 
 
-public class Gui {
+import com.test.edeklaracje.RequestUPO;
+import jakarta.xml.ws.Holder;
+import src.com.test.edeklaracje.GateService;
+import src.com.test.edeklaracje.GateServicePortType; 
+
+public class Edeklaracje {
 	
 	Holder<String> refId;
 	Holder<Integer> status;
@@ -24,20 +25,20 @@ public class Gui {
 //	byte[] document;
 	String id;
 	
-	public Gui(byte[] document, Holder<String> refId, Holder<Integer> status, Holder<String> statusOpis) {
+	public Edeklaracje(byte[] document, Holder<String> refId, Holder<Integer> status, Holder<String> statusOpis) {
 //		this.document = document;
 		this.refId = refId;
 		this.status = status;
 		this.statusOpis = statusOpis;
 	}
 	
-	public Gui(Holder<String> refId, Holder<Integer> status, Holder<String> statusOpis) {
+	public Edeklaracje(Holder<String> refId, Holder<Integer> status, Holder<String> statusOpis) {
 		this.refId = refId;
 		this.status = status;
 		this.statusOpis = statusOpis;
 	}
 	
-	public Gui() {
+	public Edeklaracje() {
 	}
 	
 		public void sendDoc(byte[] document) {

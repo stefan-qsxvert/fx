@@ -12,7 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class EdekTest extends Application {
+public class Gui extends Application {
 	
 	public void run() {
 		launch();
@@ -55,7 +55,7 @@ public class EdekTest extends Application {
 		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl");
 		Button bt3 =fxComponents.getButton(580, 340, "pobierz UPO");
 		
-		group.getChildren().addAll(tableView0, tableView1, bt0, bt1, bt2, bt3);
+		group.getChildren().addAll(tableView0, bt0, bt1, bt2, bt3);
 		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(460);
