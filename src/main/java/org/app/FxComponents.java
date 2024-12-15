@@ -2,7 +2,10 @@ package org.app;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Path;
+
+import org.apache.cxf.common.util.ClasspathScanner;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -43,14 +46,15 @@ public class FxComponents {
 		button.setOnMousePressed(eventAction);
 		return button;
 	}
-	public ImageView getImageView(int x, int y, int w, int h) throws FileNotFoundException {
-		FileInputStream fileInputStream = new FileInputStream(new File("/home/tee/Obrazy/java.png"));
+	public ImageView getImageView(int x, int y, int w, int h) throws IOException {
+		FileInputStream fileInputStream = new FileInputStream(new File("/home/tee/Obrazy/cosmic.jpg"));
 		Image image = new Image(fileInputStream);
 		ImageView imageView = new ImageView(image);
 		imageView.setLayoutX(x);
 		imageView.setLayoutY(y);
 		imageView.setFitHeight(h);
 		imageView.setFitWidth(w);
+		
 		return imageView;
 	}
 	public ProgressBar getProgressBar(int x, int y) {
@@ -59,8 +63,7 @@ public class FxComponents {
 		progressBar.setLayoutY(y);
 		progressBar.setPrefWidth(324);
 		progressBar.setPrefHeight(32);
-//		progressBar.
-		
+
 		return progressBar;
 		
 	}
