@@ -20,6 +20,7 @@ public class FxComponents {
 		tableView.setLayoutY(y);
 		tableView.prefWidth(270);
 		tableView.setEventDispatcher(eventAction);
+		
 		return tableView;
 	}
 	public TableColumn<File, String> getTableColumn(int wdth, String text) {
@@ -35,7 +36,8 @@ public class FxComponents {
 		button.setLayoutX(x);
 		button.setLayoutY(y);
 		button.setPrefWidth(156);
-		button.setEventDispatcher(eventAction);
+		button.setPrefHeight(32);
+//		button.setEventDispatcher(eventAction);
 		return button;
 	}
 	public ImageView getImageView(int x, int y, int w, int h) throws FileNotFoundException {
@@ -52,6 +54,9 @@ public class FxComponents {
 		ProgressBar progressBar = new ProgressBar();
 		progressBar.setLayoutX(x);
 		progressBar.setLayoutY(y);
+		progressBar.setPrefWidth(324);
+		progressBar.setPrefHeight(32);
+//		progressBar.
 		
 		return progressBar;
 		

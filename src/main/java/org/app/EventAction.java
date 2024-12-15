@@ -25,6 +25,9 @@ public class EventAction implements EventDispatcher{
 		String typ = arg0.getEventType().getName(); // toString();
 //		String source = arg0.getSource().toString();
 //		String target = arg0.getTarget().toString();
+		if (arg0.isConsumed()) {
+			return null;
+		}
 
 		if (typ == "MOUSE_PRESSED")
 		{ 
@@ -52,6 +55,6 @@ public class EventAction implements EventDispatcher{
 			}
 		}
 		
-		return null;
+		return arg0;
 	}
 }

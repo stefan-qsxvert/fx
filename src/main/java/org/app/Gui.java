@@ -48,6 +48,11 @@ public class Gui extends Application {
 		
 		ObservableList<File> files = FXCollections.observableArrayList();
 		files.addAll(refIds.listFiles());
+		files.addAll(refIds.listFiles());
+		files.addAll(refIds.listFiles());
+		files.addAll(refIds.listFiles());
+		files.addAll(refIds.listFiles());
+		files.addAll(refIds.listFiles());
 		
 		tableView0.setItems(files);
 		tableView1.setItems(files);
@@ -57,10 +62,10 @@ public class Gui extends Application {
 		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl");
 		Button bt3 =fxComponents.getButton(580, 340, "pobierz UPO");
 		
-		ImageView imageView = fxComponents.getImageView(580,14, 320, 320);
-		ProgressBar progressBar = fxComponents.getProgressBar(360, 14);
+		ImageView imageView = fxComponents.getImageView(580,14, 320, 280);
+		ProgressBar progressBar = fxComponents.getProgressBar(580, 300);
 		
-		group.getChildren().addAll(tableView0, bt0, bt1, bt2, bt3, imageView);
+		group.getChildren().addAll(tableView0, tableView1, bt0, bt1, bt2, bt3, imageView, progressBar);
 		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(460);
