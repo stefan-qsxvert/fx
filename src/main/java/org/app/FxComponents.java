@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
@@ -19,8 +22,8 @@ public class FxComponents {
 		tableView.setLayoutX(x);
 		tableView.setLayoutY(y);
 		tableView.prefWidth(270);
-		tableView.setEventDispatcher(eventAction);
-		
+//		tableView.setEventDispatcher(eventAction);
+		tableView.setOnMousePressed(new EventAction(text));
 		return tableView;
 	}
 	public TableColumn<File, String> getTableColumn(int wdth, String text) {
@@ -37,7 +40,7 @@ public class FxComponents {
 		button.setLayoutY(y);
 		button.setPrefWidth(156);
 		button.setPrefHeight(32);
-//		button.setEventDispatcher(eventAction);
+		button.setOnMousePressed(eventAction);
 		return button;
 	}
 	public ImageView getImageView(int x, int y, int w, int h) throws FileNotFoundException {

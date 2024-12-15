@@ -21,6 +21,7 @@ public class GuiPerson extends Application{
 		launch();
 	}
 
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
@@ -42,7 +43,7 @@ public class GuiPerson extends Application{
 		ObservableList<Person> data = FXCollections.observableArrayList();
 		EventAction buttonAcction = new EventAction();
 		
-		button.setEventDispatcher(buttonAcction);
+//		button.setEventDispatcher(buttonAcction);
 		
 		TextField texf = new TextField();
 		texf.setLayoutX(380);
@@ -90,7 +91,7 @@ public class GuiPerson extends Application{
 		table.setBorder(Border.stroke(null));
 		
 		EventAction tableAction = new EventAction();
-		table.setEventDispatcher(tableAction);
+//		table.setEventDispatcher(tableAction);
 		
 		group.getChildren().addAll(table, label, button);
 		

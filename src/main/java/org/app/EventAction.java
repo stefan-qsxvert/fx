@@ -5,8 +5,9 @@ import java.io.File;
 import javafx.event.Event;
 import javafx.event.EventDispatchChain;
 import javafx.event.EventDispatcher;
+import javafx.event.EventHandler;
 
-public class EventAction implements EventDispatcher{
+public class EventAction implements EventHandler<Event>{
 	
 	String arcType;
 	Edeklaracje edeklaracje;
@@ -18,18 +19,16 @@ public class EventAction implements EventDispatcher{
 	public EventAction() {
 	}
 	
+	
 	@Override
-	public Event dispatchEvent(Event arg0, EventDispatchChain arg1) {
+	public void handle(Event arg0) {
 		// TODO Auto-generated method stub
 		
-		String typ = arg0.getEventType().getName(); // toString();
+//		String typ = arg0.getEventType().getName(); // toString();
 //		String source = arg0.getSource().toString();
 //		String target = arg0.getTarget().toString();
-		if (arg0.isConsumed()) {
-			return null;
-		}
-
-		if (typ == "MOUSE_PRESSED")
+		
+//		if (typ == "MOUSE_PRESSED")
 		{ 
 			switch(arcType) {
 			case "prd":
@@ -55,6 +54,7 @@ public class EventAction implements EventDispatcher{
 			}
 		}
 		
-		return arg0;
+//		return arg0;
 	}
+	
 }
