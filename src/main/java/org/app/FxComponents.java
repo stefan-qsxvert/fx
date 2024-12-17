@@ -24,8 +24,10 @@ public class FxComponents {
 	
 	private Gui gui;
 	private FileChooser fileChooser;
+	private AppObjects appObjects;
 	
-	public FxComponents() {
+	public FxComponents(AppObjects appObjects) {
+		this.appObjects = appObjects;
 		fileChooser = new FileChooser();
 	}	
 	
@@ -44,10 +46,9 @@ public class FxComponents {
 		tableColumn.setPrefWidth(wdth);
 		return tableColumn;
 	}
-	public Button getButton(int x, int y, String text, Stage stage) {
-		EventAction eventAction = new EventAction(text, stage);
-		ExtFxButton button = new ExtFxButton();
-		button.setStage(stage);
+	public Button getButton(int x, int y, String text, AppObjects appObjects) {
+		EventAction eventAction = new EventAction(text, appObjects);
+		Button button = new Button();
 		button.setText(text);
 		button.setLayoutX(x);
 		button.setLayoutY(y);

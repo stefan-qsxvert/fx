@@ -5,6 +5,7 @@ import java.util.List;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.control.ProgressBar;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -15,10 +16,12 @@ public class EventAction implements EventHandler<Event>{
 	FxComponents fxComponents;
 	Gui gui;
 	Stage stage;
+	AppObjects appObjects;
 	
-	public EventAction(String arcType, Stage stage) {
+	public EventAction(String arcType, AppObjects appObjects) {
 		this.arcType = arcType;
-		this.stage = stage;
+		this.appObjects = appObjects;
+//		this.stage = stage;
 		setUp();
 	}
 	public EventAction(String arcType) {
@@ -31,7 +34,7 @@ public class EventAction implements EventHandler<Event>{
 	
 	private void setUp() {
 		edeklaracje = new Edeklaracje();
-		fxComponents = new FxComponents();
+		fxComponents = new FxComponents(appObjects);
 	}
 		
 	
@@ -64,6 +67,7 @@ public class EventAction implements EventHandler<Event>{
 				wsdlToJavaGenerator.generateTestWsdlSource("test", wsdl);
 				break;
 			case "wybierz pliki":
+				System.out.println(appObjects);
 				List<File>  pliki = fxComponents.fileChooser(stage);
 				
 				File[] files = new File[pliki.size()];
@@ -75,6 +79,10 @@ public class EventAction implements EventHandler<Event>{
 					i++;
 				}
 			
+				break;
+			case "test":
+				ProgressBar progressBar = appObjects.getProgressBar();
+				System.out.println(progressBar);
 				break;
 			default:
 				System.out.println("brak zdefiniiowanego działania");

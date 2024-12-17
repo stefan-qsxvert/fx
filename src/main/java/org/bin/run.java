@@ -11,16 +11,7 @@ public class run{
 	
 	public static void main(String[] args) throws Exception {
 		AppObjects appObjects = new AppObjects();
-		Gui gui = appObjects.getGui();
-//		Gui gui = new Gui(appObjects);
-		gui.setAppObjects(appObjects);
-//		System.out.println(gui.getProgressBar());
+		Gui gui = new Gui();
 		gui.run(appObjects);
-
-//		appObjects.setGui(gui);
-//		gui.setAppObjects(appObjects);
-//		gui.setGui(gui);
-//		System.out.println("run: " + appObjects);
-//		gui.run();
 	}
 }
