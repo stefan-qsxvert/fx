@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 public class AppObjects {
 	
@@ -25,6 +26,7 @@ public class AppObjects {
 	private ProgressBar progressBar;
 	private ObservableList<File> files0;
 	private TableView<File> tableView;
+	private Stage stage;
 	
 	public AppObjects() {
 		gui = new Gui();
@@ -148,6 +150,14 @@ public class AppObjects {
 
 	public void setTableView(TableView<File> tableView) {
 		this.tableView = tableView;
+	}
+
+	public Stage getStage() {
+		return stage;
+	}
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
 	}
 	
 }

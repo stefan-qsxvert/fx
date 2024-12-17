@@ -64,18 +64,20 @@ public class Gui extends Application {
 		tableView0.setItems(files);
 		tableView1.setItems(files0);
 		
-		Button bt0 =fxComponents.getButton(580, 380, "test", appObjects);
-		Button bt1 =fxComponents.getButton(750, 380, "prd", appObjects);
-		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl", appObjects);
-		Button bt3 =fxComponents.getButton(580, 340, "pobierz UPO", appObjects);
-		Button bt4 =fxComponents.getButton(580, 240, "wybierz pliki", appObjects);
-		
+		Button bt0 =fxComponents.getButton(580, 380, "test");
+		Button bt1 =fxComponents.getButton(750, 380, "prd");
+		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl");
+		Button bt3 =fxComponents.getButton(580, 340, "pobierz UPO");
+		Button bt4 =fxComponents.getButton(580, 240, "wybierz pliki");
 		
 //		ImageView imageView = fxComponents.getImageView(580,14, 320, 280);
 		ProgressBar progressBar = fxComponents.getProgressBar(580, 300);
+		progressBar.setProgress(0);
+		
 		appObjects.setProgressBar(progressBar);
 		appObjects.setFiles0(files0);
 		appObjects.setTableView(tableView1);
+		appObjects.setStage(primaryStage);
 		
 		group.getChildren().addAll(tableView0, tableView1, bt0, bt1, bt2, bt3, bt4, progressBar);
 		

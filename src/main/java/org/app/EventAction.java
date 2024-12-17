@@ -15,10 +15,10 @@ public class EventAction implements EventHandler<Event>{
 	String arcType;
 	Edeklaracje edeklaracje;
 	FxComponents fxComponents;
-	Gui gui;
+//	Gui gui;
 	Stage stage;
 	AppObjects appObjects;
-	
+//	
 	public EventAction(String arcType, AppObjects appObjects) {
 		this.arcType = arcType;
 		this.appObjects = appObjects;
@@ -37,7 +37,6 @@ public class EventAction implements EventHandler<Event>{
 		edeklaracje = new Edeklaracje();
 		fxComponents = new FxComponents(appObjects);
 	}
-		
 	
 	@Override
 	public void handle(Event arg0) {
@@ -48,6 +47,9 @@ public class EventAction implements EventHandler<Event>{
 //		String target = arg0.getTarget().toString();
 		
 //		if (typ == "MOUSE_PRESSED")
+		
+		ProgressBar progressBar = appObjects.getProgressBar();
+//		progressBar.setProgress(0.1);
 		{ 
 			switch(arcType) {
 			case "prd":
@@ -56,10 +58,13 @@ public class EventAction implements EventHandler<Event>{
 			case "pobierz UPO":
 				File file = new File("/home/tee/refIds/");
 				String[] fileList = file.list();
+				Double e = (double) ((1/Double.valueOf( fileList.length))/1);
+				System.out.println(e);
 				for (int i = 0; i < fileList.length; i++) {
-				edeklaracje.getUPO(fileList[i]);
+					edeklaracje.getUPO(fileList[i]);
+					progressBar.setProgress(progressBar.getProgress() + e);
 				}
-				System.out.println("case test");
+				
 				break;
 			case "generuj wsdl":
 				String wsdl = "https://test-bramka.edeklaracje.gov.pl/uslugi/dokumenty?wsdl";
@@ -67,14 +72,14 @@ public class EventAction implements EventHandler<Event>{
 				wsdlToJavaGenerator.generateTestWsdlSource("test", wsdl);
 				break;
 			case "wybierz pliki":
-				List<File>  pliki = fxComponents.fileChooser(stage);
+				List<File>  pliki = fxComponents.fileChooser(appObjects.getStage());
 				
 				File[] files = new File[pliki.size()];
 				
 				int i = 0;
 				for (File f : pliki) {
 					files[i] = new File(f.getAbsolutePath());
-					System.out.println(files[i].getName());
+//					System.out.println(files[i].getName());
 					i++;
 				}
 				
@@ -84,17 +89,26 @@ public class EventAction implements EventHandler<Event>{
 				TableView<File> tableView = appObjects.getTableView();
 				tableView.setItems(files0);
 				
+				progressBar.setProgress(0.25);
+				
 				break;
 			case "test":
-				ProgressBar progressBar = appObjects.getProgressBar();
+				System.out.println(progressBar.getProgress());
+				progressBar.setProgress(progressBar.getProgress() +0.01);
+				break;
+			case "tab1":
+				String ev = arg0.toString();
+//				ev = ev.substring(1, ev.indexOf("\''"));
+				System.out.println(ev.indexOf("\'"));
+				System.out.println(ev);
+//				progressBar.setProgress(progressBar.getProgress() +0.01);
 				break;
 			default:
 				System.out.println("brak zdefiniiowanego działania");
+				progressBar.setProgress(0);
 				break;
 			}
 		}
-		
-//		return arg0;
 	}
 	
 }

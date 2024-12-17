@@ -32,21 +32,23 @@ public class FxComponents {
 	}	
 	
 	public TableView<File> getTableView(int x, int y, String text) {
-		EventAction eventAction = new EventAction(text);
+		EventAction eventAction = new EventAction(text, appObjects);
 		TableView<File> tableView = new TableView();
 		tableView.setLayoutX(x);
 		tableView.setLayoutY(y);
 		tableView.prefWidth(270);
-		tableView.setOnMousePressed(new EventAction(text));
+		tableView.setOnMousePressed(eventAction);
 		return tableView;
 	}
 	public TableColumn<File, String> getTableColumn(int wdth, String text) {
+		EventAction eventAction = new EventAction(text, appObjects);
 		TableColumn<File, String> tableColumn = new TableColumn();
 		tableColumn.setText(text);
 		tableColumn.setPrefWidth(wdth);
+		tableColumn.setEditable(true);
 		return tableColumn;
 	}
-	public Button getButton(int x, int y, String text, AppObjects appObjects) {
+	public Button getButton(int x, int y, String text) {
 		EventAction eventAction = new EventAction(text, appObjects);
 		Button button = new Button();
 		button.setText(text);
