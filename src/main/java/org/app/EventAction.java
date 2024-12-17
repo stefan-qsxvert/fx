@@ -1,24 +1,39 @@
 package org.app;
 
 import java.io.File;
+import java.util.List;
 
 import javafx.event.Event;
-import javafx.event.EventDispatchChain;
-import javafx.event.EventDispatcher;
 import javafx.event.EventHandler;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class EventAction implements EventHandler<Event>{
 	
 	String arcType;
 	Edeklaracje edeklaracje;
+	FxComponents fxComponents;
+	Gui gui;
+	Stage stage;
 	
+	public EventAction(String arcType, Stage stage) {
+		this.arcType = arcType;
+		this.stage = stage;
+		setUp();
+	}
 	public EventAction(String arcType) {
 		this.arcType = arcType;
-		edeklaracje = new Edeklaracje();
+		setUp();
 	}
 	public EventAction() {
+		setUp();
 	}
 	
+	private void setUp() {
+		edeklaracje = new Edeklaracje();
+		fxComponents = new FxComponents();
+	}
+		
 	
 	@Override
 	public void handle(Event arg0) {
@@ -47,6 +62,20 @@ public class EventAction implements EventHandler<Event>{
 				String wsdl = "https://test-bramka.edeklaracje.gov.pl/uslugi/dokumenty?wsdl";
 				WsdlToJavaGenerator wsdlToJavaGenerator = new WsdlToJavaGenerator();
 				wsdlToJavaGenerator.generateTestWsdlSource("test", wsdl);
+				break;
+			case "wybierz pliki":
+				List<File>  pliki = fxComponents.fileChooser(stage);
+//				File files = new File(pliki.getFirst().getAbsolutePath());
+				
+				File[] files = new File[pliki.size()];
+				
+				int i = 0;
+				for (File f : pliki) {
+					files[i] = new File(f.getAbsolutePath());
+					System.out.println(files[i].getName());
+					i++;
+				}
+			
 				break;
 			default:
 				System.out.println("brak zdefiniiowanego działania");

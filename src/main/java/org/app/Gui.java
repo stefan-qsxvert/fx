@@ -15,20 +15,37 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class Gui extends Application {
+	Gui gui;
+	AppObjects appObjects;
+	FxComponents fxComponents;
+	Stage stage;
+	ProgressBar progressBar;
 	
-	public void run() {
+	public Gui(AppObjects appObjects) {
+		this.appObjects = appObjects;
+		System.out.println(appObjects);
+	}
+	
+	public Gui() {
+		
+	}
+	
+	public void run(AppObjects appObjects) throws Exception {
+		this.appObjects = appObjects;
 		launch();
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
+//		gui = appObjects.getGui();
+		fxComponents = new FxComponents();
+//		appObjects = new AppObjects();
+//		System.out.println(appObjects);
 		
 //		Stage stage = new Stage();
 		Group group = new Group();
 		Scene scene = new Scene(group);
-		
-		FxComponents fxComponents = new FxComponents();
 		
 		TableView<File> tableView0 = fxComponents.getTableView(10, 10, "tab1");
 		TableView<File> tableView1 = fxComponents.getTableView(290, 10,"tab2");
@@ -57,19 +74,53 @@ public class Gui extends Application {
 		tableView0.setItems(files);
 		tableView1.setItems(files);
 		
-		Button bt0 =fxComponents.getButton(580, 380, "test");
-		Button bt1 =fxComponents.getButton(750, 380, "prd");
-		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl");
-		Button bt3 =fxComponents.getButton(580, 340, "pobierz UPO");
+		Button bt0 =fxComponents.getButton(580, 380, "test", primaryStage);
+		Button bt1 =fxComponents.getButton(750, 380, "prd", primaryStage);
+		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl", primaryStage);
+		Button bt3 =fxComponents.getButton(580, 340, "pobierz UPO", primaryStage);
+		Button bt4 =fxComponents.getButton(580, 240, "wybierz pliki", primaryStage);
 		
-		ImageView imageView = fxComponents.getImageView(580,14, 320, 280);
-		ProgressBar progressBar = fxComponents.getProgressBar(580, 300);
 		
-		group.getChildren().addAll(tableView0, tableView1, bt0, bt1, bt2, bt3, imageView, progressBar);
+//		ImageView imageView = fxComponents.getImageView(580,14, 320, 280);
+		progressBar = fxComponents.getProgressBar(580, 300);
+//		System.out.println(progressBar);
+		
+//		primaryStage.
+		
+		group.getChildren().addAll(tableView0, tableView1, bt0, bt1, bt2, bt3, bt4, progressBar);
 		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(460);
 		primaryStage.setWidth(920);
 		primaryStage.show();		
 	}
+	
+	public Gui getGui() {
+		return gui;
+	}
+	public void setGui(Gui gui) {
+		this.gui = gui;
+	}
+	public AppObjects getAppObjects() {
+		return appObjects;
+	}
+	public void setAppObjects(AppObjects appObjects) {
+		this.appObjects = appObjects;
+	}
+	public FxComponents getFxComponents() {
+		return fxComponents;
+	}
+	public void setFxComponents(FxComponents fxComponents) {
+		this.fxComponents = fxComponents;
+	}
+
+	public ProgressBar getProgressBar() {
+		return progressBar;
+	}
+
+	public void setProgressBar(ProgressBar progressBar) {
+		this.progressBar = progressBar;
+	}
+
+	
 }

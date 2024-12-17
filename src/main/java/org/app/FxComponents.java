@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
 
 import org.apache.cxf.common.util.ClasspathScanner;
 
@@ -16,8 +17,17 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class FxComponents {
+	
+	private Gui gui;
+	private FileChooser fileChooser;
+	
+	public FxComponents() {
+		fileChooser = new FileChooser();
+	}	
 	
 	public TableView<File> getTableView(int x, int y, String text) {
 		EventAction eventAction = new EventAction(text);
@@ -35,9 +45,10 @@ public class FxComponents {
 		tableColumn.setPrefWidth(wdth);
 		return tableColumn;
 	}
-	public Button getButton(int x, int y, String text) {
-		EventAction eventAction = new EventAction(text);
-		Button button = new Button();
+	public Button getButton(int x, int y, String text, Stage stage) {
+		EventAction eventAction = new EventAction(text, stage);
+		ExtFxButton button = new ExtFxButton();
+		button.setStage(stage);
 		button.setText(text);
 		button.setLayoutX(x);
 		button.setLayoutY(y);
@@ -47,9 +58,22 @@ public class FxComponents {
 		return button;
 	}
 	public ImageView getImageView(int x, int y, int w, int h) throws IOException {
-		FileInputStream fileInputStream = new FileInputStream(new File("/home/tee/Obrazy/cosmic.jpg"));
-		Image image = new Image(fileInputStream);
-		ImageView imageView = new ImageView(image);
+//		System.out.println(getClass().getClassLoader().getResource("org"));
+		ImageView imageView = null;
+		File file = null;
+		FileInputStream fileInputStream = null;
+		Image image = null;
+		try {
+			fileInputStream = new FileInputStream( new File("/home/tee/Obrazy/cosmic.jpg"));
+			byte[] e = fileInputStream.readAllBytes();
+			for (int i = 0; i < e.length; i++) {
+			System.out.println(e[i]);}
+		}catch (Exception e) {
+//			fileInputStream = File("0101010");
+		}
+		
+		image = new Image(fileInputStream);
+		imageView = new ImageView(image);
 		imageView.setLayoutX(x);
 		imageView.setLayoutY(y);
 		imageView.setFitHeight(h);
@@ -65,6 +89,16 @@ public class FxComponents {
 		progressBar.setPrefHeight(32);
 
 		return progressBar;
-		
+	}
+	public List<File> fileChooser(Stage stage) {
+		List<File> listOfFiles = fileChooser.showOpenMultipleDialog(stage);
+		return listOfFiles;
+	}
+	
+	public Gui getGui() {
+		return gui;
+	}
+	public void setGui(Gui gui) {
+		this.gui = gui;
 	}
 }
