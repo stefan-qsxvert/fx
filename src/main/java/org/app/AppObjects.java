@@ -1,12 +1,17 @@
 package org.app;
 
 import java.awt.GradientPaint;
+import java.io.File;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TableView;
 
 public class AppObjects {
+	
 	private AppObjects appObjects;
 	private Gui gui;
 	private FxComponents fxComponents;
@@ -18,6 +23,8 @@ public class AppObjects {
 	private Group group;
 	private Scene scene;
 	private ProgressBar progressBar;
+	private ObservableList<File> files0;
+	private TableView<File> tableView;
 	
 	public AppObjects() {
 		gui = new Gui();
@@ -26,6 +33,7 @@ public class AppObjects {
 		wsdlToJavaGenerator = new WsdlToJavaGenerator();
 		edeklaracje = new Edeklaracje();
 		guiPerson = new GuiPerson();
+//		files0 = FXCollections.observableArrayList();
 //		group = new Group();
 //		scene = new Scene(group);
 	}
@@ -124,6 +132,22 @@ public class AppObjects {
 
 	public void setProgressBar(ProgressBar progressBar) {
 		this.progressBar = progressBar;
+	}
+
+	public ObservableList<File> getFiles0() {
+		return files0;
+	}
+
+	public void setFiles0(ObservableList<File> files0) {
+		this.files0 = files0;
+	}
+
+	public TableView<File> getTableView() {
+		return tableView;
+	}
+
+	public void setTableView(TableView<File> tableView) {
+		this.tableView = tableView;
 	}
 	
 }

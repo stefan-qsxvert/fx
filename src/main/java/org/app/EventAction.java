@@ -3,10 +3,11 @@ package org.app;
 import java.io.File;
 import java.util.List;
 
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.ProgressBar;
-import javafx.stage.FileChooser;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 public class EventAction implements EventHandler<Event>{
@@ -61,13 +62,11 @@ public class EventAction implements EventHandler<Event>{
 				System.out.println("case test");
 				break;
 			case "generuj wsdl":
-				System.out.println("generuj wsdl");
 				String wsdl = "https://test-bramka.edeklaracje.gov.pl/uslugi/dokumenty?wsdl";
 				WsdlToJavaGenerator wsdlToJavaGenerator = new WsdlToJavaGenerator();
 				wsdlToJavaGenerator.generateTestWsdlSource("test", wsdl);
 				break;
 			case "wybierz pliki":
-				System.out.println(appObjects);
 				List<File>  pliki = fxComponents.fileChooser(stage);
 				
 				File[] files = new File[pliki.size()];
@@ -78,11 +77,16 @@ public class EventAction implements EventHandler<Event>{
 					System.out.println(files[i].getName());
 					i++;
 				}
-			
+				
+				ObservableList<File> files0 = appObjects.getFiles0();
+				files0.clear();
+				files0.addAll(files);
+				TableView<File> tableView = appObjects.getTableView();
+				tableView.setItems(files0);
+				
 				break;
 			case "test":
 				ProgressBar progressBar = appObjects.getProgressBar();
-				System.out.println(progressBar);
 				break;
 			default:
 				System.out.println("brak zdefiniiowanego działania");

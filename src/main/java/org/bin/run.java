@@ -10,8 +10,7 @@ import javafx.stage.Stage;
 public class run{
 	
 	public static void main(String[] args) throws Exception {
-		AppObjects appObjects = new AppObjects();
 		Gui gui = new Gui();
-		gui.run(appObjects);
+		gui.run();
 	}
 }
