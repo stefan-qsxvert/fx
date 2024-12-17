@@ -79,9 +79,6 @@ public class Gui extends Application {
 		Button bt4 =fxComponents.getButton(580, 240, "wybierz pliki", appObjects);
 		
 		
-		
-		
-		
 //		ImageView imageView = fxComponents.getImageView(580,14, 320, 280);
 		progressBar = fxComponents.getProgressBar(580, 300);
 //		System.out.println(progressBar);
