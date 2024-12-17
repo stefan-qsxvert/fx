@@ -65,7 +65,6 @@ public class EventAction implements EventHandler<Event>{
 				break;
 			case "wybierz pliki":
 				List<File>  pliki = fxComponents.fileChooser(stage);
-//				File files = new File(pliki.getFirst().getAbsolutePath());
 				
 				File[] files = new File[pliki.size()];
 				

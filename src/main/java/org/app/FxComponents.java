@@ -35,7 +35,6 @@ public class FxComponents {
 		tableView.setLayoutX(x);
 		tableView.setLayoutY(y);
 		tableView.prefWidth(270);
-//		tableView.setEventDispatcher(eventAction);
 		tableView.setOnMousePressed(new EventAction(text));
 		return tableView;
 	}
@@ -58,7 +57,6 @@ public class FxComponents {
 		return button;
 	}
 	public ImageView getImageView(int x, int y, int w, int h) throws IOException {
-//		System.out.println(getClass().getClassLoader().getResource("org"));
 		ImageView imageView = null;
 		File file = null;
 		FileInputStream fileInputStream = null;
@@ -69,7 +67,6 @@ public class FxComponents {
 			for (int i = 0; i < e.length; i++) {
 			System.out.println(e[i]);}
 		}catch (Exception e) {
-//			fileInputStream = File("0101010");
 		}
 		
 		image = new Image(fileInputStream);
