@@ -65,17 +65,17 @@ public class Gui extends Application {
 		tableView0.setItems(files);
 		tableView1.setItems(files0);
 		
-		Button bt0 =fxComponents.getButton(580, 380, "test");
+		Button bt0 =fxComponents.getButton(580, 380, "Wyślij!");
 		Button bt1 =fxComponents.getButton(750, 380, "prd");
 		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl");
-		Button bt3 =fxComponents.getButton(580, 340, "pobierz UPO");
-		Button bt4 =fxComponents.getButton(580, 240, "wybierz pliki");
+		Button bt3 =fxComponents.getButton(580, 340, "Pobierz UPO");
+		Button bt4 =fxComponents.getButton(580, 240, "Wybierz pliki");
 		
 //		ImageView imageView = fxComponents.getImageView(580,14, 320, 280);
 		ProgressBar progressBar = fxComponents.getProgressBar(580, 300);
 		progressBar.setProgress(0);
 		
-		CheckBox checkBox = fxComponents.getCheckBox(580, 180, "chk box");
+		CheckBox checkBox = fxComponents.getCheckBox(580, 180, "tryb testowy");
 		
 		appObjects.setProgressBar(progressBar);
 		appObjects.setFiles0(files0);
@@ -83,8 +83,8 @@ public class Gui extends Application {
 		appObjects.setStage(primaryStage);
 		appObjects.setCheckBox(checkBox);
 		
-		group.getChildren().addAll(tableView0, tableView1, bt0, bt1, bt2, bt3, bt4, progressBar, checkBox);
-		
+		group.getChildren().addAll(tableView0, tableView1, bt0, bt1);
+		group.getChildren().addAll(bt2, bt3, bt4, progressBar, checkBox);
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(460);
 		primaryStage.setWidth(920);

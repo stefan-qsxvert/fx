@@ -15,8 +15,7 @@ public class EventAction implements EventHandler<Event>{
 	String arcType;
 	Edeklaracje edeklaracje;
 	FxComponents fxComponents;
-//	Gui gui;
-	Stage stage;
+//	Stage stage;
 	AppObjects appObjects;
 //	
 	public EventAction(String arcType, AppObjects appObjects) {
@@ -25,23 +24,23 @@ public class EventAction implements EventHandler<Event>{
 //		this.stage = stage;
 		setUp();
 	}
-	public EventAction(String arcType) {
-		this.arcType = arcType;
-		setUp();
-	}
-	public EventAction() {
-		setUp();
-	}
+//	public EventAction(String arcType) {
+//		this.arcType = arcType;
+//		setUp();
+//	}
+//	public EventAction() {
+//		setUp();
+//	}
 	
 	private void setUp() {
-		edeklaracje = new Edeklaracje();
-		fxComponents = new FxComponents(appObjects);
+		edeklaracje = appObjects.getEdeklaracje();
+		fxComponents = appObjects.getFxComponents();
 	}
 	
 	@Override
 	public void handle(Event arg0) {
 		// TODO Auto-generated method stub
-		
+		Uris uris = appObjects.getUris();
 //		String typ = arg0.getEventType().getName(); // toString();
 //		String source = arg0.getSource().toString();
 //		String target = arg0.getTarget().toString();
@@ -52,11 +51,11 @@ public class EventAction implements EventHandler<Event>{
 		ProgressBar progressBar = appObjects.getProgressBar();
 //		progressBar.setProgress(0.1);
 		{ 
-			switch(arcType) {
+			switch(arcType.toLowerCase()) {
 			case "prd":
 				System.out.println("case produkcja");
 				break;
-			case "pobierz UPO":
+			case "pobierz upo":
 				File file = new File("/home/tee/refIds/");
 				String[] fileList = file.list();
 				Double e = (double) ((1/Double.valueOf( fileList.length))/1);
@@ -69,8 +68,9 @@ public class EventAction implements EventHandler<Event>{
 				break;
 			case "generuj wsdl":
 				String wsdl = "https://test-bramka.edeklaracje.gov.pl/uslugi/dokumenty?wsdl";
-				WsdlToJavaGenerator wsdlToJavaGenerator = new WsdlToJavaGenerator();
-				wsdlToJavaGenerator.generateTestWsdlSource("test", wsdl);
+//				WsdlToJavaGenerator wsdlToJavaGenerator = new WsdlToJavaGenerator();
+//				wsdlToJavaGenerator.generateTestWsdlSource("test", wsdl);
+				
 				break;
 			case "wybierz pliki":
 				List<File>  pliki = fxComponents.fileChooser(appObjects.getStage());
@@ -91,23 +91,29 @@ public class EventAction implements EventHandler<Event>{
 				tableView.setItems(files0);
 				
 				progressBar.setProgress(0.25);
-				
 				break;
-			case "test":
+			case "wyślij":
 				System.out.println(progressBar.getProgress());
 				progressBar.setProgress(progressBar.getProgress() +0.01);
+				
 				break;
 			case "tab1":
-				
 //				ev = ev.substring(1, ev.indexOf("\''"));
-				System.out.println(ev.indexOf("\'"));
-				System.out.println(ev);
+//				System.out.println(ev.indexOf("\'"));
+//				System.out.println(ev);
+				
+				uris.setTestMode(appObjects.getCheckBox().isPressed());
+				System.out.println(uris.getBramka());
+				uris.setTestMode(appObjects.getCheckBox().isPressed());
+				System.out.println(uris.getBramka());
+				
 //				progressBar.setProgress(progressBar.getProgress() +0.01);
 				break;
 			default:
-				System.out.println(ev);
+//				System.out.println(ev);
 				System.out.println("brak zdefiniiowanego działania");
 				progressBar.setProgress(0);
+				System.out.println(appObjects.getCheckBox().isPressed());
 				break;
 			}
 		}

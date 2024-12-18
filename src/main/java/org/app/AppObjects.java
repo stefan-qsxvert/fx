@@ -29,14 +29,16 @@ public class AppObjects {
 	private TableView<File> tableView;
 	private Stage stage;
 	private CheckBox checkBox;
+	private Uris uris;
 	
 	public AppObjects() {
-		gui = new Gui();
+		uris = new Uris();
+//		gui = new Gui();
 //		fxComponents = new FxComponents();
-		eventAction = new EventAction();
-		wsdlToJavaGenerator = new WsdlToJavaGenerator();
+//		eventAction = new EventAction();
+//		wsdlToJavaGenerator = new WsdlToJavaGenerator();
 		edeklaracje = new Edeklaracje();
-		guiPerson = new GuiPerson();
+//		guiPerson = new GuiPerson();
 //		files0 = FXCollections.observableArrayList();
 //		group = new Group();
 //		scene = new Scene(group);
@@ -168,6 +170,14 @@ public class AppObjects {
 
 	public void setCheckBox(CheckBox checkBox) {
 		this.checkBox = checkBox;
+	}
+
+	public Uris getUris() {
+		return uris;
+	}
+
+	public void setUris(Uris uris) {
+		this.uris = uris;
 	}
 	
 }

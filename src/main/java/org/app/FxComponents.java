@@ -102,8 +102,8 @@ public class FxComponents {
 		checkBox.setText(text);
 		checkBox.setLayoutX(x);
 		checkBox.setLayoutY(y);
+		checkBox.setSelected(true);
 		checkBox.setOnMousePressed(eventAction);
-		System.out.println(checkBox);
 		
 		return checkBox;
 	}

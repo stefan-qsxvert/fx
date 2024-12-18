@@ -41,7 +41,7 @@ public class GuiPerson extends Application{
 		button.setPrefWidth(256);
 		
 		ObservableList<Person> data = FXCollections.observableArrayList();
-		EventAction buttonAcction = new EventAction();
+		EventAction buttonAcction = new EventAction(null, new AppObjects());
 		
 //		button.setEventDispatcher(buttonAcction);
 		
@@ -90,7 +90,7 @@ public class GuiPerson extends Application{
 		table.setTableMenuButtonVisible(true);
 		table.setBorder(Border.stroke(null));
 		
-		EventAction tableAction = new EventAction();
+		EventAction tableAction = new EventAction(null,null);
 //		table.setEventDispatcher(tableAction);
 		
 		group.getChildren().addAll(table, label, button);
