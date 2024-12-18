@@ -47,6 +47,7 @@ public class EventAction implements EventHandler<Event>{
 //		String target = arg0.getTarget().toString();
 		
 //		if (typ == "MOUSE_PRESSED")
+		String ev = arg0.toString();
 		
 		ProgressBar progressBar = appObjects.getProgressBar();
 //		progressBar.setProgress(0.1);
@@ -97,13 +98,14 @@ public class EventAction implements EventHandler<Event>{
 				progressBar.setProgress(progressBar.getProgress() +0.01);
 				break;
 			case "tab1":
-				String ev = arg0.toString();
+				
 //				ev = ev.substring(1, ev.indexOf("\''"));
 				System.out.println(ev.indexOf("\'"));
 				System.out.println(ev);
 //				progressBar.setProgress(progressBar.getProgress() +0.01);
 				break;
 			default:
+				System.out.println(ev);
 				System.out.println("brak zdefiniiowanego działania");
 				progressBar.setProgress(0);
 				break;

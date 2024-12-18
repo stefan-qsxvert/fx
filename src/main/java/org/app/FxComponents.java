@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.WatchKey;
 import java.util.List;
 
 import org.apache.cxf.common.util.ClasspathScanner;
@@ -12,6 +13,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -93,6 +95,17 @@ public class FxComponents {
 	public List<File> fileChooser(Stage stage) {
 		List<File> listOfFiles = fileChooser.showOpenMultipleDialog(stage);
 		return listOfFiles;
+	}
+	public CheckBox getCheckBox(int x, int y, String text) {
+		EventAction eventAction = new EventAction(text, appObjects);
+		CheckBox checkBox = new CheckBox();
+		checkBox.setText(text);
+		checkBox.setLayoutX(x);
+		checkBox.setLayoutY(y);
+		checkBox.setOnMousePressed(eventAction);
+		System.out.println(checkBox);
+		
+		return checkBox;
 	}
 	
 	public Gui getGui() {

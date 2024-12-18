@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -74,12 +75,15 @@ public class Gui extends Application {
 		ProgressBar progressBar = fxComponents.getProgressBar(580, 300);
 		progressBar.setProgress(0);
 		
+		CheckBox checkBox = fxComponents.getCheckBox(580, 180, "chk box");
+		
 		appObjects.setProgressBar(progressBar);
 		appObjects.setFiles0(files0);
 		appObjects.setTableView(tableView1);
 		appObjects.setStage(primaryStage);
+		appObjects.setCheckBox(checkBox);
 		
-		group.getChildren().addAll(tableView0, tableView1, bt0, bt1, bt2, bt3, bt4, progressBar);
+		group.getChildren().addAll(tableView0, tableView1, bt0, bt1, bt2, bt3, bt4, progressBar, checkBox);
 		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(460);

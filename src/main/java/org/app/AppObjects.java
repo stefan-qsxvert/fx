@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -27,6 +28,7 @@ public class AppObjects {
 	private ObservableList<File> files0;
 	private TableView<File> tableView;
 	private Stage stage;
+	private CheckBox checkBox;
 	
 	public AppObjects() {
 		gui = new Gui();
@@ -158,6 +160,14 @@ public class AppObjects {
 
 	public void setStage(Stage stage) {
 		this.stage = stage;
+	}
+
+	public CheckBox getCheckBox() {
+		return checkBox;
+	}
+
+	public void setCheckBox(CheckBox checkBox) {
+		this.checkBox = checkBox;
 	}
 	
 }
