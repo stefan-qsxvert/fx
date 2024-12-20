@@ -82,6 +82,7 @@ public class Gui extends Application {
 		appObjects.setTableView(tableView1);
 		appObjects.setStage(primaryStage);
 		appObjects.setCheckBox(checkBox);
+		System.out.println(checkBox);
 		
 		group.getChildren().addAll(tableView0, tableView1, bt0, bt1);
 		group.getChildren().addAll(bt2, bt3, bt4, progressBar, checkBox);

@@ -111,9 +111,9 @@ public class EventAction implements EventHandler<Event>{
 				break;
 			default:
 //				System.out.println(ev);
-				System.out.println("brak zdefiniiowanego działania");
+//				System.out.println("brak zdefiniiowanego działania");
 				progressBar.setProgress(0);
-				System.out.println(appObjects.getCheckBox().isPressed());
+				System.out.println(appObjects.getCheckBox() + " " + appObjects.getCheckBox().isSelected());
 				break;
 			}
 		}
