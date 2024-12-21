@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.security.KeyStore;
 import java.time.ZonedDateTime;
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLEngine;
 
 import com.test.edeklaracje.RequestUPO;
 import jakarta.xml.ws.Holder;
@@ -50,7 +51,9 @@ public class Edeklaracje {
 				 KeyStore trustStore = KeyStore.getInstance("JKS"); 
 				 trustStore.load(new FileInputStream("/home/tee/git/edeklaracje/keystore.jks"), "qqq111".toCharArray()); 
 				 // Skonfiguruj SSLContext 
-				 SSLContext sslContext = SSLContext.getInstance("TLS"); 
+				 SSLContext sslContext = SSLContext.getInstance("TLS");
+				 SSLEngine sslEngine = sslContext.createSSLEngine();
+				 sslEngine.beginHandshake();
 				 // Inicjalizuj SSLContext z trustManager i keyManager 
 				
 					GateService service = new GateService(); 
@@ -58,9 +61,9 @@ public class Edeklaracje {
 					
 					//document = new Byte{0,1,0,1};
 					
-					refId = new Holder();
-					status = new Holder();
-					statusOpis = new Holder();
+					refId = new Holder<String>();
+					status = new Holder<Integer>();
+					statusOpis = new Holder<String>();
 					
 //					refId = new Holder("88a60f9d03045f163e10790ace36ebc3");
 					
