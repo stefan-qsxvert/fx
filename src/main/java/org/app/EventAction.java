@@ -14,7 +14,7 @@ public class EventAction implements EventHandler<Event>{
 	String arcType;
 	AppObjects appObjects;
 //	
-	public EventAction(String arcType, AppObjects appObjects) {
+	public EventAction(AppObjects appObjects, String arcType) {
 		this.arcType = arcType;
 		this.appObjects = appObjects;
 	}
@@ -30,7 +30,7 @@ public class EventAction implements EventHandler<Event>{
 			case "prd":
 				System.out.println("case produkcja");
 				break;
-			case "pobierz upo":
+			case "2":
 				File file = new File("/home/tee/refIds/");
 				String[] fileList = file.list();
 				Double e = (double) ((1/Double.valueOf( fileList.length))/1);
@@ -41,13 +41,16 @@ public class EventAction implements EventHandler<Event>{
 				}
 				
 				break;
+			case "1":
+				System.out.println("wyślij");
+			
 			case "generuj wsdl":
 				String wsdl = "https://test-bramka.edeklaracje.gov.pl/uslugi/dokumenty?wsdl";
 //				WsdlToJavaGenerator wsdlToJavaGenerator = new WsdlToJavaGenerator();
 //				wsdlToJavaGenerator.generateTestWsdlSource("test", wsdl);
 				
 				break;
-			case "wybierz pliki":
+			case "0":
 				List<File>  pliki = appObjects.getFileChooser().showOpenMultipleDialog(appObjects.getStage());
 				
 				File[] files = new File[pliki.size()];

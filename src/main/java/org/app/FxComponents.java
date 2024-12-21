@@ -3,15 +3,6 @@ package org.app;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.WatchKey;
-import java.util.List;
-
-import org.apache.cxf.common.util.ClasspathScanner;
-
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ProgressBar;
@@ -20,7 +11,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 public class FxComponents {
 	
@@ -32,8 +22,8 @@ public class FxComponents {
 		
 	}	
 	
-	public TableView<File> getTableView(int x, int y, String text) {
-		EventAction eventAction = new EventAction(text, appObjects);
+	public TableView<File> getTableView(int x, int y, String text, String arcType) {
+		EventAction eventAction = new EventAction(appObjects, arcType);
 		TableView<File> tableView = new TableView();
 		tableView.setLayoutX(x);
 		tableView.setLayoutY(y);
@@ -41,16 +31,16 @@ public class FxComponents {
 		tableView.setOnMousePressed(eventAction);
 		return tableView;
 	}
-	public TableColumn<File, String> getTableColumn(int wdth, String text) {
-		EventAction eventAction = new EventAction(text, appObjects);
+	public TableColumn<File, String> getTableColumn(int wdth, String text, String arcType) {
+		EventAction eventAction = new EventAction(appObjects, arcType);
 		TableColumn<File, String> tableColumn = new TableColumn();
 		tableColumn.setText(text);
 		tableColumn.setPrefWidth(wdth);
 		tableColumn.setEditable(true);
 		return tableColumn;
 	}
-	public Button getButton(int x, int y, String text) {
-		EventAction eventAction = new EventAction(text, appObjects);
+	public Button getButton(int x, int y, String text, String arcType) {
+		EventAction eventAction = new EventAction(appObjects, arcType);
 		Button button = new Button();
 		button.setText(text);
 		button.setLayoutX(x);
@@ -93,11 +83,11 @@ public class FxComponents {
 	}
 	public FileChooser getFileChooser(AppObjects appObjects) {
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("filter", "*.txt", "*.xml", "*"));
+		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("filter", "*.txt", "*.xml"));
 		return fileChooser;
 	}
-	public CheckBox getCheckBox(int x, int y, String text) {
-		EventAction eventAction = new EventAction(text, appObjects);
+	public CheckBox getCheckBox(int x, int y, String text, String arcType) {
+		EventAction eventAction = new EventAction(appObjects, arcType);
 		CheckBox checkBox = new CheckBox();
 		checkBox.setText(text);
 		checkBox.setLayoutX(x);

@@ -35,12 +35,12 @@ public class Gui extends Application {
 		Group group = new Group();
 		Scene scene = new Scene(group);
 		
-		TableView<File> tableView0 = fxComponents.getTableView(10, 10, "tab1");
-		TableView<File> tableView1 = fxComponents.getTableView(290, 10,"tab2");
+		TableView<File> tableView0 = fxComponents.getTableView(10, 10, "tab1", "99");
+		TableView<File> tableView1 = fxComponents.getTableView(290, 10,"tab2", "99");
 //		tableView.setPrefWidth(320);
 		
-		TableColumn<File, String> coll10 = fxComponents.getTableColumn(265, "refId");
-		TableColumn<File, String> coll11 = fxComponents.getTableColumn(265, "refId");
+		TableColumn<File, String> coll10 = fxComponents.getTableColumn(265, "refId", "99");
+		TableColumn<File, String> coll11 = fxComponents.getTableColumn(265, "refId", "99");
 //		coll10.setPrefWidth(270);
 		
 		tableView0.getColumns().addAll(coll10);
@@ -64,17 +64,17 @@ public class Gui extends Application {
 		tableView0.setItems(files);
 		tableView1.setItems(files0);
 		
-		Button bt0 =fxComponents.getButton(580, 380, "Wyślij!");
-		Button bt1 =fxComponents.getButton(750, 380, "prd");
-		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl");
-		Button bt3 =fxComponents.getButton(580, 340, "Pobierz UPO");
-		Button bt4 =fxComponents.getButton(580, 240, "Wybierz pliki");
+		Button bt0 =fxComponents.getButton(580, 380, "Wyślij!", "1");
+		Button bt1 =fxComponents.getButton(750, 380, "prd", "99");
+		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl","99");
+		Button bt3 =fxComponents.getButton(580, 340, "Pobierz UPO", "2");
+		Button bt4 =fxComponents.getButton(580, 240, "Wybierz pliki","0");
 		
 //		ImageView imageView = fxComponents.getImageView(580,14, 320, 280);
 		ProgressBar progressBar = fxComponents.getProgressBar(580, 300);
 		progressBar.setProgress(0);
 		
-		CheckBox checkBox = fxComponents.getCheckBox(580, 180, "tryb testowy");
+		CheckBox checkBox = fxComponents.getCheckBox(580, 180, "tryb testowy", "99");
 		
 		appObjects.setProgressBar(progressBar);
 		appObjects.setFiles0(files0);

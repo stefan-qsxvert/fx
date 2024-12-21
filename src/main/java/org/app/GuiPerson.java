@@ -41,7 +41,7 @@ public class GuiPerson extends Application{
 		button.setPrefWidth(256);
 		
 		ObservableList<Person> data = FXCollections.observableArrayList();
-		EventAction buttonAcction = new EventAction(null, new AppObjects());
+		EventAction buttonAcction = new EventAction(new AppObjects(), null);
 		
 //		button.setEventDispatcher(buttonAcction);
 		
