@@ -12,7 +12,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class Gui extends Application {
@@ -83,7 +82,7 @@ public class Gui extends Application {
 		appObjects.setStage(primaryStage);
 		appObjects.setCheckBox(checkBox);
 		appObjects.setFileChooser(fxComponents.getFileChooser(appObjects));
-		System.out.println(checkBox);
+		appObjects.setEdeklaracje(new Edeklaracje());
 		
 		group.getChildren().addAll(tableView0, tableView1, bt0, bt1);
 		group.getChildren().addAll(bt2, bt3, bt4, progressBar, checkBox);
