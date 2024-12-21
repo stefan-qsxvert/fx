@@ -18,7 +18,7 @@ public class Uris {
 		String bramka = null;
 		switch (String.valueOf(testMode)) {
 		case "true":
-			bramka = "https://bramka.e-deklaracje.mf.gov.pl/-test";
+			bramka = "https://bramka.e-deklaracje.mf.gov.pl/test";
 			break;
 		case "false":
 			bramka = "https://bramka.e-deklaracje.mf.gov.pl/";

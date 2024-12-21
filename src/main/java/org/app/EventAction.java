@@ -8,6 +8,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class EventAction implements EventHandler<Event>{
@@ -73,7 +74,8 @@ public class EventAction implements EventHandler<Event>{
 				
 				break;
 			case "wybierz pliki":
-				List<File>  pliki = fxComponents.fileChooser(appObjects.getStage());
+//				FileChooser fileChooser  = fxComponents.getFileChooser(appObjects);
+				List<File>  pliki = appObjects.getFileChooser().showOpenMultipleDialog(appObjects.getStage());
 				
 				File[] files = new File[pliki.size()];
 				

@@ -25,12 +25,11 @@ import javafx.stage.Stage;
 public class FxComponents {
 	
 	private Gui gui;
-	private FileChooser fileChooser;
 	private AppObjects appObjects;
 	
 	public FxComponents(AppObjects appObjects) {
 		this.appObjects = appObjects;
-		fileChooser = new FileChooser();
+		
 	}	
 	
 	public TableView<File> getTableView(int x, int y, String text) {
@@ -92,9 +91,10 @@ public class FxComponents {
 
 		return progressBar;
 	}
-	public List<File> fileChooser(Stage stage) {
-		List<File> listOfFiles = fileChooser.showOpenMultipleDialog(stage);
-		return listOfFiles;
+	public FileChooser getFileChooser(AppObjects appObjects) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("filter", "*.txt", "*.xml", "*"));
+		return fileChooser;
 	}
 	public CheckBox getCheckBox(int x, int y, String text) {
 		EventAction eventAction = new EventAction(text, appObjects);

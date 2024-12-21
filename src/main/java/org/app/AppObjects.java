@@ -1,15 +1,14 @@
 package org.app;
 
-import java.awt.GradientPaint;
 import java.io.File;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class AppObjects {
@@ -30,6 +29,7 @@ public class AppObjects {
 	private Stage stage;
 	private CheckBox checkBox;
 	private Uris uris;
+	private FileChooser fileChooser;
 	
 	public AppObjects() {
 		uris = new Uris();
@@ -178,6 +178,14 @@ public class AppObjects {
 
 	public void setUris(Uris uris) {
 		this.uris = uris;
+	}
+
+	public FileChooser getFileChooser() {
+		return fileChooser;
+	}
+
+	public void setFileChooser(FileChooser fileChooser) {
+		this.fileChooser = fileChooser;
 	}
 	
 }

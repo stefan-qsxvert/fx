@@ -82,6 +82,7 @@ public class Gui extends Application {
 		appObjects.setTableView(tableView1);
 		appObjects.setStage(primaryStage);
 		appObjects.setCheckBox(checkBox);
+		appObjects.setFileChooser(fxComponents.getFileChooser(appObjects));
 		System.out.println(checkBox);
 		
 		group.getChildren().addAll(tableView0, tableView1, bt0, bt1);
