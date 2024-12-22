@@ -7,6 +7,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 
 public class EventAction implements EventHandler<Event>{
@@ -27,6 +28,10 @@ public class EventAction implements EventHandler<Event>{
 //		progressBar.setProgress(0.1);
 		{ 
 			switch(arcType.toLowerCase()) {
+			case "7":
+				File cacert = appObjects.getFileChooser(new ExtensionFilter("jks", "jks")).showOpenDialog(appObjects.getStage());
+				appObjects.getCertLocation().setText(cacert.getPath());
+				break;
 			case "prd":
 				System.out.println("case produkcja");
 				break;
@@ -51,7 +56,7 @@ public class EventAction implements EventHandler<Event>{
 				
 				break;
 			case "0":
-				List<File>  pliki = appObjects.getFileChooser().showOpenMultipleDialog(appObjects.getStage());
+				List<File>  pliki = appObjects.getFileChooser(new ExtensionFilter("jks", "xml")).showOpenMultipleDialog(appObjects.getStage());
 				
 				File[] files = new File[pliki.size()];
 				

@@ -81,13 +81,16 @@ public class Gui extends Application {
 		appObjects.setTableView(tableView1);
 		appObjects.setStage(primaryStage);
 		appObjects.setCheckBox(checkBox);
-		appObjects.setFileChooser(fxComponents.getFileChooser(appObjects));
+		appObjects.setFileChooser(fxComponents.getFileChooser(appObjects, "filter, *.txt, *.xml"));
 		appObjects.setEdeklaracje(new Edeklaracje());
 		appObjects.setComboBox(fxComponents.getComboBox(580,10, "99"));
+		appObjects.setCertLocation(fxComponents.getTextField(580, 42, "7"));
 		
 		group.getChildren().addAll(tableView0, tableView1, bt0, bt1);
 		group.getChildren().addAll(bt2, bt3, bt4, progressBar, checkBox);
 		group.getChildren().add(appObjects.getComboBox());
+		group.getChildren().add(appObjects.getCertLocation());
+//		group.getChildren().add(fxComponents.getButton(580, 72,"Wybierz cacert.jks", "7"));
 		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(460);

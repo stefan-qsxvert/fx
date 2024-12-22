@@ -11,6 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -19,10 +20,11 @@ public class FxComponents {
 	
 	private Gui gui;
 	private AppObjects appObjects;
+	FileChooser fileChooser;
 	
 	public FxComponents(AppObjects appObjects) {
 		this.appObjects = appObjects;
-		
+		fileChooser = new FileChooser();
 	}	
 	
 	public TableView<File> getTableView(int x, int y, String text, String arcType) {
@@ -84,9 +86,8 @@ public class FxComponents {
 
 		return progressBar;
 	}
-	public FileChooser getFileChooser(AppObjects appObjects) {
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("filter", "*.txt", "*.xml"));
+	public FileChooser getFileChooser(AppObjects appObjects, String extensions) {
+		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(extensions));
 		return fileChooser;
 	}
 	public CheckBox getCheckBox(int x, int y, String text, String arcType) {
@@ -113,6 +114,15 @@ public class FxComponents {
 		stringObservableList.addAll("windows", "linux", "inny");
 		comboBox.setItems(stringObservableList);
 		return comboBox;
+	}
+	public TextField getTextField(int x, int y, String arcType) {
+		EventAction eventAction = new EventAction(appObjects, arcType);
+		TextField textField = new TextField();
+		textField.setOnMousePressed(eventAction);
+		textField.setLayoutX(x);
+		textField.setLayoutY(y);
+		textField.setPrefWidth(324);
+		return textField;
 	}
 	
 	public Gui getGui() {

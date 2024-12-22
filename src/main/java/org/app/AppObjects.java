@@ -6,12 +6,15 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 public class AppObjects {
 
 	private FxComponents fxComponents;
+	private TextField certLocation;
 	private ProgressBar progressBar;
 	private ComboBox<String> comboBox;
 	private ObservableList<File> files0;
@@ -81,7 +84,8 @@ public class AppObjects {
 		this.uris = uris;
 	}
 
-	public FileChooser getFileChooser() {
+	public FileChooser getFileChooser(ExtensionFilter extensions) {
+		fileChooser.getExtensionFilters().add(extensions);
 		return fileChooser;
 	}
 
@@ -103,6 +107,14 @@ public class AppObjects {
 
 	public void setComboBox(ComboBox<String> comboBox) {
 		this.comboBox = comboBox;
+	}
+
+	public TextField getCertLocation() {
+		return certLocation;
+	}
+
+	public void setCertLocation(TextField certLocation) {
+		this.certLocation = certLocation;
 	}
 
 	
