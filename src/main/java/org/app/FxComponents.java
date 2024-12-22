@@ -100,8 +100,10 @@ public class FxComponents {
 		
 		return checkBox;
 	}
-	public ComboBox<String> getComboBox(int x, int y){
+	public ComboBox<String> getComboBox(int x, int y, String arcType){
+//		EventAction eventAction = new EventAction(appObjects, arcType);
 		ComboBox<String> comboBox = new ComboBox<String>();
+//		comboBox.setOnMousePressed(eventAction);
 		comboBox.setLayoutX(x);
 		comboBox.setLayoutY(y);
 		comboBox.setPrefSize(324, 24);
