@@ -83,9 +83,12 @@ public class Gui extends Application {
 		appObjects.setCheckBox(checkBox);
 		appObjects.setFileChooser(fxComponents.getFileChooser(appObjects));
 		appObjects.setEdeklaracje(new Edeklaracje());
+		appObjects.setComboBox(fxComponents.getComboBox(580,112));
 		
 		group.getChildren().addAll(tableView0, tableView1, bt0, bt1);
 		group.getChildren().addAll(bt2, bt3, bt4, progressBar, checkBox);
+		group.getChildren().add(appObjects.getComboBox());
+		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(460);
 		primaryStage.setWidth(920);

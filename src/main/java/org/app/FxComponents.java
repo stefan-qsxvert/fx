@@ -3,8 +3,11 @@ package org.app;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -96,6 +99,18 @@ public class FxComponents {
 		checkBox.setOnMousePressed(eventAction);
 		
 		return checkBox;
+	}
+	public ComboBox<String> getComboBox(int x, int y){
+		ComboBox<String> comboBox = new ComboBox<String>();
+		comboBox.setLayoutX(x);
+		comboBox.setLayoutY(y);
+		comboBox.setPrefSize(324, 24);
+		String[] list = new String[9];
+		ObservableList<String> stringObservableList = FXCollections.observableArrayList();
+		comboBox.setValue(System.getProperty("os.name"));
+		stringObservableList.addAll("windows", "linux", "inny");
+		comboBox.setItems(stringObservableList);
+		return comboBox;
 	}
 	
 	public Gui getGui() {

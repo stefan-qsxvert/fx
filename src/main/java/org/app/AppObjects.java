@@ -3,6 +3,7 @@ package org.app;
 import java.io.File;
 import javafx.collections.ObservableList;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
 import javafx.stage.FileChooser;
@@ -12,6 +13,7 @@ public class AppObjects {
 
 	private FxComponents fxComponents;
 	private ProgressBar progressBar;
+	private ComboBox<String> comboBox;
 	private ObservableList<File> files0;
 	private TableView<File> tableView;
 	private Stage stage;
@@ -93,6 +95,14 @@ public class AppObjects {
 
 	public void setEdeklaracje(Edeklaracje edeklaracje) {
 		this.edeklaracje = edeklaracje;
+	}
+
+	public ComboBox<String> getComboBox() {
+		return comboBox;
+	}
+
+	public void setComboBox(ComboBox<String> comboBox) {
+		this.comboBox = comboBox;
 	}
 
 	
