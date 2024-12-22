@@ -113,6 +113,7 @@ public class Edeklaracje {
 		}
 		
 		public void getUPO(String refId) {
+			
 			try { 
 //				// Załaduj klucz prywatny z keystore 
 				 KeyStore keyStore = KeyStore.getInstance("JKS"); 
@@ -120,7 +121,7 @@ public class Edeklaracje {
 				 keyStore.load(new FileInputStream(new File(appObjects.getCertLocationPath().getText())), "qqq111".toCharArray());
 				 // Załaduj zaufane certyfikaty z truststore 
 				 KeyStore trustStore = KeyStore.getInstance("JKS"); 
-				 trustStore.load(new FileInputStream("/home/tee/git/edeklaracje/keystore.jks"), "qqq111".toCharArray()); 
+				 trustStore.load(new FileInputStream(appObjects.getCertLocationPath().getText()), "qqq111".toCharArray()); 
 				 // Skonfiguruj SSLContext 
 				 SSLContext sslContext = SSLContext.getInstance("TLS"); 
 				 // Inicjalizuj SSLContext z trustManager i keyManager 
@@ -132,21 +133,20 @@ public class Edeklaracje {
 				RequestUPO requestUPO = new RequestUPO(); 
 				
 //				id = new String("88a60f9d03045f163e10790ace36ebc3");
-				requestUPO.setRefId(refId); // Ustaw refID dokumentu 
+//				requestUPO.setRefId(refId.replace(".xml", "")); // Ustaw refID dokumentu 
 				
-				upo = new Holder();
-				status = new Holder();
-				statusOpis = new Holder();
+				upo = new Holder<String>();
+				status = new Holder<Integer>();
+				statusOpis = new Holder<String>();
 				
 				// Wywołaj metodę requestUPO 
-				port.requestUPO(refId, "pl", upo, status, statusOpis);
-				
-				
+				port.requestUPO(refId.replace(".xml",""), "pl", upo, status, statusOpis);
+								
 				System.out.println("UPO status: " + upo.value + " " + status.value + " " + statusOpis.value);
 				BufferedWriter bfw = new BufferedWriter(new FileWriter("/home/tee/refIds/" + refId));
 //				bfw.newLine();
 				if (upo.value == null) {
-					upo = new Holder("0");
+					upo = new Holder<String>("0");
 				}
 				bfw.write(ZonedDateTime.now().toString() + "_" + refId + "_" + status.value + "_" + statusOpis.value);
 				bfw.newLine();

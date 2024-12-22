@@ -15,6 +15,7 @@ public class EventAction implements EventHandler<Event>{
 	
 	String arcType;
 	AppObjects appObjects;
+	File file;
 //	
 	public EventAction(AppObjects appObjects, String arcType) {
 		this.arcType = arcType;
@@ -37,13 +38,13 @@ public class EventAction implements EventHandler<Event>{
 				System.out.println("case produkcja");
 				break;
 			case "2":
-				File file = new File("/home/tee/refIds/");
+				file = new File("/home/tee/refIds/");
 				String[] fileList = file.list();
-				Double e = (double) ((1/Double.valueOf( fileList.length))/1);
-				System.out.println(e);
+//				Double e = (double) ((1/Double.valueOf( fileList.length))/1);
+//				System.out.println(e);
 				for (int i = 0; i < fileList.length; i++) {
 					appObjects.getEdeklaracje().getUPO(fileList[i]);
-					progressBar.setProgress(progressBar.getProgress() + e);
+//					progressBar.setProgress(progressBar.getProgress() + e);
 				}
 				
 				break;
