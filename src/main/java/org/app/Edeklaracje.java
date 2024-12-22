@@ -14,6 +14,7 @@ import java.time.ZonedDateTime;
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
 import com.test.edeklaracje.GateService;
@@ -136,7 +137,14 @@ public class Edeklaracje {
 				 TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 				 trustManagerFactory.init(keyStore);
 				 
-				 sslContext.init(keyManagerFactory,trustManagerFactory,new SecureRandom().generateSeed(20));
+			      SecureRandom random = new SecureRandom();
+			      byte bytes[] = new byte[20];
+			      random.nextBytes(bytes);
+			      KeyManager[] km = keyManagerFactory.getKeyManagers();
+			      TrustManager[] tm = trustManagerFactory.getTrustManagers();
+				 
+				 sslContext.init(km,tm,random);
+//			      sslContext.init(null, null, random);
 				
 				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
 				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");
