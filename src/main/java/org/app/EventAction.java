@@ -31,7 +31,7 @@ public class EventAction implements EventHandler<Event>{
 			switch(arcType.toLowerCase()) {
 			case "7":
 				File cacert = appObjects.getFileChooser(new ExtensionFilter("jks", "*.jks")).showOpenDialog(appObjects.getStage());
-				appObjects.getCertLocation().setText(cacert.getPath());
+				appObjects.getCertLocationPath().setText(cacert.getPath());
 				break;
 			case "prd":
 				System.out.println("case produkcja");

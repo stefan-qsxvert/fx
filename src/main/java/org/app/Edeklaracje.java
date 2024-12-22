@@ -25,28 +25,33 @@ public class Edeklaracje {
 	Holder<String> upo;
 //	byte[] document;
 	String id;
+	AppObjects appObjects;
 	
-	public Edeklaracje(byte[] document, Holder<String> refId, Holder<Integer> status, Holder<String> statusOpis) {
+	public Edeklaracje(byte[] document, Holder<String> refId, Holder<Integer> status, Holder<String> statusOpis, AppObjects appObjects) {
 //		this.document = document;
 		this.refId = refId;
 		this.status = status;
 		this.statusOpis = statusOpis;
+		this.appObjects = appObjects;
 	}
 	
-	public Edeklaracje(Holder<String> refId, Holder<Integer> status, Holder<String> statusOpis) {
+	public Edeklaracje(Holder<String> refId, Holder<Integer> status, Holder<String> statusOpis, AppObjects appObjects) {
 		this.refId = refId;
 		this.status = status;
 		this.statusOpis = statusOpis;
+		this.appObjects = appObjects;
 	}
 	
-	public Edeklaracje() {
+	public Edeklaracje(AppObjects appObjects) {
+		this.appObjects = appObjects;
 	}
 	
 		public void sendDoc(byte[] document) {
 			try { 
 				// Załaduj klucz prywatny z keystore 
+				
 				 KeyStore keyStore = KeyStore.getInstance("JKS"); 
-				 keyStore.load(new FileInputStream("/home/tee/git/edeklaracje/keystore.jks"), "qqq111".toCharArray()); 
+				 keyStore.load(new FileInputStream(new File(appObjects.getCertLocationPath().getText())), "qqq111".toCharArray()); 
 				 // Załaduj zaufane certyfikaty z truststore 
 				 KeyStore trustStore = KeyStore.getInstance("JKS"); 
 				 trustStore.load(new FileInputStream("/home/tee/git/edeklaracje/keystore.jks"), "qqq111".toCharArray()); 
@@ -111,7 +116,8 @@ public class Edeklaracje {
 			try { 
 //				// Załaduj klucz prywatny z keystore 
 				 KeyStore keyStore = KeyStore.getInstance("JKS"); 
-				 keyStore.load(new FileInputStream("/home/tee/git/edeklaracje/keystore.jks"), "qqq111".toCharArray()); 
+//				 keyStore.load(new FileInputStream("/home/tee/git/edeklaracje/keystore.jks"), "qqq111".toCharArray()); 
+				 keyStore.load(new FileInputStream(new File(appObjects.getCertLocationPath().getText())), "qqq111".toCharArray());
 				 // Załaduj zaufane certyfikaty z truststore 
 				 KeyStore trustStore = KeyStore.getInstance("JKS"); 
 				 trustStore.load(new FileInputStream("/home/tee/git/edeklaracje/keystore.jks"), "qqq111".toCharArray()); 

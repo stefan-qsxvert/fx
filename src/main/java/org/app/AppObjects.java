@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class AppObjects {
 
 	private FxComponents fxComponents;
-	private TextField certLocation;
+	private TextField certLocationPath;
 	private ProgressBar progressBar;
 	private ComboBox<String> comboBox;
 	private ObservableList<File> files0;
@@ -109,13 +109,15 @@ public class AppObjects {
 		this.comboBox = comboBox;
 	}
 
-	public TextField getCertLocation() {
-		return certLocation;
+	public TextField getCertLocationPath() {
+		return certLocationPath;
 	}
 
-	public void setCertLocation(TextField certLocation) {
-		this.certLocation = certLocation;
+	public void setCertLocationPath(TextField certLocationPath) {
+		this.certLocationPath = certLocationPath;
 	}
+
+	
 
 	
 }
