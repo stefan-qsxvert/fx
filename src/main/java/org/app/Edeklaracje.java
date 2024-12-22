@@ -125,6 +125,8 @@ public class Edeklaracje {
 				 // Skonfiguruj SSLContext 
 				 SSLContext sslContext = SSLContext.getInstance("TLS"); 
 				 // Inicjalizuj SSLContext z trustManager i keyManager 
+				 SSLEngine sslEngine = sslContext.createSSLEngine();
+				 sslEngine.beginHandshake();
 				
 //				// Utwórz instancję usługi 
 				GateService service = new GateService(); 
