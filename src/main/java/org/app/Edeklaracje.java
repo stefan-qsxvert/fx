@@ -8,14 +8,19 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.security.KeyStore;
+import java.security.SecureRandom;
 import java.time.ZonedDateTime;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLEngine;
 
-import com.test.edeklaracje.RequestUPO;
-import jakarta.xml.ws.Holder;
+import javax.net.ssl.KeyManager;
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManagerFactory;
+
 import com.test.edeklaracje.GateService;
-import com.test.edeklaracje.GateServicePortType; 
+import com.test.edeklaracje.GateServicePortType;
+import com.test.edeklaracje.RequestUPO;
+
+import jakarta.xml.ws.Holder; 
 
 public class Edeklaracje {
 	
@@ -57,9 +62,15 @@ public class Edeklaracje {
 				 trustStore.load(new FileInputStream("/home/tee/git/edeklaracje/keystore.jks"), "qqq111".toCharArray()); 
 				 // Skonfiguruj SSLContext 
 				 SSLContext sslContext = SSLContext.getInstance("TLS");
-//				 SSLEngine sslEngine = sslContext.createSSLEngine();
-//				 sslEngine.beginHandshake();
 				 // Inicjalizuj SSLContext z trustManager i keyManager 
+//				 KeyManager kmf = null; //KeyManagerFactory.init(keyStore, "qqq111");
+				 
+				
+				
+				
+				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
+				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");
+				System.setProperty("javax.net.ssl.keyStoreType", "JKS");
 				
 					GateService service = new GateService(); 
 					GateServicePortType port = service.getGateServiceSOAP11Port(); // Przykładowe wywołanie operacji 
@@ -85,8 +96,6 @@ public class Edeklaracje {
 					bfw.write(ZonedDateTime.now().toString() + "_" + refId.value + "_" + status.value + "_" + statusOpis.value);
 					bfw.flush();
 					bfw.close();
-					
-					
 					
 				} catch (Exception e) { 
 						e.printStackTrace();
@@ -115,18 +124,23 @@ public class Edeklaracje {
 		public void getUPO(String refId) {
 			
 			try { 
-//				// Załaduj klucz prywatny z keystore 
-				 KeyStore keyStore = KeyStore.getInstance("JKS"); 
-//				 keyStore.load(new FileInputStream("/home/tee/git/edeklaracje/keystore.jks"), "qqq111".toCharArray()); 
-				 keyStore.load(new FileInputStream(new File(appObjects.getCertLocationPath().getText())), "qqq111".toCharArray());
-				 // Załaduj zaufane certyfikaty z truststore 
-				 KeyStore trustStore = KeyStore.getInstance("JKS"); 
-				 trustStore.load(new FileInputStream(appObjects.getCertLocationPath().getText()), "qqq111".toCharArray()); 
-				 // Skonfiguruj SSLContext 
-				 SSLContext sslContext = SSLContext.getInstance("TLS"); 
-				 // Inicjalizuj SSLContext z trustManager i keyManager 
-//				 SSLEngine sslEngine = sslContext.createSSLEngine();
-//				 sslEngine.beginHandshake();
+//				
+				KeyStore keyStore = KeyStore.getInstance("JKS"); 
+				keyStore.load(new FileInputStream(new File(appObjects.getCertLocationPath().getText())), "qqq111".toCharArray()); 
+				SSLContext sslContext = SSLContext.getInstance("TLS");
+				// Inicjalizuj SSLContext z trustManager i keyManager
+				
+				 KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+				 keyManagerFactory.init(keyStore, "qqq111".toCharArray());
+				 
+				 TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+				 trustManagerFactory.init(keyStore);
+				 
+				 sslContext.init(keyManagerFactory,trustManagerFactory,new SecureRandom().generateSeed(20));
+				
+				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
+				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");
+				System.setProperty("javax.net.ssl.keyStoreType", "JKS");
 				
 //				// Utwórz instancję usługi 
 				GateService service = new GateService(); 
@@ -134,19 +148,17 @@ public class Edeklaracje {
 				// Utwórz żądanie UPO 
 				RequestUPO requestUPO = new RequestUPO(); 
 				
-//				id = new String("88a60f9d03045f163e10790ace36ebc3");
-//				requestUPO.setRefId(refId.replace(".xml", "")); // Ustaw refID dokumentu 
-				
 				upo = new Holder<String>();
 				status = new Holder<Integer>();
 				statusOpis = new Holder<String>();
+				
 				
 				// Wywołaj metodę requestUPO 
 				port.requestUPO(refId.replace(".xml",""), "pl", upo, status, statusOpis);
 								
 				System.out.println("UPO status: " + upo.value + " " + status.value + " " + statusOpis.value);
 				BufferedWriter bfw = new BufferedWriter(new FileWriter("/home/tee/refIds/" + refId));
-//				bfw.newLine();
+				bfw.newLine();
 				if (upo.value == null) {
 					upo = new Holder<String>("0");
 				}
@@ -158,9 +170,7 @@ public class Edeklaracje {
 			
 			} catch (Exception e) { 
 				e.printStackTrace(); 
-//				System.out.println("nydyrydy!!!");
 				}
-			System.out.println("end");
 			}
 
 		public Holder<String> getRefId() {
