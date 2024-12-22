@@ -54,24 +54,31 @@ public class Edeklaracje {
 	
 		public void sendDoc(byte[] document) {
 			try { 
-				// Załaduj klucz prywatny z keystore 
+
+//				
+				KeyStore keyStore = KeyStore.getInstance("JKS"); 
+				keyStore.load(new FileInputStream(new File(appObjects.getCertLocationPath().getText())), "qqq111".toCharArray()); 
+				SSLContext sslContext = SSLContext.getInstance("TLS");
+				// Inicjalizuj SSLContext z trustManager i keyManager
 				
-				 KeyStore keyStore = KeyStore.getInstance("JKS"); 
-				 keyStore.load(new FileInputStream(new File(appObjects.getCertLocationPath().getText())), "qqq111".toCharArray()); 
-				 // Załaduj zaufane certyfikaty z truststore 
-				 KeyStore trustStore = KeyStore.getInstance("JKS"); 
-				 trustStore.load(new FileInputStream("/home/tee/git/edeklaracje/keystore.jks"), "qqq111".toCharArray()); 
-				 // Skonfiguruj SSLContext 
-				 SSLContext sslContext = SSLContext.getInstance("TLS");
-				 // Inicjalizuj SSLContext z trustManager i keyManager 
-//				 KeyManager kmf = null; //KeyManagerFactory.init(keyStore, "qqq111");
+				 KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+				 keyManagerFactory.init(keyStore, "qqq111".toCharArray());
 				 
-				
-				
-				
-				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
-				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");
-				System.setProperty("javax.net.ssl.keyStoreType", "JKS");
+				 TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+				 trustManagerFactory.init(keyStore);
+				 
+//			      SecureRandom random = new SecureRandom();
+//			      byte bytes[] = new byte[20];
+//			      random.nextBytes(bytes);
+				 
+			      KeyManager[] km = keyManagerFactory.getKeyManagers();
+			      TrustManager[] tm = trustManagerFactory.getTrustManagers();
+				 
+				 sslContext.init(km,tm,new SecureRandom());
+				 
+//				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
+//				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");
+//				System.setProperty("javax.net.ssl.keyStoreType", "JKS");
 				
 					GateService service = new GateService(); 
 					GateServicePortType port = service.getGateServiceSOAP11Port(); // Przykładowe wywołanie operacji 
@@ -137,18 +144,19 @@ public class Edeklaracje {
 				 TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 				 trustManagerFactory.init(keyStore);
 				 
-			      SecureRandom random = new SecureRandom();
-			      byte bytes[] = new byte[20];
-			      random.nextBytes(bytes);
+//			      SecureRandom random = new SecureRandom();
+//			      byte bytes[] = new byte[20];
+//			      random.nextBytes(bytes);
+				 
 			      KeyManager[] km = keyManagerFactory.getKeyManagers();
 			      TrustManager[] tm = trustManagerFactory.getTrustManagers();
 				 
-				 sslContext.init(km,tm,random);
+				 sslContext.init(km,tm,new SecureRandom());
 //			      sslContext.init(null, null, random);
 				
-				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
-				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");
-				System.setProperty("javax.net.ssl.keyStoreType", "JKS");
+//				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
+//				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");
+//				System.setProperty("javax.net.ssl.keyStoreType", "JKS");
 				
 //				// Utwórz instancję usługi 
 				GateService service = new GateService(); 
