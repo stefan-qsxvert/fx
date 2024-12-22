@@ -57,8 +57,8 @@ public class Edeklaracje {
 				 trustStore.load(new FileInputStream("/home/tee/git/edeklaracje/keystore.jks"), "qqq111".toCharArray()); 
 				 // Skonfiguruj SSLContext 
 				 SSLContext sslContext = SSLContext.getInstance("TLS");
-				 SSLEngine sslEngine = sslContext.createSSLEngine();
-				 sslEngine.beginHandshake();
+//				 SSLEngine sslEngine = sslContext.createSSLEngine();
+//				 sslEngine.beginHandshake();
 				 // Inicjalizuj SSLContext z trustManager i keyManager 
 				
 					GateService service = new GateService(); 
@@ -125,8 +125,8 @@ public class Edeklaracje {
 				 // Skonfiguruj SSLContext 
 				 SSLContext sslContext = SSLContext.getInstance("TLS"); 
 				 // Inicjalizuj SSLContext z trustManager i keyManager 
-				 SSLEngine sslEngine = sslContext.createSSLEngine();
-				 sslEngine.beginHandshake();
+//				 SSLEngine sslEngine = sslContext.createSSLEngine();
+//				 sslEngine.beginHandshake();
 				
 //				// Utwórz instancję usługi 
 				GateService service = new GateService(); 
