@@ -14,6 +14,7 @@ import java.time.ZonedDateTime;
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLEngine;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
@@ -71,10 +72,13 @@ public class Edeklaracje {
 //			      byte bytes[] = new byte[20];
 //			      random.nextBytes(bytes);
 				 
-			      KeyManager[] km = keyManagerFactory.getKeyManagers();
-			      TrustManager[] tm = trustManagerFactory.getTrustManagers();
+			      KeyManager[] keyManagers = keyManagerFactory.getKeyManagers();
+			      TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
 				 
-				 sslContext.init(km,tm,new SecureRandom());
+				 sslContext.init(keyManagers,trustManagers,new SecureRandom());
+				 
+				 SSLEngine sslEngine = sslContext.createSSLEngine();
+				 sslEngine.beginHandshake();
 				 
 //				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
 //				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");
@@ -148,11 +152,14 @@ public class Edeklaracje {
 //			      byte bytes[] = new byte[20];
 //			      random.nextBytes(bytes);
 				 
-			      KeyManager[] km = keyManagerFactory.getKeyManagers();
-			      TrustManager[] tm = trustManagerFactory.getTrustManagers();
+				 KeyManager[] keyManagers = keyManagerFactory.getKeyManagers();
+			      TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
 				 
-				 sslContext.init(km,tm,new SecureRandom());
-//			      sslContext.init(null, null, random);
+				 sslContext.init(keyManagers,trustManagers,new SecureRandom());
+				 
+				 SSLEngine sslEngine = sslContext.createSSLEngine();
+				 sslEngine.setUseClientMode(true);
+				 sslEngine.beginHandshake();
 				
 //				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
 //				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");
