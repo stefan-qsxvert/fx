@@ -32,7 +32,7 @@ public class FxComponents {
 		TableView<File> tableView = new TableView();
 		tableView.setLayoutX(x);
 		tableView.setLayoutY(y);
-		tableView.prefWidth(270);
+//		tableView.prefWidth(420);
 		tableView.setOnMousePressed(eventAction);
 		return tableView;
 	}
@@ -87,7 +87,7 @@ public class FxComponents {
 		return progressBar;
 	}
 	public FileChooser getFileChooser(AppObjects appObjects, String extensions) {
-		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(extensions));
+		fileChooser.getExtensionFilters(); //.add(new FileChooser.ExtensionFilter(extensions));
 		return fileChooser;
 	}
 	public CheckBox getCheckBox(int x, int y, String text, String arcType) {

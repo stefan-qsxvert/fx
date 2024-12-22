@@ -36,15 +36,15 @@ public class Gui extends Application {
 		Scene scene = new Scene(group);
 		
 		TableView<File> tableView0 = fxComponents.getTableView(10, 10, "tab1", "99");
-		TableView<File> tableView1 = fxComponents.getTableView(290, 10,"tab2", "99");
+//		TableView<File> tableView1 = fxComponents.getTableView(290, 10,"tab2", "99");
 //		tableView.setPrefWidth(320);
 		
-		TableColumn<File, String> coll10 = fxComponents.getTableColumn(265, "refId", "99");
-		TableColumn<File, String> coll11 = fxComponents.getTableColumn(265, "refId", "99");
+		TableColumn<File, String> coll10 = fxComponents.getTableColumn(320, "refId", "99");
+		TableColumn<File, String> coll11 = fxComponents.getTableColumn(48, "refId", "99");
 //		coll10.setPrefWidth(270);
 		
 		tableView0.getColumns().addAll(coll10);
-		tableView1.getColumns().addAll(coll11);
+//		tableView1.getColumns().addAll(coll11);
 		
 		coll10.setCellValueFactory(new PropertyValueFactory("name"));
 		coll11.setCellValueFactory(new PropertyValueFactory("name"));
@@ -61,8 +61,7 @@ public class Gui extends Application {
 		files.addAll(refIds.listFiles());
 		files.addAll(refIds.listFiles());
 		
-		tableView0.setItems(files);
-		tableView1.setItems(files0);
+		tableView0.setItems(files0);
 		
 		Button bt0 =fxComponents.getButton(580, 380, "Wyślij!", "1");
 		Button bt1 =fxComponents.getButton(750, 380, "prd", "99");
@@ -78,15 +77,17 @@ public class Gui extends Application {
 		
 		appObjects.setProgressBar(progressBar);
 		appObjects.setFiles0(files0);
-		appObjects.setTableView(tableView1);
+		appObjects.setTableView(tableView0);
 		appObjects.setStage(primaryStage);
 		appObjects.setCheckBox(checkBox);
-		appObjects.setFileChooser(fxComponents.getFileChooser(appObjects, "filter, *.txt, *.xml"));
 		appObjects.setEdeklaracje(new Edeklaracje());
 		appObjects.setComboBox(fxComponents.getComboBox(580,10, "99"));
 		appObjects.setCertLocation(fxComponents.getTextField(580, 42, "7"));
 		
-		group.getChildren().addAll(tableView0, tableView1, bt0, bt1);
+		appObjects.setFileChooser(fxComponents.getFileChooser(appObjects, "filter, *.txt, *.xml"));
+		
+		
+		group.getChildren().addAll(tableView0, bt0, bt1);
 		group.getChildren().addAll(bt2, bt3, bt4, progressBar, checkBox);
 		group.getChildren().add(appObjects.getComboBox());
 		group.getChildren().add(appObjects.getCertLocation());
