@@ -21,7 +21,7 @@ public class Gui extends Application {
 		
 	}
 	
-	public void run() throws Exception {
+	public void run() {
 		launch();
 	}
 
@@ -51,9 +51,8 @@ public class Gui extends Application {
 		
 		File refIds = new File("/home/tee/refIds/");
 		
-		ObservableList<File> files0 = FXCollections.observableArrayList();
-		
 		ObservableList<File> files = FXCollections.observableArrayList();
+		files.add(null);
 		files.addAll(refIds.listFiles());
 		files.addAll(refIds.listFiles());
 		files.addAll(refIds.listFiles());
@@ -61,7 +60,7 @@ public class Gui extends Application {
 		files.addAll(refIds.listFiles());
 		files.addAll(refIds.listFiles());
 		
-		tableView0.setItems(files0);
+		tableView0.setItems(files);
 		
 		Button bt0 =fxComponents.getButton(580, 380, "Wyślij!", "1");
 		Button bt1 =fxComponents.getButton(750, 380, "prd", "99");
@@ -76,7 +75,7 @@ public class Gui extends Application {
 		CheckBox checkBox = fxComponents.getCheckBox(580, 180, "tryb testowy", "99");
 		
 		appObjects.setProgressBar(progressBar);
-		appObjects.setFiles0(files0);
+//		appObjects.setFiles0(files);
 		appObjects.setTableView(tableView0);
 		appObjects.setStage(primaryStage);
 		appObjects.setCheckBox(checkBox);

@@ -17,7 +17,7 @@ public class AppObjects {
 	private TextField certLocationPath;
 	private ProgressBar progressBar;
 	private ComboBox<String> comboBox;
-	private ObservableList<File> files0;
+	private ObservableList<File> files;
 	private TableView<File> tableView;
 	private Stage stage;
 	private CheckBox checkBox;
@@ -44,12 +44,12 @@ public class AppObjects {
 		this.progressBar = progressBar;
 	}
 
-	public ObservableList<File> getFiles0() {
-		return files0;
+	public ObservableList<File> getFiles() {
+		return files;
 	}
 
-	public void setFiles0(ObservableList<File> files0) {
-		this.files0 = files0;
+	public void setFiles0(ObservableList<File> files) {
+		this.files = files;
 	}
 
 	public TableView<File> getTableView() {

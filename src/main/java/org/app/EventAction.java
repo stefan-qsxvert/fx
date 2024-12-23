@@ -1,7 +1,14 @@
 package org.app;
 
 import java.io.File;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+
+import javafx.beans.InvalidationListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -67,20 +74,21 @@ public class EventAction implements EventHandler<Event>{
 				fileChooser.getExtensionFilters().clear();
 				fileChooser.getExtensionFilters().add(new ExtensionFilter("PIT", "*.xml"));
 				
-				List<File> pliki = fileChooser.showOpenMultipleDialog(appObjects.getStage());
-				File[] files = new File[pliki.size()];
+				List<File> listaPit = fileChooser.showOpenMultipleDialog(appObjects.getStage());
+				File[] plikiPit = new File[listaPit.size()];
 				
 				int i = 0;
-				for (File f : pliki) {
-					files[i] = new File(f.getAbsolutePath());
+				for (File f : listaPit) {
+					plikiPit[i] = new File(f.getAbsolutePath());
 					i++;
 				}
 				
-				ObservableList<File> files0 = appObjects.getFiles0();
-				files0.clear();
-				files0.addAll(files);
+				ObservableList<File> files = FXCollections.observableArrayList();
+				files.addAll(plikiPit);
+				appObjects.setFiles0(files);
+
 				TableView<File> tableView = appObjects.getTableView();
-				tableView.setItems(files0);
+				tableView.setItems(files);
 				
 				progressBar.setProgress(0);
 				break;
