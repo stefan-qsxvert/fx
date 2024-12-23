@@ -84,8 +84,8 @@ public class AppObjects {
 		this.uris = uris;
 	}
 
-	public FileChooser getFileChooser(ExtensionFilter extensions) {
-		fileChooser.getExtensionFilters().add(extensions);
+	public FileChooser getFileChooser() {
+		fileChooser.getExtensionFilters();
 		return fileChooser;
 	}
 

@@ -84,7 +84,7 @@ public class Gui extends Application {
 		appObjects.setComboBox(fxComponents.getComboBox(580,10, "99"));
 		appObjects.setCertLocationPath(fxComponents.getTextField(580, 42, "7"));
 		
-		appObjects.setFileChooser(fxComponents.getFileChooser(appObjects, "filter, *.txt, *.xml"));
+		appObjects.setFileChooser(fxComponents.getFileChooser());
 		
 		
 		group.getChildren().addAll(tableView0, bt0, bt1);

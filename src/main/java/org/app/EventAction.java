@@ -27,11 +27,16 @@ public class EventAction implements EventHandler<Event>{
 		// TODO Auto-generated method stub
 		Uris uris = appObjects.getUris();
 		ProgressBar progressBar = appObjects.getProgressBar();
+		FileChooser fileChooser = null;
 //		progressBar.setProgress(0.1);
 		{ 
 			switch(arcType.toLowerCase()) {
 			case "7":
-				File cacert = appObjects.getFileChooser(new ExtensionFilter("jks", "*.jks")).showOpenDialog(appObjects.getStage());
+				fileChooser = appObjects.getFileChooser();
+				fileChooser.getExtensionFilters().clear();
+				fileChooser.getExtensionFilters().add(new ExtensionFilter("jks", "*.jks"));
+				
+				File cacert = fileChooser.showOpenDialog(appObjects.getStage());
 				appObjects.getCertLocationPath().setText(cacert.getPath());
 				break;
 			case "prd":
@@ -58,7 +63,10 @@ public class EventAction implements EventHandler<Event>{
 				
 				break;
 			case "0":
-				FileChooser fileChooser = appObjects.getFileChooser(new ExtensionFilter("PIT", "*.xml"));
+				fileChooser = appObjects.getFileChooser();
+				fileChooser.getExtensionFilters().clear();
+				fileChooser.getExtensionFilters().add(new ExtensionFilter("PIT", "*.xml"));
+				
 				List<File> pliki = fileChooser.showOpenMultipleDialog(appObjects.getStage());
 				File[] files = new File[pliki.size()];
 				

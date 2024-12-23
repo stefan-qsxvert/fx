@@ -20,11 +20,9 @@ public class FxComponents {
 	
 	private Gui gui;
 	private AppObjects appObjects;
-	FileChooser fileChooser;
 	
 	public FxComponents(AppObjects appObjects) {
 		this.appObjects = appObjects;
-		fileChooser = new FileChooser();
 	}	
 	
 	public TableView<File> getTableView(int x, int y, String text, String arcType) {
@@ -86,8 +84,8 @@ public class FxComponents {
 
 		return progressBar;
 	}
-	public FileChooser getFileChooser(AppObjects appObjects, String extensions) {
-		fileChooser.getExtensionFilters(); //.add(new FileChooser.ExtensionFilter(extensions));
+	public FileChooser getFileChooser() {
+		FileChooser fileChooser = new FileChooser();
 		return fileChooser;
 	}
 	public CheckBox getCheckBox(int x, int y, String text, String arcType) {
