@@ -36,7 +36,7 @@ public class EventAction implements EventHandler<Event>{
 			
 			switch(arcType.toLowerCase()) {
 			case "0":
-				eventActionMethods.getPitObservableList();
+				eventActionMethods.setPitObservableList();
 				break;
 			case "1":
 				System.out.println("wyślij");
@@ -44,26 +44,20 @@ public class EventAction implements EventHandler<Event>{
 			case "2":
 				eventActionMethods.getAllUPOs();
 				break;
-			case "7":
-				eventActionMethods.getCaCertsTest();
+			case "3":
+				eventActionMethods.setUpoObservableList();
 				break;
-			case "prd":
-				System.out.println("case produkcja");
-				break;
-			
-			
+			case "9":
+				eventActionMethods.setCaCertsTest();
+				break;	
+				
 			case "generuj wsdl":
 				String wsdl = "https://test-bramka.edeklaracje.gov.pl/uslugi/dokumenty?wsdl";
 //				WsdlToJavaGenerator wsdlToJavaGenerator = new WsdlToJavaGenerator();
 //				wsdlToJavaGenerator.generateTestWsdlSource("test", wsdl);
 				
 				break;
-			
-			case "wyślij":
-				System.out.println(progressBar.getProgress());
-				progressBar.setProgress(progressBar.getProgress() +0.01);
-				
-				break;
+
 			case "tab1":
 				
 				uris.setTestMode(appObjects.getCheckBox().isPressed());
@@ -74,7 +68,7 @@ public class EventAction implements EventHandler<Event>{
 //				progressBar.setProgress(progressBar.getProgress() +0.01);
 				break;
 			default:
-				eventActionMethods.getDefaultAction();
+				eventActionMethods.setDefaultAction();
 				break;
 			}
 		}

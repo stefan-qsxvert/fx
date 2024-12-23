@@ -17,7 +17,7 @@ public class EventActionMethods {
 		this.appObjects = appObjects;
 	}
 	
-	public void getPitObservableList() {
+	public void setPitObservableList() {
 		
 		FileChooser fileChooser = appObjects.getFileChooser();
 		fileChooser.getExtensionFilters().clear();
@@ -42,7 +42,32 @@ public class EventActionMethods {
 //		progressBar.setProgress(0);
 	}
 	
-	public void getDefaultAction() {
+public void setUpoObservableList() {
+		
+		FileChooser fileChooser = appObjects.getFileChooser();
+		fileChooser.getExtensionFilters().clear();
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("UPO", "*.xml"));
+		
+		List<File> listaUPO = fileChooser.showOpenMultipleDialog(appObjects.getStage());
+		File[] plikiUPO = new File[listaUPO.size()];
+		
+		int i = 0;
+		for (File f : listaUPO) {
+			plikiUPO[i] = new File(f.getAbsolutePath());
+			i++;
+		}
+		
+		ObservableList<File> files = FXCollections.observableArrayList();
+		files.addAll(plikiUPO);
+		appObjects.setObservableListOfUPO(files);
+
+		TableView<File> tableView = appObjects.getTableView();
+		tableView.setItems(files);
+		
+//		progressBar.setProgress(0);
+	}
+	
+	public void setDefaultAction() {
 		System.out.println("brak zdefiniiowanego działania");
 		
 		appObjects.getProgressBar().setProgress(0);
@@ -59,7 +84,7 @@ public class EventActionMethods {
 //			progressBar.setProgress(progressBar.getProgress() + e);
 		}
 	}
-	public void getCaCertsTest() {
+	public void setCaCertsTest() {
 		FileChooser fileChooser = appObjects.getFileChooser();
 		fileChooser.getExtensionFilters().clear();
 		fileChooser.getExtensionFilters().add(new ExtensionFilter("jks", "*.jks"));

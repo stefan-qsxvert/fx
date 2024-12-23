@@ -78,7 +78,7 @@ public class Gui extends Application {
 		appObjects.setCheckBox(checkBox);
 		appObjects.setEdeklaracje(new Edeklaracje(appObjects));
 		appObjects.setComboBox(fxComponents.getComboBox(580,10, "99"));
-		appObjects.setCertLocationPath(fxComponents.getTextField(580, 42, "7"));
+		appObjects.setCertLocationPath(fxComponents.getTextField(580, 42, "9"));
 		
 		appObjects.setFileChooser(fxComponents.getFileChooser());
 		
