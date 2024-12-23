@@ -1,14 +1,9 @@
 package org.app;
 
 import java.io.File;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
-import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -37,31 +32,25 @@ public class EventAction implements EventHandler<Event>{
 		FileChooser fileChooser = null;
 //		progressBar.setProgress(0.1);
 		{ 
+			EventActionMethods eventActionMethods = new EventActionMethods(appObjects);
+			
 			switch(arcType.toLowerCase()) {
+			case "0":
+				eventActionMethods.getPitObservableList();
+				break;
+			case "1":
+				System.out.println("wyślij");
+				break;
+			case "2":
+				eventActionMethods.getAllUPOs();
+				break;
 			case "7":
-				fileChooser = appObjects.getFileChooser();
-				fileChooser.getExtensionFilters().clear();
-				fileChooser.getExtensionFilters().add(new ExtensionFilter("jks", "*.jks"));
-				
-				File cacert = fileChooser.showOpenDialog(appObjects.getStage());
-				appObjects.getCertLocationPath().setText(cacert.getPath());
+				eventActionMethods.getCaCertsTest();
 				break;
 			case "prd":
 				System.out.println("case produkcja");
 				break;
-			case "2":
-				file = new File("/home/tee/refIds/");
-				String[] fileList = file.list();
-//				Double e = (double) ((1/Double.valueOf( fileList.length))/1);
-//				System.out.println(e);
-				for (int i = 0; i < fileList.length; i++) {
-					appObjects.getEdeklaracje().getUPO(fileList[i]);
-//					progressBar.setProgress(progressBar.getProgress() + e);
-				}
-				
-				break;
-			case "1":
-				System.out.println("wyślij");
+			
 			
 			case "generuj wsdl":
 				String wsdl = "https://test-bramka.edeklaracje.gov.pl/uslugi/dokumenty?wsdl";
@@ -69,29 +58,7 @@ public class EventAction implements EventHandler<Event>{
 //				wsdlToJavaGenerator.generateTestWsdlSource("test", wsdl);
 				
 				break;
-			case "0":
-				fileChooser = appObjects.getFileChooser();
-				fileChooser.getExtensionFilters().clear();
-				fileChooser.getExtensionFilters().add(new ExtensionFilter("PIT", "*.xml"));
-				
-				List<File> listaPit = fileChooser.showOpenMultipleDialog(appObjects.getStage());
-				File[] plikiPit = new File[listaPit.size()];
-				
-				int i = 0;
-				for (File f : listaPit) {
-					plikiPit[i] = new File(f.getAbsolutePath());
-					i++;
-				}
-				
-				ObservableList<File> files = FXCollections.observableArrayList();
-				files.addAll(plikiPit);
-				appObjects.setFiles0(files);
-
-				TableView<File> tableView = appObjects.getTableView();
-				tableView.setItems(files);
-				
-				progressBar.setProgress(0);
-				break;
+			
 			case "wyślij":
 				System.out.println(progressBar.getProgress());
 				progressBar.setProgress(progressBar.getProgress() +0.01);
@@ -107,9 +74,7 @@ public class EventAction implements EventHandler<Event>{
 //				progressBar.setProgress(progressBar.getProgress() +0.01);
 				break;
 			default:
-//				System.out.println("brak zdefiniiowanego działania");
-				progressBar.setProgress(0);
-				System.out.println(appObjects.getCheckBox() + " " + appObjects.getCheckBox().isSelected());
+				eventActionMethods.getDefaultAction();
 				break;
 			}
 		}

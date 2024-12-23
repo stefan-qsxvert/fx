@@ -17,13 +17,16 @@ public class AppObjects {
 	private TextField certLocationPath;
 	private ProgressBar progressBar;
 	private ComboBox<String> comboBox;
-	private ObservableList<File> files;
+	private ObservableList<File> observableListOfPit;
+	private ObservableList<File> observableListOfUPO;
 	private TableView<File> tableView;
 	private Stage stage;
 	private CheckBox checkBox;
 	private Uris uris;
 	private FileChooser fileChooser;
 	private Edeklaracje edeklaracje;
+	private File caCertJksTest;
+	private File caCertJksPrd;
 	
 	public AppObjects() {
 	}
@@ -42,14 +45,6 @@ public class AppObjects {
 
 	public void setProgressBar(ProgressBar progressBar) {
 		this.progressBar = progressBar;
-	}
-
-	public ObservableList<File> getFiles() {
-		return files;
-	}
-
-	public void setFiles0(ObservableList<File> files) {
-		this.files = files;
 	}
 
 	public TableView<File> getTableView() {
@@ -117,7 +112,36 @@ public class AppObjects {
 		this.certLocationPath = certLocationPath;
 	}
 
-	
+	public ObservableList<File> getObservableListOfPit() {
+		return observableListOfPit;
+	}
 
+	public void setObservableListOfPit(ObservableList<File> observableListOfPit) {
+		this.observableListOfPit = observableListOfPit;
+	}
+
+	public ObservableList<File> getObservableListOfUPO() {
+		return observableListOfUPO;
+	}
+
+	public void setObservableListOfUPO(ObservableList<File> observableListOfUPO) {
+		this.observableListOfUPO = observableListOfUPO;
+	}
+
+	public File getCaCertJksTest() {
+		return caCertJksTest;
+	}
+
+	public void setCaCertJksTest(File caCertJksTest) {
+		this.caCertJksTest = caCertJksTest;
+	}
+
+	public File getCaCertJksPrd() {
+		return caCertJksPrd;
+	}
+
+	public void setCaCertJksPrd(File caCertJksPrd) {
+		this.caCertJksPrd = caCertJksPrd;
+	}
 	
 }
