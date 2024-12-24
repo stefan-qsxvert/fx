@@ -1,6 +1,15 @@
 package org.app;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -93,5 +102,25 @@ public void setUpoObservableList() {
 		appObjects.setCaCertJksTest(cacert);
 		appObjects.getCertLocationPath().setText(cacert.getPath());
 	}
-
+	
+	public void loadPrdCertToJks() throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException {
+		
+		File magazyn = appObjects.getCaCertJksPrd();
+		FileChooser fileChooser = appObjects.getFileChooser();
+		fileChooser.getExtensionFilters().clear();
+		File certFile = fileChooser.showOpenDialog(appObjects.getStage());
+		
+		CertificateFactory cf = CertificateFactory.getInstance("X.509");
+		FileInputStream fileInputStream = new FileInputStream(certFile);	
+		X509Certificate x509Certificate = (X509Certificate) cf.generateCertificate(fileInputStream);
+		fileInputStream.close();
+		
+		KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+		keyStore.setCertificateEntry(certFile.getName(), x509Certificate);
+		
+		FileOutputStream fileOutputStream = new FileOutputStream(magazyn);
+		keyStore.store(fileOutputStream, "qqq111".toCharArray());
+		fileOutputStream.flush();
+		fileOutputStream.close();
+	}
 }

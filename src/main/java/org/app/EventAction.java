@@ -34,7 +34,7 @@ public class EventAction implements EventHandler<Event>{
 		{ 
 			EventActionMethods eventActionMethods = new EventActionMethods(appObjects);
 			
-			switch(arcType.toLowerCase()) {
+		switch(arcType.toLowerCase()) {
 			case "0":
 				eventActionMethods.setPitObservableList();
 				break;
