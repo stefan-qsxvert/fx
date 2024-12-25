@@ -1,11 +1,16 @@
 package org.app;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.util.List;
+import java.util.stream.Stream;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,7 +48,7 @@ public class EventAction implements EventHandler<Event>{
 				eventActionMethods.setPitObservableList();
 				break;
 			case "1":
-				System.out.println("wyślij");
+				eventActionMethods.sendAllPits();
 				break;
 			case "2":
 				eventActionMethods.getAllUPOs();
@@ -70,15 +75,6 @@ public class EventAction implements EventHandler<Event>{
 				
 				break;
 
-			case "tab1":
-				
-				uris.setTestMode(appObjects.getCheckBox().isPressed());
-				System.out.println(uris.getBramka());
-				uris.setTestMode(appObjects.getCheckBox().isPressed());
-				System.out.println(uris.getBramka());
-				
-//				progressBar.setProgress(progressBar.getProgress() +0.01);
-				break;
 			default:
 				eventActionMethods.setDefaultAction();
 				break;

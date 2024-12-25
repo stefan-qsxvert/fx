@@ -62,23 +62,19 @@ public class Edeklaracje {
 				SSLContext sslContext = SSLContext.getInstance("TLS");
 				// Inicjalizuj SSLContext z trustManager i keyManager
 				
-				 KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-				 keyManagerFactory.init(keyStore, "qqq111".toCharArray());
+				KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+				keyManagerFactory.init(keyStore, "qqq111".toCharArray());
 				 
-				 TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-				 trustManagerFactory.init(keyStore);
+				TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+				trustManagerFactory.init(keyStore);
+				
+			    KeyManager[] keyManagers = keyManagerFactory.getKeyManagers();
+			    TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
 				 
-//			      SecureRandom random = new SecureRandom();
-//			      byte bytes[] = new byte[20];
-//			      random.nextBytes(bytes);
+				sslContext.init(keyManagers,trustManagers,new SecureRandom());
 				 
-			      KeyManager[] keyManagers = keyManagerFactory.getKeyManagers();
-			      TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
-				 
-				 sslContext.init(keyManagers,trustManagers,new SecureRandom());
-				 
-				 SSLEngine sslEngine = sslContext.createSSLEngine();
-				 sslEngine.beginHandshake();
+				SSLEngine sslEngine = sslContext.createSSLEngine();
+				sslEngine.beginHandshake();
 				 
 //				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
 //				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");
@@ -100,7 +96,7 @@ public class Edeklaracje {
 					System.out.println("Response: " + status.value );
 					System.out.println("Response: " + statusOpis.value );
 					
-					File file = new File("/home/tee/refIds/" + refId.value);
+					File file = new File("/home/tee/refIds/" + refId.value + ".xml");
 					file.createNewFile();
 					System.out.println(file.exists());
 					BufferedWriter bfw = new BufferedWriter(new FileWriter(file));
@@ -115,24 +111,6 @@ public class Edeklaracje {
 
 		}
 		
-		public void listOfDocument(String list) throws IOException {
-			File file = new File(list);
-			BufferedReader bfReader = new BufferedReader(new FileReader(file));
-//			String listOfRfIds = bfReader.lines().toArray().toString();
-//			List<String> listOfRfIds = bfReader.lines().toList();
-			String[] listOfRfIds = bfReader.lines().toList().toString().split(";");
-			bfReader.close();
-			for (int i =0; i < listOfRfIds.length; i++) {
-				System.out.println(listOfRfIds[i]);
-		    }
-			
-			
-			System.out.println(file.exists());
-			
-//			}
-			
-		}
-		
 		public void getUPO(String refId) {
 			
 			try { 
@@ -142,24 +120,24 @@ public class Edeklaracje {
 				SSLContext sslContext = SSLContext.getInstance("TLS");
 				// Inicjalizuj SSLContext z trustManager i keyManager
 				
-				 KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-				 keyManagerFactory.init(keyStore, "qqq111".toCharArray());
+				KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+				keyManagerFactory.init(keyStore, "qqq111".toCharArray());
 				 
-				 TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-				 trustManagerFactory.init(keyStore);
+				TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+				trustManagerFactory.init(keyStore);
 				 
 //			      SecureRandom random = new SecureRandom();
 //			      byte bytes[] = new byte[20];
 //			      random.nextBytes(bytes);
 				 
-				 KeyManager[] keyManagers = keyManagerFactory.getKeyManagers();
-			      TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
+				KeyManager[] keyManagers = keyManagerFactory.getKeyManagers();
+			    TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
 				 
-				 sslContext.init(keyManagers,trustManagers,new SecureRandom());
+				sslContext.init(keyManagers,trustManagers,new SecureRandom());
 				 
-				 SSLEngine sslEngine = sslContext.createSSLEngine();
-				 sslEngine.setUseClientMode(true);
-				 sslEngine.beginHandshake();
+				SSLEngine sslEngine = sslContext.createSSLEngine();
+				sslEngine.setUseClientMode(true);
+				sslEngine.beginHandshake();
 				
 //				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
 //				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");

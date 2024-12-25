@@ -19,6 +19,7 @@ public class AppObjects {
 	private ComboBox<String> comboBox;
 	private ObservableList<File> observableListOfPit;
 	private ObservableList<File> observableListOfUPO;
+	private File[] pitFiles;
 	private TableView<File> tableView;
 	private Stage stage;
 	private CheckBox checkBox;
@@ -134,6 +135,14 @@ public class AppObjects {
 
 	public void setCertJks(File certJks) {
 		this.certJks = certJks;
+	}
+
+	public File[] getPitFiles() {
+		return pitFiles;
+	}
+
+	public void setPitFiles(File[] plikiPit) {
+		this.pitFiles = plikiPit;
 	}
 
 	

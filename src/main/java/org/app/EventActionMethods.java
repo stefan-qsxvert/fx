@@ -1,8 +1,10 @@
 package org.app;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -44,6 +46,7 @@ public class EventActionMethods {
 		ObservableList<File> files = FXCollections.observableArrayList();
 		files.addAll(plikiPit);
 		appObjects.setObservableListOfPit(files);
+		appObjects.setPitFiles(plikiPit);
 
 		TableView<File> tableView = appObjects.getTableView();
 		tableView.setItems(files);
@@ -132,8 +135,34 @@ public void setUpoObservableList() {
 			keyStore.store(fileOutputStream, "qqq111".toCharArray());
 			fileOutputStream.flush();
 			fileOutputStream.close();
-	}catch (Exception e) {
-		System.out.println("Nie ma certyfikatu");
+		}catch (Exception e) {
+			System.out.println("Nie ma certyfikatu");
+		}
 	}
+	public void sendAllPits() {
+		File[] pitFiles = appObjects.getPitFiles();
+		
+		try {
+			for (int i = 0; i < pitFiles.length; i++) {
+				BufferedReader bufferedReader = new BufferedReader(new FileReader(pitFiles[i]));
+//				StringBuilder stringBuilder = new StringBuilder();
+			
+				String s = null;
+				String content = bufferedReader.readLine();
+				while ((s = bufferedReader.readLine()) != null) {
+					content = content + s + "\n";
+				}
+				bufferedReader.close();
+
+				System.out.println(content);
+				
+	// wywołanie metowy sendDoc z wsdl z warunkiem content.getBytes()
+				
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }
