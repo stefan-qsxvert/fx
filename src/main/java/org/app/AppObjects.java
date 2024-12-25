@@ -25,8 +25,8 @@ public class AppObjects {
 	private Uris uris;
 	private FileChooser fileChooser;
 	private Edeklaracje edeklaracje;
-	private File caCertJksTest;
-	private File caCertJksPrd;
+	private File certJks;
+
 	
 	public AppObjects() {
 	}
@@ -128,20 +128,14 @@ public class AppObjects {
 		this.observableListOfUPO = observableListOfUPO;
 	}
 
-	public File getCaCertJksTest() {
-		return caCertJksTest;
+	public File getCertJks() {
+		return certJks;
 	}
 
-	public void setCaCertJksTest(File caCertJksTest) {
-		this.caCertJksTest = caCertJksTest;
+	public void setCertJks(File certJks) {
+		this.certJks = certJks;
 	}
 
-	public File getCaCertJksPrd() {
-		return caCertJksPrd;
-	}
-
-	public void setCaCertJksPrd(File caCertJksPrd) {
-		this.caCertJksPrd = caCertJksPrd;
-	}
+	
 	
 }

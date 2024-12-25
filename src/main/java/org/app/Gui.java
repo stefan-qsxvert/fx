@@ -60,7 +60,7 @@ public class Gui extends Application {
 		
 		Button bt0 =fxComponents.getButton(580, 380, "Wyślij!", "1");
 		Button bt1 =fxComponents.getButton(750, 380, "prd", "99");
-		Button bt2 =fxComponents.getButton(750, 340, "generuj wsdl","99");
+		Button bt2 =fxComponents.getButton(750, 340, "Wybierz certyfikat","4");
 		Button bt3 =fxComponents.getButton(580, 340, "Pobierz UPO", "2");
 		Button bt4 =fxComponents.getButton(750, 240, "Wybierz UPO","3");
 		Button bt5 =fxComponents.getButton(580, 240, "Wybierz PITy","0");
@@ -78,7 +78,7 @@ public class Gui extends Application {
 		appObjects.setCheckBox(checkBox);
 		appObjects.setEdeklaracje(new Edeklaracje(appObjects));
 		appObjects.setComboBox(fxComponents.getComboBox(580,10, "99"));
-		appObjects.setCertLocationPath(fxComponents.getTextField(580, 42, "9"));
+		appObjects.setCertLocationPath(fxComponents.getTextField(580, 42, "5"));
 		
 		appObjects.setFileChooser(fxComponents.getFileChooser());
 		

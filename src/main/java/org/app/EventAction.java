@@ -1,6 +1,10 @@
 package org.app;
 
 import java.io.File;
+import java.io.IOException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -47,9 +51,17 @@ public class EventAction implements EventHandler<Event>{
 			case "3":
 				eventActionMethods.setUpoObservableList();
 				break;
-			case "9":
-				eventActionMethods.setCaCertsTest();
-				break;	
+			case "4":
+			try {
+				eventActionMethods.loadCertToJks();
+			} catch (CertificateException | KeyStoreException | NoSuchAlgorithmException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				break;
+			case "5":
+				eventActionMethods.setCertsJks();
+				break;
 				
 			case "generuj wsdl":
 				String wsdl = "https://test-bramka.edeklaracje.gov.pl/uslugi/dokumenty?wsdl";

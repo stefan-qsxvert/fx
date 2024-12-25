@@ -27,7 +27,7 @@ public class EventActionMethods {
 	}
 	
 	public void setPitObservableList() {
-		
+		try {
 		FileChooser fileChooser = appObjects.getFileChooser();
 		fileChooser.getExtensionFilters().clear();
 		fileChooser.getExtensionFilters().add(new ExtensionFilter("PIT", "*.xml"));
@@ -49,10 +49,13 @@ public class EventActionMethods {
 		tableView.setItems(files);
 		
 //		progressBar.setProgress(0);
+	}catch(Exception e) {
+		System.out.println("Nie wybrano plików");
+	}
 	}
 	
 public void setUpoObservableList() {
-		
+	try {	
 		FileChooser fileChooser = appObjects.getFileChooser();
 		fileChooser.getExtensionFilters().clear();
 		fileChooser.getExtensionFilters().add(new ExtensionFilter("UPO", "*.xml"));
@@ -72,7 +75,9 @@ public void setUpoObservableList() {
 
 		TableView<File> tableView = appObjects.getTableView();
 		tableView.setItems(files);
-		
+	}catch(Exception e) {
+		System.out.println("Nie wybrano plików");
+	}
 //		progressBar.setProgress(0);
 	}
 	
@@ -93,34 +98,42 @@ public void setUpoObservableList() {
 //			progressBar.setProgress(progressBar.getProgress() + e);
 		}
 	}
-	public void setCaCertsTest() {
-		FileChooser fileChooser = appObjects.getFileChooser();
-		fileChooser.getExtensionFilters().clear();
-		fileChooser.getExtensionFilters().add(new ExtensionFilter("jks", "*.jks"));
+	public void setCertsJks() {
+		try {
+			FileChooser fileChooser = appObjects.getFileChooser();
+			fileChooser.getExtensionFilters().clear();
+			fileChooser.getExtensionFilters().add(new ExtensionFilter("jks", "*.jks"));
 		
-		File cacert = fileChooser.showOpenDialog(appObjects.getStage());
-		appObjects.setCaCertJksTest(cacert);
-		appObjects.getCertLocationPath().setText(cacert.getPath());
+			File cacert = fileChooser.showOpenDialog(appObjects.getStage());
+			appObjects.setCertJks(cacert);
+			appObjects.getCertLocationPath().setText(cacert.getPath());
+		}catch (Exception e) {
+			System.out.println("brak magazynu");
+		}
 	}
 	
-	public void loadPrdCertToJks() throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException {
+	public void loadCertToJks() throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException {
+		try {
+			File magazyn = appObjects.getCertJks();
+			FileChooser fileChooser = appObjects.getFileChooser();
+			fileChooser.getExtensionFilters().clear();
+			fileChooser.getExtensionFilters().add(new ExtensionFilter("cert", "*.crt"));
+			File certFile = fileChooser.showOpenDialog(appObjects.getStage());
 		
-		File magazyn = appObjects.getCaCertJksPrd();
-		FileChooser fileChooser = appObjects.getFileChooser();
-		fileChooser.getExtensionFilters().clear();
-		File certFile = fileChooser.showOpenDialog(appObjects.getStage());
+			CertificateFactory cf = CertificateFactory.getInstance("X.509");
+			FileInputStream fileInputStream = new FileInputStream(certFile);	
+			X509Certificate x509Certificate = (X509Certificate) cf.generateCertificate(fileInputStream);
+			fileInputStream.close();
 		
-		CertificateFactory cf = CertificateFactory.getInstance("X.509");
-		FileInputStream fileInputStream = new FileInputStream(certFile);	
-		X509Certificate x509Certificate = (X509Certificate) cf.generateCertificate(fileInputStream);
-		fileInputStream.close();
+			KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+			keyStore.setCertificateEntry(certFile.getName(), x509Certificate);
 		
-		KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-		keyStore.setCertificateEntry(certFile.getName(), x509Certificate);
-		
-		FileOutputStream fileOutputStream = new FileOutputStream(magazyn);
-		keyStore.store(fileOutputStream, "qqq111".toCharArray());
-		fileOutputStream.flush();
-		fileOutputStream.close();
+			FileOutputStream fileOutputStream = new FileOutputStream(magazyn);
+			keyStore.store(fileOutputStream, "qqq111".toCharArray());
+			fileOutputStream.flush();
+			fileOutputStream.close();
+	}catch (Exception e) {
+		System.out.println("Nie ma certyfikatu");
+	}
 	}
 }
