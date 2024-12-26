@@ -1,6 +1,7 @@
 package org.app;
 
 import java.io.File;
+
 import javafx.collections.ObservableList;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -8,7 +9,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 public class AppObjects {

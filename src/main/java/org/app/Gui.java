@@ -91,7 +91,8 @@ public class Gui extends Application {
 		
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(460);
-		primaryStage.setWidth(920);
+		primaryStage.setWidth(980);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 
 	}
