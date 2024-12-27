@@ -59,10 +59,10 @@ public class Gui extends Application {
 
 		tableView0.setItems(files);
 		
-		Button bt0 =fxComponents.getButton(620, 340, "Wyślij!", "1");
-		Button bt1 =fxComponents.getButton(790, 340, "prd", "99");
-		Button bt2 =fxComponents.getButton(790, 340, "Wybierz certyfikat","4");
-		Button bt3 =fxComponents.getButton(620, 340, "Pobierz UPO", "2");
+		Button bt0 =fxComponents.getButton(620, 100, "test", "99");
+		Button bt1 =fxComponents.getButton(790, 340, "Pobierz UPO", "2");
+		Button bt2 =fxComponents.getButton(790, 180, "Załaduj certyfikat","4");
+		Button bt3 =fxComponents.getButton(620, 340, "Wyślij Pity", "1");
 		Button bt4 =fxComponents.getButton(790, 240, "Wybierz UPO","3");
 		Button bt5 =fxComponents.getButton(620, 240, "Wybierz PITy","0");
 		
