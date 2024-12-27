@@ -36,9 +36,9 @@ public class EventAction implements EventHandler<Event>{
 	@Override
 	public void handle(Event arg0) {
 		// TODO Auto-generated method stub
-		Uris uris = appObjects.getUris();
-		ProgressBar progressBar = appObjects.getProgressBar();
-		FileChooser fileChooser = null;
+//		Uris uris = appObjects.getUris();
+//		ProgressBar progressBar = appObjects.getProgressBar();
+//		FileChooser fileChooser;
 //		progressBar.setProgress(0.1);
 		{ 
 			EventActionMethods eventActionMethods = new EventActionMethods(appObjects);

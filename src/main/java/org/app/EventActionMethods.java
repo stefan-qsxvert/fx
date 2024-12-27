@@ -30,12 +30,12 @@ public class EventActionMethods {
 	
 	public void setPitObservableList() {
 		try {
-		FileChooser fileChooser = appObjects.getFileChooser();
-		fileChooser.getExtensionFilters().clear();
-		fileChooser.getExtensionFilters().add(new ExtensionFilter("PIT", "*.xml"));
-		
-		List<File> listaPit = fileChooser.showOpenMultipleDialog(appObjects.getStage());
-		File[] plikiPit = new File[listaPit.size()];
+			FileChooser fileChooser = appObjects.getFileChooser();
+			fileChooser.getExtensionFilters().clear();
+			fileChooser.getExtensionFilters().add(new ExtensionFilter("PIT", "*.xml"));
+			
+			List<File> listaPit = fileChooser.showOpenMultipleDialog(appObjects.getStage());
+			File[] plikiPit = new File[listaPit.size()];
 		
 		int i = 0;
 		for (File f : listaPit) {
@@ -43,21 +43,21 @@ public class EventActionMethods {
 			i++;
 		}
 		
-		ObservableList<File> files = FXCollections.observableArrayList();
-		files.addAll(plikiPit);
-		appObjects.setObservableListOfPit(files);
-		appObjects.setPitFiles(plikiPit);
+			ObservableList<File> files = FXCollections.observableArrayList();
+			files.addAll(plikiPit);
+			appObjects.setObservableListOfPit(files);
+			appObjects.setPitFiles(plikiPit);
 
 		TableView<File> tableView = appObjects.getTableView();
-		tableView.setItems(files);
+				tableView.setItems(files);
 		
 //		progressBar.setProgress(0);
-	}catch(Exception e) {
-		System.out.println("Nie wybrano plików");
-	}
-	}
+		}catch(Exception e) {
+			System.out.println("Nie wybrano plików");
+		}
+		}
 	
-public void setUpoObservableList() {
+	public void setUpoObservableList() {
 	try {	
 		FileChooser fileChooser = appObjects.getFileChooser();
 		fileChooser.getExtensionFilters().clear();
@@ -71,7 +71,7 @@ public void setUpoObservableList() {
 			plikiUPO[i] = new File(f.getAbsolutePath());
 			i++;
 		}
-		
+		appObjects.setUpoFiles(plikiUPO);
 		ObservableList<File> files = FXCollections.observableArrayList();
 		files.addAll(plikiUPO);
 		appObjects.setObservableListOfUPO(files);
@@ -92,12 +92,12 @@ public void setUpoObservableList() {
 	}
 	
 	public void getAllUPOs() {
-		File file = new File("/home/tee/refIds/");
-		String[] fileList = file.list();
+		File[] file = appObjects.getUpoFiles(); // new File("/home/tee/refIds/");
+//		String[] fileList = file.list();''
 //		Double e = (double) ((1/Double.valueOf( fileList.length))/1);
 //		System.out.println(e);
-		for (int i = 0; i < fileList.length; i++) {
-			appObjects.getEdeklaracje().getUPO(fileList[i]);
+		for (int i = 0; i < file.length; i++) {
+			appObjects.getEdeklaracje().getUPO(file[i].getName().toString());
 //			progressBar.setProgress(progressBar.getProgress() + e);
 		}
 	}
@@ -163,6 +163,5 @@ public void setUpoObservableList() {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 }

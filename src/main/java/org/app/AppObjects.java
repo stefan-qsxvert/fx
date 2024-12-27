@@ -20,6 +20,7 @@ public class AppObjects {
 	private ObservableList<File> observableListOfPit;
 	private ObservableList<File> observableListOfUPO;
 	private File[] pitFiles;
+	private File[] upoFiles;
 	private TableView<File> tableView;
 	private Stage stage;
 	private CheckBox checkBox;
@@ -145,6 +146,13 @@ public class AppObjects {
 		this.pitFiles = plikiPit;
 	}
 
+	public File[] getUpoFiles() {
+		return upoFiles;
+	}
+
+	public void setUpoFiles(File[] upoFiles) {
+		this.upoFiles = upoFiles;
+	}
 	
 	
 }

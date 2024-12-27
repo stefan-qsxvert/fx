@@ -108,7 +108,7 @@ public class FxComponents {
 		comboBox.setPrefSize(324, 24);
 		String[] list = new String[9];
 		ObservableList<String> stringObservableList = FXCollections.observableArrayList();
-		comboBox.setValue(System.getProperty("os.name"));
+		comboBox.setValue(System.getProperty("os.name").toLowerCase());
 		stringObservableList.addAll("windows", "linux", "inny");
 		comboBox.setItems(stringObservableList);
 		return comboBox;
