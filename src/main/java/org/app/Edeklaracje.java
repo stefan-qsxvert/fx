@@ -55,8 +55,8 @@ public class Edeklaracje {
 			try { 
 				
 				appObjects.getSslContext();
-				appObjects.getSslContext().createSSLEngine().beginHandshake();
-				
+//				appObjects.getSslContext().createSSLEngine(). beginHandshake();
+//				
 					GateService service = new GateService(); 
 					GateServicePortType port = service.getGateServiceSOAP11Port(); // Przykładowe wywołanie operacji 
 					
@@ -92,7 +92,7 @@ public class Edeklaracje {
 		public void getUPO(String refId) throws SSLException {
 			
 			appObjects.getSslContext();
-			appObjects.getSslContext().createSSLEngine().beginHandshake();
+//			appObjects.getSslContext().createSSLEngine().beginHandshake();
 			
 			try {
 				
