@@ -23,9 +23,11 @@ import javafx.stage.FileChooser.ExtensionFilter;
 public class EventActionMethods {
 	
 	AppObjects appObjects;
+	PrepSSL prepSSL;
 	
 	public EventActionMethods(AppObjects appObjects) {
 		this.appObjects = appObjects;
+		prepSSL = new PrepSSL(appObjects);
 	}
 	
 	public void setPitObservableList() {
@@ -110,6 +112,9 @@ public class EventActionMethods {
 			File cacert = fileChooser.showOpenDialog(appObjects.getStage());
 			appObjects.setCertJks(cacert);
 			appObjects.getCertLocationPath().setText(cacert.getPath());
+			
+			appObjects.setSslContext(prepSSL.getSSLContext());
+			
 		}catch (Exception e) {
 			System.out.println("brak magazynu");
 		}
@@ -135,6 +140,9 @@ public class EventActionMethods {
 			keyStore.store(fileOutputStream, "qqq111".toCharArray());
 			fileOutputStream.flush();
 			fileOutputStream.close();
+			
+			appObjects.setSslContext(prepSSL.getSSLContext());
+			
 		}catch (Exception e) {
 			System.out.println("Nie ma certyfikatu");
 		}

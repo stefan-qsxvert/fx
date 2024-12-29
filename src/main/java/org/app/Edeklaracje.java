@@ -1,12 +1,9 @@
 package org.app;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.security.KeyStore;
 import java.security.SecureRandom;
 import java.time.ZonedDateTime;
@@ -55,30 +52,8 @@ public class Edeklaracje {
 	
 		public void sendDoc(byte[] document) {
 			try { 
-
-//				
-				KeyStore keyStore = KeyStore.getInstance("JKS"); 
-				keyStore.load(new FileInputStream(new File(appObjects.getCertLocationPath().getText())), "qqq111".toCharArray()); 
-				SSLContext sslContext = SSLContext.getInstance("TLS");
-				// Inicjalizuj SSLContext z trustManager i keyManager
 				
-				KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-				keyManagerFactory.init(keyStore, "qqq111".toCharArray());
-				 
-				TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-				trustManagerFactory.init(keyStore);
-				
-			    KeyManager[] keyManagers = keyManagerFactory.getKeyManagers();
-			    TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
-				 
-				sslContext.init(keyManagers,trustManagers,new SecureRandom());
-				 
-				SSLEngine sslEngine = sslContext.createSSLEngine();
-				sslEngine.beginHandshake();
-				 
-//				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
-//				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");
-//				System.setProperty("javax.net.ssl.keyStoreType", "JKS");
+				appObjects.getSslContext();
 				
 					GateService service = new GateService(); 
 					GateServicePortType port = service.getGateServiceSOAP11Port(); // Przykładowe wywołanie operacji 
@@ -92,6 +67,7 @@ public class Edeklaracje {
 //					refId = new Holder("88a60f9d03045f163e10790ace36ebc3");
 					
 					port.sendDocument(document, refId, status, statusOpis); 
+					
 					System.out.println("Response: " + refId.value );
 					System.out.println("Response: " + status.value );
 					System.out.println("Response: " + statusOpis.value );
@@ -113,41 +89,15 @@ public class Edeklaracje {
 		
 		public void getUPO(String refId) {
 			
-			try { 
-//				
-				KeyStore keyStore = KeyStore.getInstance("JKS"); 
-				keyStore.load(new FileInputStream(new File(appObjects.getCertLocationPath().getText())), "qqq111".toCharArray()); 
-				SSLContext sslContext = SSLContext.getInstance("TLS");
-				// Inicjalizuj SSLContext z trustManager i keyManager
-				
-				KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-				keyManagerFactory.init(keyStore, "qqq111".toCharArray());
-				 
-				TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-				trustManagerFactory.init(keyStore);
-				 
-//			      SecureRandom random = new SecureRandom();
-//			      byte bytes[] = new byte[20];
-//			      random.nextBytes(bytes);
-				 
-				KeyManager[] keyManagers = keyManagerFactory.getKeyManagers();
-			    TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
-				 
-				sslContext.init(keyManagers,trustManagers,new SecureRandom());
-				 
-				SSLEngine sslEngine = sslContext.createSSLEngine();
-				sslEngine.setUseClientMode(true);
-				sslEngine.beginHandshake();
-				
-//				System.setProperty("javax.net.ssl.keyStore",appObjects.getCertLocationPath().getText());
-//				System.setProperty("javax.net.ssl.keyStorePassword", "qqq111");
-//				System.setProperty("javax.net.ssl.keyStoreType", "JKS");
+			appObjects.getSslContext();
+			
+			try {
 				
 //				// Utwórz instancję usługi 
 				GateService service = new GateService(); 
 				GateServicePortType port = service.getGateServiceSOAP11Port(); 
 				// Utwórz żądanie UPO 
-				RequestUPO requestUPO = new RequestUPO(); 
+//				RequestUPO requestUPO = new RequestUPO(); 
 				
 				upo = new Holder<String>();
 				status = new Holder<Integer>();

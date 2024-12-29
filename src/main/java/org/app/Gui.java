@@ -30,6 +30,7 @@ public class Gui extends Application {
 		// TODO Auto-generated method stub
 		AppObjects appObjects= new AppObjects();
 		
+		
 		FxComponents fxComponents = new FxComponents(appObjects);
 
 		Group group = new Group();

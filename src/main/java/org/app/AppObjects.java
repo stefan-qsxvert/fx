@@ -2,6 +2,8 @@ package org.app;
 
 import java.io.File;
 
+import javax.net.ssl.SSLContext;
+
 import javafx.collections.ObservableList;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -28,6 +30,7 @@ public class AppObjects {
 	private FileChooser fileChooser;
 	private Edeklaracje edeklaracje;
 	private File certJks;
+	private SSLContext sslContext;
 
 	
 	public AppObjects() {
@@ -153,6 +156,13 @@ public class AppObjects {
 	public void setUpoFiles(File[] upoFiles) {
 		this.upoFiles = upoFiles;
 	}
-	
+
+	public SSLContext getSslContext() {
+		return sslContext;
+	}
+
+	public void setSslContext(SSLContext sslContext) {
+		this.sslContext = sslContext;
+	}
 	
 }
