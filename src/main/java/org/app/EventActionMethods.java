@@ -14,6 +14,8 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.List;
 
+import javax.net.ssl.SSLException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
@@ -93,7 +95,7 @@ public class EventActionMethods {
 		System.out.println(appObjects.getCheckBox() + " " + appObjects.getCheckBox().isSelected());
 	}
 	
-	public void getAllUPOs() {
+	public void getAllUPOs() throws SSLException {
 		File[] file = appObjects.getUpoFiles(); // new File("/home/tee/refIds/");
 //		String[] fileList = file.list();''
 //		Double e = (double) ((1/Double.valueOf( fileList.length))/1);

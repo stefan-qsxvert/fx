@@ -12,6 +12,7 @@ import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
+import javax.net.ssl.SSLException;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
@@ -54,6 +55,7 @@ public class Edeklaracje {
 			try { 
 				
 				appObjects.getSslContext();
+				appObjects.getSslContext().createSSLEngine().beginHandshake();
 				
 					GateService service = new GateService(); 
 					GateServicePortType port = service.getGateServiceSOAP11Port(); // Przykładowe wywołanie operacji 
@@ -87,9 +89,10 @@ public class Edeklaracje {
 
 		}
 		
-		public void getUPO(String refId) {
+		public void getUPO(String refId) throws SSLException {
 			
 			appObjects.getSslContext();
+			appObjects.getSslContext().createSSLEngine().beginHandshake();
 			
 			try {
 				
