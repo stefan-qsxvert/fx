@@ -12,6 +12,8 @@ import java.security.cert.CertificateException;
 import java.util.List;
 import java.util.stream.Stream;
 
+import javax.net.ssl.SSLException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -51,7 +53,12 @@ public class EventAction implements EventHandler<Event>{
 				eventActionMethods.sendAllPits();
 				break;
 			case "2":
+			try {
 				eventActionMethods.getAllUPOs();
+			} catch (SSLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 				break;
 			case "3":
 				eventActionMethods.setUpoObservableList();
