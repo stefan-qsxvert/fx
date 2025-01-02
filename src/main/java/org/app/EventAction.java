@@ -29,11 +29,9 @@ public class EventAction implements EventHandler<Event>{
 
 		ProgressBar progressBar = appObjects.getProgressBar();
 		ProgressIndicator progressIndicator = appObjects.getProgressIndicator();
-
-
-			EventActionMethods eventActionMethods = new EventActionMethods(appObjects);
+		
+		EventActionMethods eventActionMethods = new EventActionMethods(appObjects);
 			
-//			String selectPitsButton = appObjects.getSelectPitsButton().toString();
 //--------------------------------	
 			if (arg0.getSource() == appObjects.getSelectPitsButton()) {
 				eventActionMethods.setPitObservableList();
