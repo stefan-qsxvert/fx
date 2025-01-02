@@ -105,7 +105,7 @@ public class EventActionMethods {
 //			progressBar.setProgress(progressBar.getProgress() + e);
 		}
 	}
-	public void setCertsJks() {
+	public void setCertsJksPathField() {
 		try {
 			FileChooser fileChooser = appObjects.getFileChooser();
 			fileChooser.getExtensionFilters().clear();
@@ -113,7 +113,7 @@ public class EventActionMethods {
 		
 			File cacert = fileChooser.showOpenDialog(appObjects.getStage());
 			appObjects.setCertJks(cacert);
-			appObjects.getCertLocationPath().setText(cacert.getPath());
+			appObjects.getCertLocationPathField().setText(cacert.getPath());
 			
 			appObjects.setSslContext(prepSSL.getSSLContext());
 			

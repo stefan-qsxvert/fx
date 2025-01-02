@@ -5,9 +5,11 @@ import java.io.File;
 import javax.net.ssl.SSLContext;
 
 import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
@@ -16,9 +18,16 @@ import javafx.stage.Stage;
 public class AppObjects {
 
 	private FxComponents fxComponents;
-	private TextField certLocationPath;
+	private TextField certLocationPathField;
 	private ProgressBar progressBar;
+	private ProgressIndicator progressIndicator;
 	private ComboBox<String> comboBox;
+	private Button selectPitsButton;
+	private Button selectUposButton;
+	private Button sendPitsButton;
+	private Button downloadUposButton;
+	private Button testButton;
+	private Button loadCertButton;
 	private ObservableList<File> observableListOfPit;
 	private ObservableList<File> observableListOfUPO;
 	private File[] pitFiles;
@@ -109,12 +118,12 @@ public class AppObjects {
 		this.comboBox = comboBox;
 	}
 
-	public TextField getCertLocationPath() {
-		return certLocationPath;
+	public TextField getCertLocationPathField() {
+		return certLocationPathField;
 	}
 
-	public void setCertLocationPath(TextField certLocationPath) {
-		this.certLocationPath = certLocationPath;
+	public void setCertLocationPathField(TextField certLocationPathField) {
+		this.certLocationPathField = certLocationPathField;
 	}
 
 	public ObservableList<File> getObservableListOfPit() {
@@ -163,6 +172,62 @@ public class AppObjects {
 
 	public void setSslContext(SSLContext sslContext) {
 		this.sslContext = sslContext;
+	}
+
+	public ProgressIndicator getProgressIndicator() {
+		return progressIndicator;
+	}
+
+	public void setProgressIndicator(ProgressIndicator progressIndicator) {
+		this.progressIndicator = progressIndicator;
+	}
+
+	public Button getSelectPitsButton() {
+		return selectPitsButton;
+	}
+
+	public void setSelectPitsButton(Button selectPitsButton) {
+		this.selectPitsButton = selectPitsButton;
+	}
+
+	public Button getSelectUposButton() {
+		return selectUposButton;
+	}
+
+	public void setSelectUposButton(Button selectUposButton) {
+		this.selectUposButton = selectUposButton;
+	}
+
+	public Button getSendPitsButton() {
+		return sendPitsButton;
+	}
+
+	public void setSendPitsButton(Button sendPitsButton) {
+		this.sendPitsButton = sendPitsButton;
+	}
+
+	public Button getDownloadUposButton() {
+		return downloadUposButton;
+	}
+
+	public void setDownloadUposButton(Button downloadUposButton) {
+		this.downloadUposButton = downloadUposButton;
+	}
+
+	public Button getTestButton() {
+		return testButton;
+	}
+
+	public void setTestButton(Button testButton) {
+		this.testButton = testButton;
+	}
+
+	public Button getLoadCertButton() {
+		return loadCertButton;
+	}
+
+	public void setLoadCertButton(Button loadCertButton) {
+		this.loadCertButton = loadCertButton;
 	}
 	
 }

@@ -20,13 +20,15 @@ public class FxComponents {
 	
 	private Gui gui;
 	private AppObjects appObjects;
+	EventAction eventAction;
 	
 	public FxComponents(AppObjects appObjects) {
 		this.appObjects = appObjects;
+		eventAction = new EventAction(appObjects);
 	}	
 	
 	public TableView<File> getTableView(int x, int y, String text, String arcType) {
-		EventAction eventAction = new EventAction(appObjects, arcType);
+//		EventAction eventAction = new EventAction(appObjects, arcType);
 		TableView<File> tableView = new TableView();
 		tableView.setLayoutX(x);
 		tableView.setLayoutY(y);
@@ -35,7 +37,6 @@ public class FxComponents {
 		return tableView;
 	}
 	public TableColumn<File, String> getTableColumn(int wdth, String text, String arcType) {
-		EventAction eventAction = new EventAction(appObjects, arcType);
 		TableColumn<File, String> tableColumn = new TableColumn();
 		tableColumn.setText(text);
 		tableColumn.setPrefWidth(wdth);
@@ -43,7 +44,7 @@ public class FxComponents {
 		return tableColumn;
 	}
 	public Button getButton(int x, int y, String text, String arcType) {
-		EventAction eventAction = new EventAction(appObjects, arcType);
+//		EventAction eventAction = new EventAction(appObjects, arcType);
 		Button button = new Button();
 		button.setText(text);
 		button.setLayoutX(x);
@@ -89,7 +90,7 @@ public class FxComponents {
 		return fileChooser;
 	}
 	public CheckBox getCheckBox(int x, int y, String text, String arcType) {
-		EventAction eventAction = new EventAction(appObjects, arcType);
+//		EventAction eventAction = new EventAction(appObjects, arcType);
 		CheckBox checkBox = new CheckBox();
 		checkBox.setText(text);
 		checkBox.setLayoutX(x);
@@ -106,7 +107,7 @@ public class FxComponents {
 		comboBox.setLayoutX(x);
 		comboBox.setLayoutY(y);
 		comboBox.setPrefSize(324, 24);
-		String[] list = new String[9];
+//		String[] list = new String[9];
 		ObservableList<String> stringObservableList = FXCollections.observableArrayList();
 		comboBox.setValue(System.getProperty("os.name").toLowerCase());
 		stringObservableList.addAll("windows", "linux", "inny");
@@ -114,7 +115,7 @@ public class FxComponents {
 		return comboBox;
 	}
 	public TextField getTextField(int x, int y, String arcType) {
-		EventAction eventAction = new EventAction(appObjects, arcType);
+//		EventAction eventAction = new EventAction(appObjects, arcType);
 		TextField textField = new TextField();
 		textField.setOnMousePressed(eventAction);
 		textField.setLayoutX(x);

@@ -26,7 +26,7 @@ public class PrepSSL {
 	try {
 //		
 		KeyStore keyStore = KeyStore.getInstance("JKS"); 
-		keyStore.load(new FileInputStream(new File(appObjects.getCertLocationPath().getText())), "qqq111".toCharArray()); 
+		keyStore.load(new FileInputStream(new File(appObjects.getCertLocationPathField().getText())), "qqq111".toCharArray()); 
 		sslContext = SSLContext.getInstance("TLS");
 		// Inicjalizuj SSLContext z trustManager i keyManager
 		
