@@ -25,50 +25,48 @@ public class EventAction implements EventHandler<Event>{
 	
 	@Override
 	public void handle(Event arg0) {
-		// TODO Auto-generated method stub
-//		Uris uris = appObjects.getUris();
+
+
 		ProgressBar progressBar = appObjects.getProgressBar();
 		ProgressIndicator progressIndicator = appObjects.getProgressIndicator();
-//		FileChooser fileChooser;
-//		progressBar.setProgress(0.1);
+
+
 			EventActionMethods eventActionMethods = new EventActionMethods(appObjects);
 			
 //			String selectPitsButton = appObjects.getSelectPitsButton().toString();
-			
+//--------------------------------	
 			if (arg0.getSource() == appObjects.getSelectPitsButton()) {
 				eventActionMethods.setPitObservableList();
 			}
-			
+//--------------------------------	
 			if (arg0.getSource() == appObjects.getSelectUposButton()) {
 				eventActionMethods.setUpoObservableList();
 			}
-			
+//--------------------------------			
 			if (arg0.getSource() == appObjects.getSendPitsButton()) {
 				eventActionMethods.sendAllPits();
 			}
-			
+//--------------------------------			
 			if (arg0.getSource() == appObjects.getDownloadUposButton()) {
 				try {
 					eventActionMethods.getAllUPOs();
 				} catch (SSLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-			
+//--------------------------------			
 			if (arg0.getSource() == appObjects.getLoadCertButton()) {
 				try {
 					eventActionMethods.loadCertToJks();
 				} catch (CertificateException | KeyStoreException | NoSuchAlgorithmException | IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-			
+//--------------------------------		
 			if (arg0.getSource() == appObjects.getCertLocationPathField()) {
 				eventActionMethods.setCertsJksPathField();
 			}
-			
+//--------------------------------				
 			if (arg0.getSource() == appObjects.getTestButton()) {
 
 			}

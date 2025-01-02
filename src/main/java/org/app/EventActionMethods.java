@@ -12,6 +12,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.net.ssl.SSLException;
@@ -31,7 +33,7 @@ public class EventActionMethods {
 		this.appObjects = appObjects;
 		prepSSL = new PrepSSL(appObjects);
 	}
-	
+	//--------------------------------	
 	public void setPitObservableList() {
 		try {
 			FileChooser fileChooser = appObjects.getFileChooser();
@@ -60,7 +62,7 @@ public class EventActionMethods {
 			System.out.println("Nie wybrano plików");
 		}
 		}
-	
+	//--------------------------------	
 	public void setUpoObservableList() {
 	try {	
 		FileChooser fileChooser = appObjects.getFileChooser();
@@ -68,6 +70,7 @@ public class EventActionMethods {
 		fileChooser.getExtensionFilters().add(new ExtensionFilter("UPO", "*.xml"));
 		
 		List<File> listaUPO = fileChooser.showOpenMultipleDialog(appObjects.getStage());
+		
 		File[] plikiUPO = new File[listaUPO.size()];
 		
 		int i = 0;
@@ -75,6 +78,7 @@ public class EventActionMethods {
 			plikiUPO[i] = new File(f.getAbsolutePath());
 			i++;
 		}
+		
 		appObjects.setUpoFiles(plikiUPO);
 		ObservableList<File> files = FXCollections.observableArrayList();
 		files.addAll(plikiUPO);
@@ -87,24 +91,23 @@ public class EventActionMethods {
 	}
 //		progressBar.setProgress(0);
 	}
-	
+	//--------------------------------	
 	public void setDefaultAction() {
 		System.out.println("brak zdefiniiowanego działania");
 		
 		appObjects.getProgressBar().setProgress(0);
 		System.out.println(appObjects.getCheckBox() + " " + appObjects.getCheckBox().isSelected());
 	}
-	
+	//--------------------------------	
 	public void getAllUPOs() throws SSLException {
-		File[] file = appObjects.getUpoFiles(); // new File("/home/tee/refIds/");
-//		String[] fileList = file.list();''
-//		Double e = (double) ((1/Double.valueOf( fileList.length))/1);
-//		System.out.println(e);
+		File[] file = appObjects.getUpoFiles(); 
+		
 		for (int i = 0; i < file.length; i++) {
 			appObjects.getEdeklaracje().getUPO(file[i].getName().toString());
 //			progressBar.setProgress(progressBar.getProgress() + e);
 		}
 	}
+	//--------------------------------	
 	public void setCertsJksPathField() {
 		try {
 			FileChooser fileChooser = appObjects.getFileChooser();
@@ -121,7 +124,7 @@ public class EventActionMethods {
 			System.out.println("brak magazynu");
 		}
 	}
-	
+	//--------------------------------	
 	public void loadCertToJks() throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException {
 		try {
 			File magazyn = appObjects.getCertJks();
@@ -149,6 +152,7 @@ public class EventActionMethods {
 			System.out.println("Nie ma certyfikatu");
 		}
 	}
+	//--------------------------------	
 	public void sendAllPits() {
 		File[] pitFiles = appObjects.getPitFiles();
 		
@@ -173,5 +177,6 @@ public class EventActionMethods {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
 	}
 }
