@@ -54,7 +54,9 @@ public class EventAction implements EventHandler<Event>{
 			}else if (arg0.getSource() == appObjects.getCertLocationPathField()) {
 				eventActionMethods.setCertsJksPathField();
 			}else if (arg0.getSource() == appObjects.getTestButton()) {
-
+				System.out.println(arg0);
+			}else if (true) {
+				System.out.println("else action");
 			}
 			
 			

@@ -4,13 +4,13 @@ import java.io.File;
 
 public class ExtFile extends File {
 	
+	private String sent;
+	
 	public ExtFile(String pathname) {
 		super(pathname);
 	}
 
 	private static final long serialVersionUID = 1L;
-	
-	private String sent;
 
 	public String isSent() {
 		return sent;
