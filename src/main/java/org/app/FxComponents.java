@@ -27,17 +27,17 @@ public class FxComponents {
 		eventAction = new EventAction(appObjects);
 	}	
 	
-	public TableView<File> getTableView(int x, int y, String text, String arcType) {
+	public TableView<ExtFile> getTableView(int x, int y, String text, String arcType) {
 //		EventAction eventAction = new EventAction(appObjects, arcType);
-		TableView<File> tableView = new TableView();
+		TableView<ExtFile> tableView = new TableView<ExtFile>();
 		tableView.setLayoutX(x);
 		tableView.setLayoutY(y);
 //		tableView.prefWidth(420);
 		tableView.setOnMousePressed(eventAction);
 		return tableView;
 	}
-	public TableColumn<File, String> getTableColumn(int wdth, String text, String arcType) {
-		TableColumn<File, String> tableColumn = new TableColumn();
+	public TableColumn<ExtFile, String> getTableColumn(int wdth, String text, String arcType) {
+		TableColumn<ExtFile, String> tableColumn = new TableColumn<ExtFile, String>();
 		tableColumn.setText(text);
 		tableColumn.setPrefWidth(wdth);
 		tableColumn.setEditable(true);

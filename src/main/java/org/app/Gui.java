@@ -37,27 +37,26 @@ public class Gui extends Application {
 		Group group = new Group();
 		Scene scene = new Scene(group);
 		
-		TableView<File> tableView0 = fxComponents.getTableView(10, 10, "tab1", "99");
+		TableView<ExtFile> tableView0 = fxComponents.getTableView(10, 10, "tab1", "99");
 //		TableView<File> tableView1 = fxComponents.getTableView(290, 10,"tab2", "99");
 //		tableView.setPrefWidth(320);
 		
-		TableColumn<File, String> coll10 = fxComponents.getTableColumn(296, "refId", "99");
-		TableColumn<File, String> coll11 = fxComponents.getTableColumn(256, "refId", "99");
+		TableColumn<ExtFile, String> coll10 = fxComponents.getTableColumn(296, "RefId", "99");
+		TableColumn<ExtFile, String> coll11 = fxComponents.getTableColumn(256, "Wysłany", "99");
 //		coll10.setPrefWidth(270);
 		
-		tableView0.getColumns().addAll(coll10);
+		tableView0.getColumns().addAll(coll10, coll11);
 //		tableView1.getColumns().addAll(coll11);
 		
-		coll10.setCellValueFactory(new PropertyValueFactory("name"));
-		coll11.setCellValueFactory(new PropertyValueFactory("absolutePath"));
+		coll10.setCellValueFactory(new PropertyValueFactory<ExtFile, String>("name"));
+		coll11.setCellValueFactory(new PropertyValueFactory<ExtFile, String>("sent"));
 		
-		File refIds = new File("/home/tee/refIds/");
-//		 refIds.
-		ObservableList<File> files = FXCollections.observableArrayList();
-		files.addAll(refIds.listFiles());
+//		File refIds = new File("/home/tee/refIds/");
+//		 refIds.get
+		ObservableList<ExtFile> files = FXCollections.observableArrayList();
+//		files.addAll(refIds.listFiles());
 		files.add(null);
 		files.add(null);
-
 
 		tableView0.setItems(files);
 		
@@ -75,7 +74,6 @@ public class Gui extends Application {
 		appObjects.setSelectUposButton(bt4);
 		appObjects.setSelectPitsButton(bt5);
 		
-		
 		ProgressIndicator progressIndicator = new ProgressIndicator();
 		progressIndicator.setLayoutX(520);
 		progressIndicator.setLayoutY(240);
@@ -87,8 +85,6 @@ public class Gui extends Application {
 //		ImageView imageView = fxComponents.getImageView(580,14, 320, 280);
 		ProgressBar progressBar = fxComponents.getProgressBar(620, 300);
 		progressBar.setProgress(0);
-		
-		
 		
 		CheckBox checkBox = fxComponents.getCheckBox(620, 180, "tryb testowy", "99");
 		
@@ -117,5 +113,4 @@ public class Gui extends Application {
 		primaryStage.show();
 
 	}
-	
 }

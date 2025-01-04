@@ -34,24 +34,28 @@ public class EventActionMethods {
 		try {
 			FileChooser fileChooser = appObjects.getFileChooser();
 			fileChooser.getExtensionFilters().clear();
-			fileChooser.getExtensionFilters().add(new ExtensionFilter("PIT", "*.xml"));
+			fileChooser.getExtensionFilters().add(new ExtensionFilter("XML", "*.xml"));
+			fileChooser.getExtensionFilters().add(new ExtensionFilter("*", "*.*"));
 			
 			List<File> listaPit = fileChooser.showOpenMultipleDialog(appObjects.getStage());
-			File[] plikiPit = new File[listaPit.size()];
-		
+			ExtFile[] plikiPit = new ExtFile[listaPit.size()];
+			
 		int i = 0;
 		for (File f : listaPit) {
-			plikiPit[i] = new File(f.getAbsolutePath());
+			plikiPit[i] = new ExtFile(f.getAbsolutePath());
+			plikiPit[i].setSent("NIE");
 			i++;
 		}
 		
-			ObservableList<File> files = FXCollections.observableArrayList();
+//		ExtFile[] fee = (ExtFile[]) plikiPit;
+		
+			ObservableList<ExtFile> files = FXCollections.observableArrayList();
 			files.addAll(plikiPit);
 			appObjects.setObservableListOfPit(files);
 			appObjects.setPitFiles(plikiPit);
 
-		TableView<File> tableView = appObjects.getTableView();
-				tableView.setItems(files);
+		TableView<ExtFile> tableView = appObjects.getTableView();
+		tableView.setItems(files);
 		
 //		progressBar.setProgress(0);
 		}catch(Exception e) {
@@ -63,24 +67,25 @@ public class EventActionMethods {
 	try {	
 		FileChooser fileChooser = appObjects.getFileChooser();
 		fileChooser.getExtensionFilters().clear();
-		fileChooser.getExtensionFilters().add(new ExtensionFilter("UPO", "*.xml"));
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("XML", "*.xml"));
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("*", "*.*"));
 		
 		List<File> listaUPO = fileChooser.showOpenMultipleDialog(appObjects.getStage());
 		
-		File[] plikiUPO = new File[listaUPO.size()];
+		ExtFile[] plikiUPO = new ExtFile[listaUPO.size()];
 		
 		int i = 0;
 		for (File f : listaUPO) {
-			plikiUPO[i] = new File(f.getAbsolutePath());
+			plikiUPO[i] = new ExtFile(f.getAbsolutePath());
 			i++;
 		}
 		
 		appObjects.setUpoFiles(plikiUPO);
-		ObservableList<File> files = FXCollections.observableArrayList();
+		ObservableList<ExtFile> files = FXCollections.observableArrayList();
 		files.addAll(plikiUPO);
 		appObjects.setObservableListOfUPO(files);
 
-		TableView<File> tableView = appObjects.getTableView();
+		TableView<ExtFile> tableView = appObjects.getTableView();
 		tableView.setItems(files);
 	}catch(Exception e) {
 		System.out.println("Nie wybrano plików");
@@ -108,7 +113,8 @@ public class EventActionMethods {
 		try {
 			FileChooser fileChooser = appObjects.getFileChooser();
 			fileChooser.getExtensionFilters().clear();
-			fileChooser.getExtensionFilters().add(new ExtensionFilter("jks", "*.jks"));
+			fileChooser.getExtensionFilters().add(new ExtensionFilter("JKS", "*.jks"));
+			fileChooser.getExtensionFilters().add(new ExtensionFilter("*", "*.*"));
 		
 			File cacert = fileChooser.showOpenDialog(appObjects.getStage());
 			appObjects.setCertJks(cacert);
@@ -126,7 +132,8 @@ public class EventActionMethods {
 			File magazyn = appObjects.getCertJks();
 			FileChooser fileChooser = appObjects.getFileChooser();
 			fileChooser.getExtensionFilters().clear();
-			fileChooser.getExtensionFilters().add(new ExtensionFilter("cert", "*.crt"));
+			fileChooser.getExtensionFilters().add(new ExtensionFilter("CERT", "*.crt"));
+			fileChooser.getExtensionFilters().add(new ExtensionFilter("*", "*.*"));
 			File certFile = fileChooser.showOpenDialog(appObjects.getStage());
 		
 			CertificateFactory cf = CertificateFactory.getInstance("X.509");

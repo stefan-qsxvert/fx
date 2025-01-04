@@ -1,6 +1,5 @@
 package org.app;
 
-import java.io.File;
 import java.io.IOException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -8,8 +7,6 @@ import java.security.cert.CertificateException;
 import javax.net.ssl.SSLException;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
 
 
 public class EventAction implements EventHandler<Event>{
@@ -27,45 +24,36 @@ public class EventAction implements EventHandler<Event>{
 	public void handle(Event arg0) {
 
 
-		ProgressBar progressBar = appObjects.getProgressBar();
-		ProgressIndicator progressIndicator = appObjects.getProgressIndicator();
-		
+//		ProgressBar progressBar = appObjects.getProgressBar();
+//		ProgressIndicator progressIndicator = appObjects.getProgressIndicator();
+//		
 		EventActionMethods eventActionMethods = new EventActionMethods(appObjects);
 			
 //--------------------------------	
 			if (arg0.getSource() == appObjects.getSelectPitsButton()) {
 				eventActionMethods.setPitObservableList();
-			}
-//--------------------------------	
-			if (arg0.getSource() == appObjects.getSelectUposButton()) {
+			} else if (arg0.getSource() == appObjects.getSelectUposButton()) {
 				eventActionMethods.setUpoObservableList();
-			}
-//--------------------------------			
-			if (arg0.getSource() == appObjects.getSendPitsButton()) {
+			}else if (arg0.getSource() == appObjects.getSendPitsButton()) {
 				eventActionMethods.sendAllPits();
-			}
-//--------------------------------			
-			if (arg0.getSource() == appObjects.getDownloadUposButton()) {
+			}else if (arg0.getSource() == appObjects.getDownloadUposButton()) {
+			
 				try {
 					eventActionMethods.getAllUPOs();
 				} catch (SSLException e) {
 					e.printStackTrace();
 				}
-			}
-//--------------------------------			
-			if (arg0.getSource() == appObjects.getLoadCertButton()) {
+			}else if (arg0.getSource() == appObjects.getLoadCertButton()) {
+				
 				try {
 					eventActionMethods.loadCertToJks();
 				} catch (CertificateException | KeyStoreException | NoSuchAlgorithmException | IOException e) {
 					e.printStackTrace();
 				}
-			}
-//--------------------------------		
-			if (arg0.getSource() == appObjects.getCertLocationPathField()) {
+				
+			}else if (arg0.getSource() == appObjects.getCertLocationPathField()) {
 				eventActionMethods.setCertsJksPathField();
-			}
-//--------------------------------				
-			if (arg0.getSource() == appObjects.getTestButton()) {
+			}else if (arg0.getSource() == appObjects.getTestButton()) {
 
 			}
 			

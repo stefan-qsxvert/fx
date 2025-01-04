@@ -28,11 +28,11 @@ public class AppObjects {
 	private Button downloadUposButton;
 	private Button testButton;
 	private Button loadCertButton;
-	private ObservableList<File> observableListOfPit;
-	private ObservableList<File> observableListOfUPO;
+	private ObservableList<ExtFile> observableListOfPit;
+	private ObservableList<ExtFile> observableListOfUPO;
 	private File[] pitFiles;
 	private File[] upoFiles;
-	private TableView<File> tableView;
+	private TableView<ExtFile> tableView;
 	private Stage stage;
 	private CheckBox checkBox;
 	private Uris uris;
@@ -61,12 +61,12 @@ public class AppObjects {
 		this.progressBar = progressBar;
 	}
 
-	public TableView<File> getTableView() {
+	public TableView<ExtFile> getTableView() {
 		return tableView;
 	}
 
-	public void setTableView(TableView<File> tableView) {
-		this.tableView = tableView;
+	public void setTableView(TableView<ExtFile> tableView0) {
+		this.tableView = tableView0;
 	}
 
 	public Stage getStage() {
@@ -126,20 +126,20 @@ public class AppObjects {
 		this.certLocationPathField = certLocationPathField;
 	}
 
-	public ObservableList<File> getObservableListOfPit() {
+	public ObservableList<ExtFile> getObservableListOfPit() {
 		return observableListOfPit;
 	}
 
-	public void setObservableListOfPit(ObservableList<File> observableListOfPit) {
-		this.observableListOfPit = observableListOfPit;
+	public void setObservableListOfPit(ObservableList<ExtFile> files) {
+		this.observableListOfPit = files;
 	}
 
-	public ObservableList<File> getObservableListOfUPO() {
+	public ObservableList<ExtFile> getObservableListOfUPO() {
 		return observableListOfUPO;
 	}
 
-	public void setObservableListOfUPO(ObservableList<File> observableListOfUPO) {
-		this.observableListOfUPO = observableListOfUPO;
+	public void setObservableListOfUPO(ObservableList<ExtFile> files) {
+		this.observableListOfUPO = files;
 	}
 
 	public File getCertJks() {

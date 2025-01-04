@@ -2,24 +2,11 @@ package org.app;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
-import java.security.KeyStore;
-import java.security.SecureRandom;
 import java.time.ZonedDateTime;
-
-import javax.net.ssl.KeyManager;
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLException;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
-
 import com.test.edeklaracje.GateService;
 import com.test.edeklaracje.GateServicePortType;
-import com.test.edeklaracje.RequestUPO;
-
 import jakarta.xml.ws.Holder; 
 
 public class Edeklaracje {
