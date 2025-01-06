@@ -23,7 +23,7 @@ public class Gui extends Application {
 	}
 	
 	public void run() {
-		launch();
+				launch();
 	}
 
 	@Override
@@ -41,19 +41,22 @@ public class Gui extends Application {
 //		TableView<File> tableView1 = fxComponents.getTableView(290, 10,"tab2", "99");
 //		tableView.setPrefWidth(320);
 		
-		TableColumn<ExtFile, String> coll10 = fxComponents.getTableColumn(296, "RefId", "99");
-		TableColumn<ExtFile, String> coll11 = fxComponents.getTableColumn(256, "Wysłany", "99");
+		TableColumn<ExtFile, String> coll0 = fxComponents.getTableColumn(72, "Lp.", "99");
+		TableColumn<ExtFile, String> coll1 = fxComponents.getTableColumn(296, "RefId", "99");
+		TableColumn<ExtFile, String> coll2 = fxComponents.getTableColumn(108, "Typ", "99");
 //		coll10.setPrefWidth(270);
 		
-		tableView0.getColumns().addAll(coll10, coll11);
+		tableView0.getColumns().addAll(coll0, coll1, coll2);
 //		tableView1.getColumns().addAll(coll11);
 		
-		coll10.setCellValueFactory(new PropertyValueFactory<ExtFile, String>("name"));
-		coll11.setCellValueFactory(new PropertyValueFactory<ExtFile, String>("sent"));
+		coll0.setCellValueFactory(new PropertyValueFactory<ExtFile, String>("lp"));
+		coll1.setCellValueFactory(new PropertyValueFactory<ExtFile, String>("name"));
+		coll2.setCellValueFactory(new PropertyValueFactory<ExtFile, String>("type"));
 		
 //		File refIds = new File("/home/tee/refIds/");
 //		 refIds.get
 		ObservableList<ExtFile> files = FXCollections.observableArrayList();
+		appObjects.setObservableListOfFiles(files);
 //		files.addAll(refIds.listFiles());
 		files.add(null);
 		files.add(null);
@@ -99,7 +102,10 @@ public class Gui extends Application {
 		
 		appObjects.setFileChooser(fxComponents.getFileChooser());
 		
+		
 		group.getChildren().add(progressIndicator);
+		
+		
 		group.getChildren().addAll(tableView0);
 		group.getChildren().addAll(bt0, bt1, bt2, bt3, bt4, bt5, progressBar, checkBox);
 		group.getChildren().add(appObjects.getComboBox());

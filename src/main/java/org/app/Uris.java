@@ -1,7 +1,5 @@
 package org.app;
 
-import javafx.scene.control.CheckBox;
-
 public class Uris {
 	
 	private boolean testMode;

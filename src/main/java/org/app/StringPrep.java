@@ -1,7 +1,5 @@
 package org.app;
 
-import java.awt.print.PrinterException;
-
 public class StringPrep {
 	
 	public String prep(String str, String beg, String ends) {

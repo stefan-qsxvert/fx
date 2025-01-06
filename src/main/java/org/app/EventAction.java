@@ -55,6 +55,9 @@ public class EventAction implements EventHandler<Event>{
 				eventActionMethods.setCertsJksPathField();
 			}else if (arg0.getSource() == appObjects.getTestButton()) {
 				System.out.println(arg0);
+				
+				EThread et = new EThread(appObjects);
+				et.testProgress();
 			}else if (true) {
 				System.out.println("else action");
 			}

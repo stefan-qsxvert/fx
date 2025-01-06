@@ -24,10 +24,13 @@ public class EventActionMethods {
 	
 	AppObjects appObjects;
 	PrepSSL prepSSL;
+	ObservableList<ExtFile> files;
+	TableView<ExtFile> tableView;
 	
 	public EventActionMethods(AppObjects appObjects) {
 		this.appObjects = appObjects;
 		prepSSL = new PrepSSL(appObjects);
+		tableView  = appObjects.getTableView();
 	}
 	//--------------------------------	
 	public void setPitObservableList() {
@@ -38,24 +41,23 @@ public class EventActionMethods {
 			fileChooser.getExtensionFilters().add(new ExtensionFilter("*", "*.*"));
 			
 			List<File> listaPit = fileChooser.showOpenMultipleDialog(appObjects.getStage());
+			
 			ExtFile[] plikiPit = new ExtFile[listaPit.size()];
 			
 		int i = 0;
 		for (File f : listaPit) {
 			plikiPit[i] = new ExtFile(f.getAbsolutePath());
-			plikiPit[i].setSent("NIE");
+			plikiPit[i].setType("PIT");
+			plikiPit[i].setLp(i + 1);
 			i++;
 		}
-		
-//		ExtFile[] fee = (ExtFile[]) plikiPit;
-		
-			ObservableList<ExtFile> files = FXCollections.observableArrayList();
-			files.addAll(plikiPit);
-			appObjects.setObservableListOfPit(files);
-			appObjects.setPitFiles(plikiPit);
+			
+		ObservableList<ExtFile> files = appObjects.getObservableListOfFiles();
+		files.clear();
+		files.addAll(plikiPit);
+		appObjects.setPitFiles(plikiPit);
 
-		TableView<ExtFile> tableView = appObjects.getTableView();
-		tableView.setItems(files);
+		appObjects.getTableView().setItems(files);
 		
 //		progressBar.setProgress(0);
 		}catch(Exception e) {
@@ -77,16 +79,17 @@ public class EventActionMethods {
 		int i = 0;
 		for (File f : listaUPO) {
 			plikiUPO[i] = new ExtFile(f.getAbsolutePath());
+			plikiUPO[i].setType("UPO");
+			plikiUPO[i].setLp(i + 1);
 			i++;
 		}
 		
-		appObjects.setUpoFiles(plikiUPO);
-		ObservableList<ExtFile> files = FXCollections.observableArrayList();
+		ObservableList<ExtFile> files = appObjects.getObservableListOfFiles();
+		files.clear();
 		files.addAll(plikiUPO);
-		appObjects.setObservableListOfUPO(files);
+		appObjects.setPitFiles(plikiUPO);
 
-		TableView<ExtFile> tableView = appObjects.getTableView();
-		tableView.setItems(files);
+		appObjects.getTableView().setItems(files);
 	}catch(Exception e) {
 		System.out.println("Nie wybrano plików");
 	}

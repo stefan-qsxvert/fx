@@ -28,8 +28,7 @@ public class AppObjects {
 	private Button downloadUposButton;
 	private Button testButton;
 	private Button loadCertButton;
-	private ObservableList<ExtFile> observableListOfPit;
-	private ObservableList<ExtFile> observableListOfUPO;
+	private ObservableList<ExtFile> observableListOfFiles;
 	private File[] pitFiles;
 	private File[] upoFiles;
 	private TableView<ExtFile> tableView;
@@ -45,189 +44,224 @@ public class AppObjects {
 	public AppObjects() {
 	}
 
+
 	public FxComponents getFxComponents() {
 		return fxComponents;
 	}
+
 
 	public void setFxComponents(FxComponents fxComponents) {
 		this.fxComponents = fxComponents;
 	}
 
-	public ProgressBar getProgressBar() {
-		return progressBar;
-	}
-
-	public void setProgressBar(ProgressBar progressBar) {
-		this.progressBar = progressBar;
-	}
-
-	public TableView<ExtFile> getTableView() {
-		return tableView;
-	}
-
-	public void setTableView(TableView<ExtFile> tableView0) {
-		this.tableView = tableView0;
-	}
-
-	public Stage getStage() {
-		return stage;
-	}
-
-	public void setStage(Stage stage) {
-		this.stage = stage;
-	}
-
-	public CheckBox getCheckBox() {
-		return checkBox;
-	}
-
-	public void setCheckBox(CheckBox checkBox) {
-		this.checkBox = checkBox;
-	}
-
-	public Uris getUris() {
-		return uris;
-	}
-
-	public void setUris(Uris uris) {
-		this.uris = uris;
-	}
-
-	public FileChooser getFileChooser() {
-		fileChooser.getExtensionFilters();
-		return fileChooser;
-	}
-
-	public void setFileChooser(FileChooser fileChooser) {
-		this.fileChooser = fileChooser;
-	}
-
-	public Edeklaracje getEdeklaracje() {
-		return edeklaracje;
-	}
-
-	public void setEdeklaracje(Edeklaracje edeklaracje) {
-		this.edeklaracje = edeklaracje;
-	}
-
-	public ComboBox<String> getComboBox() {
-		return comboBox;
-	}
-
-	public void setComboBox(ComboBox<String> comboBox) {
-		this.comboBox = comboBox;
-	}
 
 	public TextField getCertLocationPathField() {
 		return certLocationPathField;
 	}
 
+
 	public void setCertLocationPathField(TextField certLocationPathField) {
 		this.certLocationPathField = certLocationPathField;
 	}
 
-	public ObservableList<ExtFile> getObservableListOfPit() {
-		return observableListOfPit;
+
+	public ProgressBar getProgressBar() {
+		return progressBar;
 	}
 
-	public void setObservableListOfPit(ObservableList<ExtFile> files) {
-		this.observableListOfPit = files;
+
+	public void setProgressBar(ProgressBar progressBar) {
+		this.progressBar = progressBar;
 	}
 
-	public ObservableList<ExtFile> getObservableListOfUPO() {
-		return observableListOfUPO;
-	}
-
-	public void setObservableListOfUPO(ObservableList<ExtFile> files) {
-		this.observableListOfUPO = files;
-	}
-
-	public File getCertJks() {
-		return certJks;
-	}
-
-	public void setCertJks(File certJks) {
-		this.certJks = certJks;
-	}
-
-	public File[] getPitFiles() {
-		return pitFiles;
-	}
-
-	public void setPitFiles(File[] plikiPit) {
-		this.pitFiles = plikiPit;
-	}
-
-	public File[] getUpoFiles() {
-		return upoFiles;
-	}
-
-	public void setUpoFiles(File[] upoFiles) {
-		this.upoFiles = upoFiles;
-	}
-
-	public SSLContext getSslContext() {
-		return sslContext;
-	}
-
-	public void setSslContext(SSLContext sslContext) {
-		this.sslContext = sslContext;
-	}
 
 	public ProgressIndicator getProgressIndicator() {
 		return progressIndicator;
 	}
 
+
 	public void setProgressIndicator(ProgressIndicator progressIndicator) {
 		this.progressIndicator = progressIndicator;
 	}
+
+
+	public ComboBox<String> getComboBox() {
+		return comboBox;
+	}
+
+
+	public void setComboBox(ComboBox<String> comboBox) {
+		this.comboBox = comboBox;
+	}
+
 
 	public Button getSelectPitsButton() {
 		return selectPitsButton;
 	}
 
+
 	public void setSelectPitsButton(Button selectPitsButton) {
 		this.selectPitsButton = selectPitsButton;
 	}
+
 
 	public Button getSelectUposButton() {
 		return selectUposButton;
 	}
 
+
 	public void setSelectUposButton(Button selectUposButton) {
 		this.selectUposButton = selectUposButton;
 	}
+
 
 	public Button getSendPitsButton() {
 		return sendPitsButton;
 	}
 
+
 	public void setSendPitsButton(Button sendPitsButton) {
 		this.sendPitsButton = sendPitsButton;
 	}
+
 
 	public Button getDownloadUposButton() {
 		return downloadUposButton;
 	}
 
+
 	public void setDownloadUposButton(Button downloadUposButton) {
 		this.downloadUposButton = downloadUposButton;
 	}
+
 
 	public Button getTestButton() {
 		return testButton;
 	}
 
+
 	public void setTestButton(Button testButton) {
 		this.testButton = testButton;
 	}
+
 
 	public Button getLoadCertButton() {
 		return loadCertButton;
 	}
 
+
 	public void setLoadCertButton(Button loadCertButton) {
 		this.loadCertButton = loadCertButton;
 	}
-	
+
+
+	public ObservableList<ExtFile> getObservableListOfFiles() {
+		return observableListOfFiles;
+	}
+
+
+	public void setObservableListOfFiles(ObservableList<ExtFile> observableListOfFiles) {
+		this.observableListOfFiles = observableListOfFiles;
+	}
+
+
+	public File[] getPitFiles() {
+		return pitFiles;
+	}
+
+
+	public void setPitFiles(File[] pitFiles) {
+		this.pitFiles = pitFiles;
+	}
+
+
+	public File[] getUpoFiles() {
+		return upoFiles;
+	}
+
+
+	public void setUpoFiles(File[] upoFiles) {
+		this.upoFiles = upoFiles;
+	}
+
+
+	public TableView<ExtFile> getTableView() {
+		return tableView;
+	}
+
+
+	public void setTableView(TableView<ExtFile> tableView) {
+		this.tableView = tableView;
+	}
+
+
+	public Stage getStage() {
+		return stage;
+	}
+
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
+	}
+
+
+	public CheckBox getCheckBox() {
+		return checkBox;
+	}
+
+
+	public void setCheckBox(CheckBox checkBox) {
+		this.checkBox = checkBox;
+	}
+
+
+	public Uris getUris() {
+		return uris;
+	}
+
+
+	public void setUris(Uris uris) {
+		this.uris = uris;
+	}
+
+
+	public FileChooser getFileChooser() {
+		return fileChooser;
+	}
+
+
+	public void setFileChooser(FileChooser fileChooser) {
+		this.fileChooser = fileChooser;
+	}
+
+
+	public Edeklaracje getEdeklaracje() {
+		return edeklaracje;
+	}
+
+
+	public void setEdeklaracje(Edeklaracje edeklaracje) {
+		this.edeklaracje = edeklaracje;
+	}
+
+
+	public File getCertJks() {
+		return certJks;
+	}
+
+
+	public void setCertJks(File certJks) {
+		this.certJks = certJks;
+	}
+
+
+	public SSLContext getSslContext() {
+		return sslContext;
+	}
+
+
+	public void setSslContext(SSLContext sslContext) {
+		this.sslContext = sslContext;
+	}
+
 }
