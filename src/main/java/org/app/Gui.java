@@ -77,7 +77,7 @@ public class Gui extends Application {
 		progressIndicator.setLayoutX(520);
 		progressIndicator.setLayoutY(240);
 		progressIndicator.setMinSize(64, 128);
-		progressIndicator.setProgress(0.3);
+		progressIndicator.setProgress(0.0);
 		
 		appObjects.setProgressIndicator(progressIndicator);
 		

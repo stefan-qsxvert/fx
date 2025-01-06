@@ -87,7 +87,7 @@ public class EventActionMethods {
 		ObservableList<ExtFile> files = appObjects.getObservableListOfFiles();
 		files.clear();
 		files.addAll(plikiUPO);
-		appObjects.setPitFiles(plikiUPO);
+		appObjects.setUpoFiles(plikiUPO);
 
 		appObjects.getTableView().setItems(files);
 	}catch(Exception e) {
