@@ -219,46 +219,38 @@ public class AppObjects {
 		return uris;
 	}
 
-
+	
 	public void setUris(Uris uris) {
 		this.uris = uris;
 	}
-
 
 	public FileChooser getFileChooser() {
 		return fileChooser;
 	}
 
-
 	public void setFileChooser(FileChooser fileChooser) {
 		this.fileChooser = fileChooser;
 	}
-
 
 	public Edeklaracje getEdeklaracje() {
 		return edeklaracje;
 	}
 
-
 	public void setEdeklaracje(Edeklaracje edeklaracje) {
 		this.edeklaracje = edeklaracje;
 	}
-
 
 	public File getCertJks() {
 		return certJks;
 	}
 
-
 	public void setCertJks(File certJks) {
 		this.certJks = certJks;
 	}
 
-
 	public SSLContext getSslContext() {
 		return sslContext;
 	}
-
 
 	public void setSslContext(SSLContext sslContext) {
 		this.sslContext = sslContext;
