@@ -1,9 +1,5 @@
 package org.app;
 
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-import javafx.application.Platform;
 import javafx.scene.control.ProgressBar;
 
 public class EThread {
