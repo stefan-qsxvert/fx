@@ -108,6 +108,9 @@ public class EventActionMethods {
 		
 		for (int i = 0; i < file.length; i++) {
 			appObjects.getEdeklaracje().getUPO(file[i].getName().toString());
+			
+			appObjects.getProgressBar().setProgress(((double)i+1)/(double)file.length + 0.1);
+			System.out.println(((double)i+1)/(double)file.length);
 //			progressBar.setProgress(progressBar.getProgress() + e);
 		}
 	}

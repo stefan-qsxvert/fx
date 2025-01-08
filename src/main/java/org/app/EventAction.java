@@ -28,13 +28,32 @@ public class EventAction implements EventHandler<Event>{
 //		ProgressIndicator progressIndicator = appObjects.getProgressIndicator();
 //		
 		EventActionMethods eventActionMethods = new EventActionMethods(appObjects);
+		
+		
+		if (arg0.getSource() == appObjects.getSelectPitsButton()) {
+			eventActionMethods.setPitObservableList();
+		} else if (arg0.getSource() == appObjects.getSelectUposButton()) {
+			eventActionMethods.setUpoObservableList();
+		}else if (arg0.getSource() == appObjects.getLoadCertButton()) {
 			
-//--------------------------------	
-			if (arg0.getSource() == appObjects.getSelectPitsButton()) {
-				eventActionMethods.setPitObservableList();
-			} else if (arg0.getSource() == appObjects.getSelectUposButton()) {
-				eventActionMethods.setUpoObservableList();
-			}else if (arg0.getSource() == appObjects.getSendPitsButton()) {
+			try {
+				eventActionMethods.loadCertToJks();
+			} catch (CertificateException | KeyStoreException | NoSuchAlgorithmException | IOException e) {
+				e.printStackTrace();
+			}
+		}else if (arg0.getSource() == appObjects.getCertLocationPathField()) {
+			eventActionMethods.setCertsJksPathField();
+		}
+		
+		Runnable rn = new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+			
+//--------------------------------		
+				
+			if (arg0.getSource() == appObjects.getSendPitsButton()) {
 				eventActionMethods.sendAllPits();
 			}else if (arg0.getSource() == appObjects.getDownloadUposButton()) {
 			
@@ -43,25 +62,47 @@ public class EventAction implements EventHandler<Event>{
 				} catch (SSLException e) {
 					e.printStackTrace();
 				}
-			}else if (arg0.getSource() == appObjects.getLoadCertButton()) {
+
+			}else if (arg0.getSource() == appObjects.getTestButton()) {
 				
-				try {
-					eventActionMethods.loadCertToJks();
-				} catch (CertificateException | KeyStoreException | NoSuchAlgorithmException | IOException e) {
-					e.printStackTrace();
+				appObjects.getProgressBar().setProgress(0);
+				appObjects.getProgressIndicator().setProgress(0);
+
+				double progress = 1;
+				while (progress < 100) {
+					progress += 1;
+					appObjects.getProgressBar().setProgress(progress/100);
+//					appObjects.getProgressIndicator().setProgress(progress/100);
+					System.out.println(progress/100);
+					try {
+						Thread.sleep(100);
+					}catch (Exception e) {
+						
+					}
 				}
 				
-			}else if (arg0.getSource() == appObjects.getCertLocationPathField()) {
-				eventActionMethods.setCertsJksPathField();
-			}else if (arg0.getSource() == appObjects.getTestButton()) {
-				appObjects.getProgressBar().setProgress(0);
-				EThread et = new EThread(appObjects);
-				et.testProgress();
+				progress = 1;
+				while (progress < 100) {
+					progress += 1;
+//					appObjects.getProgressBar().setProgress(progress/100);
+					appObjects.getProgressIndicator().setProgress(progress/100);
+					System.out.println(progress/100);
+					try {
+						Thread.sleep(100);
+					}catch (Exception e) {
+						
+					}
+				}
+				
 			}else if (true) {
 				System.out.println("else action");
 			}
 			
-			
+			}
+		};
+		
+		
+		new Thread(rn).start();
 			
 //		switch(arcType) {
 //			case "0" :
