@@ -45,64 +45,11 @@ public class EventAction implements EventHandler<Event>{
 			eventActionMethods.setCertsJksPathField();
 		}
 		
-		Runnable rn = new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-			
-//--------------------------------		
-				
-			if (arg0.getSource() == appObjects.getSendPitsButton()) {
-				eventActionMethods.sendAllPits();
-			}else if (arg0.getSource() == appObjects.getDownloadUposButton()) {
-			
-				try {
-					eventActionMethods.getAllUPOs();
-				} catch (SSLException e) {
-					e.printStackTrace();
-				}
-
-			}else if (arg0.getSource() == appObjects.getTestButton()) {
-				
-				appObjects.getProgressBar().setProgress(0);
-				appObjects.getProgressIndicator().setProgress(0);
-
-				double progress = 1;
-				while (progress < 100) {
-					progress += 1;
-					appObjects.getProgressBar().setProgress(progress/100);
-//					appObjects.getProgressIndicator().setProgress(progress/100);
-					System.out.println(progress/100);
-					try {
-						Thread.sleep(100);
-					}catch (Exception e) {
-						
-					}
-				}
-				
-				progress = 1;
-				while (progress < 100) {
-					progress += 1;
-//					appObjects.getProgressBar().setProgress(progress/100);
-					appObjects.getProgressIndicator().setProgress(progress/100);
-					System.out.println(progress/100);
-					try {
-						Thread.sleep(100);
-					}catch (Exception e) {
-						
-					}
-				}
-				
-			}else if (true) {
-				System.out.println("else action");
-			}
-			
-			}
-		};
-		
-		
-		new Thread(rn).start();
+		Rn rn = new Rn(appObjects);
+//		rn.etc();
+	
+//		new Thread(rn).start();
+		Thread.startVirtualThread(rn);
 			
 //		switch(arcType) {
 //			case "0" :
