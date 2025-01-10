@@ -14,7 +14,6 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.List;
 import javax.net.ssl.SSLException;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import javafx.stage.FileChooser;
@@ -32,6 +31,7 @@ public class EventActionMethods {
 		prepSSL = new PrepSSL(appObjects);
 		tableView  = appObjects.getTableView();
 	}
+	
 	//--------------------------------	
 	public void setPitObservableList() {
 		try {

@@ -39,16 +39,12 @@ public class AppObjects {
 	private Edeklaracje edeklaracje;
 	private File certJks;
 	private SSLContext sslContext;
-
-	
-	public AppObjects() {
-	}
-
+	private EventActionMethods eventActionMethods;
+	private PrepRunnable prepRunnable;
 
 	public FxComponents getFxComponents() {
 		return fxComponents;
 	}
-
 
 	public void setFxComponents(FxComponents fxComponents) {
 		this.fxComponents = fxComponents;
@@ -255,5 +251,25 @@ public class AppObjects {
 	public void setSslContext(SSLContext sslContext) {
 		this.sslContext = sslContext;
 	}
+
+
+	public EventActionMethods getEventActionMethods() {
+		return eventActionMethods;
+	}
+
+
+	public void setEventActionMethods(EventActionMethods eventActionMethods) {
+		this.eventActionMethods = eventActionMethods;
+	}
+
+	public PrepRunnable getPrepRunnable() {
+		return prepRunnable;
+	}
+
+	public void setPrepRunnable(PrepRunnable prepRunnable) {
+		this.prepRunnable = prepRunnable;
+	}
+	
+	
 
 }
