@@ -32,9 +32,9 @@ public class Gui extends Application {
 		
 		AppObjects appObjects= new AppObjects();
 		
-		
-		appObjects.setEdeklaracje(new Edeklaracje(appObjects));
 		appObjects.setPrepRunnable(new PrepRunnable(appObjects));
+		appObjects.setEdeklaracje(new Edeklaracje(appObjects));
+		appObjects.setEventActionMethods(new EventActionMethods(appObjects));
 		
 		FxComponents fxComponents = new FxComponents(appObjects);
 

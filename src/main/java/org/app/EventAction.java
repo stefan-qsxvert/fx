@@ -1,10 +1,5 @@
 package org.app;
 
-import java.io.IOException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
-import javax.net.ssl.SSLException;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
@@ -20,27 +15,32 @@ public class EventAction implements EventHandler<Event>{
 	@Override
 	public void handle(Event arg0) {
 
-		EventActionMethods eventActionMethods = appObjects.getEventActionMethods();
+//		EventActionMethods eventActionMethods = appObjects.getEventActionMethods();
 		
 		
 		if (arg0.getSource() == appObjects.getSelectPitsButton()) {
-			eventActionMethods.setPitObservableList();
+//			eventActionMethods.setPitObservableList();
+			appObjects.getPrepRunnable().setArcType("selectPitFiles");
+			appObjects.getPrepRunnable().run();
 		} else if (arg0.getSource() == appObjects.getSelectUposButton()) {
-			eventActionMethods.setUpoObservableList();
+//			eventActionMethods.setUpoObservableList();
+			
+			appObjects.getPrepRunnable().setArcType("selectUpoFiles");
+			appObjects.getPrepRunnable().run();
+			
 		}else if (arg0.getSource() == appObjects.getLoadCertButton()) {
 			
-			try {
-				eventActionMethods.loadCertToJks();
-			} catch (CertificateException | KeyStoreException | NoSuchAlgorithmException | IOException e) {
-				e.printStackTrace();
-			}
-		}else if (arg0.getSource() == appObjects.getCertLocationPathField()) {
-			eventActionMethods.setCertsJksPathField();
+			appObjects.getPrepRunnable().setArcType("loadCert");
+			appObjects.getPrepRunnable().run();
+	
 		}else if (arg0.getSource() == appObjects.getTestButton()) {
 			appObjects.getPrepRunnable().setArcType("testAction");
 			appObjects.getPrepRunnable().run();
+		}else if (arg0.getSource() == appObjects.getCertLocationPathField()) {
+			appObjects.getPrepRunnable().setArcType("selectJKS");
+			appObjects.getPrepRunnable().run();
 		}else if (arg0.getSource() == appObjects.getDownloadUposButton()) {
-			appObjects.getPrepRunnable().setArcType("downloadUpos");
+			appObjects.getPrepRunnable().setArcType("downloadUPOs");
 			Thread.startVirtualThread(appObjects.getPrepRunnable());
 		}else if (arg0.getSource() == appObjects.getSendPitsButton()) {
 			appObjects.getPrepRunnable().setArcType("sentPits");

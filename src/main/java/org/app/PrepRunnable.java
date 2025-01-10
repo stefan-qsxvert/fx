@@ -9,13 +9,11 @@ import javax.net.ssl.SSLException;
 
 public class PrepRunnable implements Runnable{
 	
-	public AppObjects appObjects;
-	public String arcType;
-	public EventActionMethods eventActionMethods;
+	private AppObjects appObjects;
+	private String arcType;
 	
 	public PrepRunnable(AppObjects appObjects) {
 		this.appObjects = appObjects;
-		eventActionMethods = appObjects.getEventActionMethods();
 	}
 
 	@Override
@@ -29,7 +27,7 @@ public class PrepRunnable implements Runnable{
 		case "loadCert":
 			System.out.println("loadCert");
 			try {
-				eventActionMethods.loadCertToJks();
+				appObjects.getEventActionMethods().loadCertToJks();
 			} catch (CertificateException | KeyStoreException | NoSuchAlgorithmException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -37,16 +35,28 @@ public class PrepRunnable implements Runnable{
 			break;
 		case "selectJKS":
 			System.out.println("selectJKS");
-			eventActionMethods.setCertsJksPathField();
+			appObjects.getEventActionMethods().setCertsJksPathField();
+//			eventActionMethods.setCertsJksPathField();
 			break;
+			
+		case "selectPitFiles":
+			System.out.println("selectPitFiles");
+			appObjects.getEventActionMethods().setPitObservableList();
+			break;
+		case "selectUpoFiles":
+			System.out.println("selectUpoFiles");
+			appObjects.getEventActionMethods().setUpoObservableList();
+			break;	
 		case "sentPits":
 			System.out.println("sentPits");
-			eventActionMethods.sendAllPits();
+//			eventActionMethods.sendAllPits();
+			appObjects.getEventActionMethods().sendAllPits();
 			break;
 		case "downloadUPOs":
 			System.out.println("downloadUPOs");
 			try {
-				eventActionMethods.getAllUPOs();
+//				eventActionMethods.getAllUPOs();
+				appObjects.getEventActionMethods().getAllUPOs();
 			} catch (SSLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
