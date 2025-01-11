@@ -22,30 +22,32 @@ public class EventAction implements EventHandler<Event>{
 //			eventActionMethods.setPitObservableList();
 			appObjects.getPrepRunnable().setArcType("selectPitFiles");
 			appObjects.getPrepRunnable().run();
-		} else if (arg0.getSource() == appObjects.getSelectUposButton()) {
-//			eventActionMethods.setUpoObservableList();
-			
+		} else if (arg0.getSource() == appObjects.getSelectUposButton()) {	
 			appObjects.getPrepRunnable().setArcType("selectUpoFiles");
 			appObjects.getPrepRunnable().run();
-			
 		}else if (arg0.getSource() == appObjects.getLoadCertButton()) {
-			
 			appObjects.getPrepRunnable().setArcType("loadCert");
-			appObjects.getPrepRunnable().run();
-	
-		}else if (arg0.getSource() == appObjects.getTestButton()) {
-			appObjects.getPrepRunnable().setArcType("testAction");
 			appObjects.getPrepRunnable().run();
 		}else if (arg0.getSource() == appObjects.getCertLocationPathField()) {
 			appObjects.getPrepRunnable().setArcType("selectJKS");
 			appObjects.getPrepRunnable().run();
 		}else if (arg0.getSource() == appObjects.getDownloadUposButton()) {
+			appObjects.getProgressBar().setProgress(0);
+			appObjects.getProgressIndicator().setProgress(0);
 			appObjects.getPrepRunnable().setArcType("downloadUPOs");
-			Thread.startVirtualThread(appObjects.getPrepRunnable());
+			new Thread(appObjects.getPrepRunnable()).start();
 		}else if (arg0.getSource() == appObjects.getSendPitsButton()) {
+			appObjects.getProgressIndicator().setProgress(0);
+			appObjects.getProgressBar().setProgress(0);
+			
 			appObjects.getPrepRunnable().setArcType("sentPits");
 			Thread.startVirtualThread(appObjects.getPrepRunnable());
-		}
+		}else if (arg0.getSource() == appObjects.getTestButton()) {
+			appObjects.getProgressIndicator().setProgress(0);
+			appObjects.getProgressBar().setProgress(0);
+			appObjects.getPrepRunnable().setArcType("testAction");
+			new Thread(appObjects.getPrepRunnable()).start();;
 	}
 	
 }
+	}

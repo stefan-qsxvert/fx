@@ -21,8 +21,8 @@ public class PrepRunnable implements Runnable{
 		// TODO Auto-generated method stub
 		switch (arcType) {
 		case "testAction":
-			System.out.println("test action");
-			
+			System.out.println("testAction");
+		
 			break;
 		case "loadCert":
 			System.out.println("loadCert");
@@ -50,14 +50,19 @@ public class PrepRunnable implements Runnable{
 		case "sentPits":
 			System.out.println("sentPits");
 //			eventActionMethods.sendAllPits();
-			appObjects.getEventActionMethods().sendAllPits();
+			try {
+				appObjects.getEventActionMethods().sendAllPits();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		case "downloadUPOs":
 			System.out.println("downloadUPOs");
 			try {
 //				eventActionMethods.getAllUPOs();
 				appObjects.getEventActionMethods().getAllUPOs();
-			} catch (SSLException e) {
+			} catch (SSLException | InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

@@ -103,15 +103,20 @@ public class EventActionMethods {
 		System.out.println(appObjects.getCheckBox() + " " + appObjects.getCheckBox().isSelected());
 	}
 	//--------------------------------	
-	public void getAllUPOs() throws SSLException {
+	public void getAllUPOs() throws SSLException, InterruptedException {
+		
+//		appObjects.getProgressIndicator().setProgress(0);
+		
 		File[] file = appObjects.getUpoFiles(); 
 		
-		for (int i = 0; i < file.length; i++) {
+			for (int i = 0; i < file.length ; i++) {
 			appObjects.getEdeklaracje().getUPO(file[i].getName().toString());
+			appObjects.getProgressIndicator().setProgress(((double)i+1)/(double)file.length);
 			
-			appObjects.getProgressBar().setProgress(((double)i+1)/(double)file.length + 0.1);
+			appObjects.getProgressBar().setProgress(((double)i+1)/(double)file.length);
 			System.out.println(((double)i+1)/(double)file.length);
-//			progressBar.setProgress(progressBar.getProgress() + e);
+			
+			Thread.sleep(300);
 		}
 	}
 	//--------------------------------	
@@ -162,7 +167,7 @@ public class EventActionMethods {
 		}
 	}
 	//--------------------------------	
-	public void sendAllPits() {
+	public void sendAllPits() throws InterruptedException {
 		File[] pitFiles = appObjects.getPitFiles();
 		
 		try {
@@ -174,12 +179,20 @@ public class EventActionMethods {
 				String content = bufferedReader.readLine();
 				while ((s = bufferedReader.readLine()) != null) {
 					content = content + s + "\n";
+					
+					Thread.sleep(500);
 				}
 				bufferedReader.close();
 
 				System.out.println(content);
 				
+				
 	// wywołanie metowy sendDoc z wsdl z warunkiem content.getBytes()
+				
+				appObjects.getProgressIndicator().setProgress(((double)i+1)/(double)pitFiles.length);
+				
+				appObjects.getProgressBar().setProgress(((double)i+1)/(double)pitFiles.length);
+				System.out.println(((double)i+1)/(double)pitFiles.length);
 				
 			}
 		} catch (IOException e) {
