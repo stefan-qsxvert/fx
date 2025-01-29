@@ -41,6 +41,7 @@ public class AppObjects {
 	private SSLContext sslContext;
 	private EventActionMethods eventActionMethods;
 	private PrepRunnable prepRunnable;
+	private Paths paths;
 
 	public FxComponents getFxComponents() {
 		return fxComponents;
@@ -269,7 +270,13 @@ public class AppObjects {
 	public void setPrepRunnable(PrepRunnable prepRunnable) {
 		this.prepRunnable = prepRunnable;
 	}
-	
-	
+
+	public Paths getPaths() {
+		return paths;
+	}
+
+	public void setPaths(Paths paths) {
+		this.paths = paths;
+	}
 
 }

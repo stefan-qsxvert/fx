@@ -98,7 +98,7 @@ public class Edeklaracje {
 				port.requestUPO(refId.replace(".xml",""), "pl", upo, status, statusOpis);
 								
 				System.out.println("UPO status: " + upo.value + " " + status.value + " " + statusOpis.value);
-				BufferedWriter bfw = new BufferedWriter(new FileWriter("/home/tee/refIds/" + refId));
+				BufferedWriter bfw = new BufferedWriter(new FileWriter(appObjects.getPaths().getSentPitFilesPath() + refId));
 				bfw.newLine();
 				if (upo.value == null) {
 					upo = new Holder<String>("0");
