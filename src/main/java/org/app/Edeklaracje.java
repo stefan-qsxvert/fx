@@ -61,7 +61,7 @@ public class Edeklaracje {
 					System.out.println("Response: " + status.value );
 					System.out.println("Response: " + statusOpis.value );
 					
-					File file = new File("/home/tee/refIds/" + refId.value + ".xml");
+					File file = new File(appObjects.getPaths().getUpoFilesPath() + refId.value + ".xml");
 					file.createNewFile();
 					System.out.println(file.exists());
 					BufferedWriter bfw = new BufferedWriter(new FileWriter(file));
